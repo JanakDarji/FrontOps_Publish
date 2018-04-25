@@ -1378,9 +1378,13 @@ var NavbarComponent = /** @class */ (function () {
                     if (subtitle === titlee) {
                         return this.listTitles[i].children[j].title;
                     }
-                    var name = titlee.match(/work-order/g);
-                    if (name == "work-order") {
+                    var wname = titlee.match(/work-order/g);
+                    if (wname == "work-order") {
                         return 'Work Order';
+                    }
+                    var jWname = titlee.match(/job-assignment/g);
+                    if (jWname == "job-assignment") {
+                        return 'Job Assignment';
                     }
                 }
             }
