@@ -1662,12 +1662,12 @@ var ROUTES = [{
         type: 'link',
         icontype: 'grid_on'
     },
-    //{
-    //    path: '/timesheet',
-    //    title: 'Timesheet',
-    //    type: 'link',
-    //    icontype: 'timeline'
-    //    }, 
+    {
+        path: '/timesheet',
+        title: 'Timesheet',
+        type: 'link',
+        icontype: 'timeline'
+    },
     {
         path: '/maintenance',
         title: 'Maintenance',
