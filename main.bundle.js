@@ -17,6 +17,11 @@ var map = {
 		"common",
 		"components.module"
 	],
+	"./create-maintenance/create-maintenance.module": [
+		"./src/app/create-maintenance/create-maintenance.module.ts",
+		"common",
+		"create-maintenance.module"
+	],
 	"./dashboard/dashboard.module": [
 		"./src/app/dashboard/dashboard.module.ts",
 		"dashboard.module"
@@ -35,6 +40,11 @@ var map = {
 		"./src/app/jobs/jobs.module.ts",
 		"common",
 		"jobs.module"
+	],
+	"./maintenance/maintenance.module": [
+		"./src/app/maintenance/maintenance.module.ts",
+		"common",
+		"maintenance.module"
 	],
 	"./maps/maps.module": [
 		"./src/app/maps/maps.module.ts",
@@ -64,6 +74,11 @@ var map = {
 	"./timeline/timeline.module": [
 		"./src/app/timeline/timeline.module.ts",
 		"timeline.module"
+	],
+	"./timesheet/timesheet.module": [
+		"./src/app/timesheet/timesheet.module.ts",
+		"common",
+		"timesheet.module"
 	],
 	"./userpage/user.module": [
 		"./src/app/userpage/user.module.ts",
@@ -321,6 +336,15 @@ var AppRoutes = [
             }, {
                 path: 'myprofile',
                 loadChildren: './myprofile/myprofile.module#MyProfileModule'
+            }, {
+                path: 'maintenance',
+                loadChildren: './maintenance/maintenance.module#MaintenanceModule'
+            }, {
+                path: 'create-maintenance',
+                loadChildren: './create-maintenance/create-maintenance.module#CreateMaintenanceModule'
+            }, {
+                path: 'timesheet',
+                loadChildren: './timesheet/timesheet.module#TimesheetModule'
             }, {
                 path: 'maps',
                 loadChildren: './maps/maps.module#MapsModule'
@@ -884,6 +908,37 @@ var MdModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/commonService.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CommonService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var CommonService = /** @class */ (function () {
+    function CommonService() {
+        //localhostURL--- http://localhost:53562/api/FrontOps/
+        //HcsHubURL--- http://frontopapi.hcshub.com/api/FrontOps/
+        //ProductionUrl--- http://aspectdemo.frontline-ops.com/
+        //Production Api http://api.frontline-ops.com/api/FrontOps/
+        this.baseApiUrl = "http://api.frontline-ops.com/api/FrontOps/";
+    }
+    CommonService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])()
+    ], CommonService);
+    return CommonService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/loginService.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -921,6 +976,75 @@ var LoginService = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]])
     ], LoginService);
     return LoginService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/workOrderService.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WorkOrderService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var WorkOrderService = /** @class */ (function () {
+    function WorkOrderService(http) {
+        this.http = http;
+    }
+    WorkOrderService.prototype.GetWorkOrdersByJobId = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetWorkOrdersByJobId/" + contact);
+    };
+    ;
+    WorkOrderService.prototype.GetWorkOrdersByWorkOrdID = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetWorkOrdersByWorkOrdID/" + contact);
+    };
+    ;
+    WorkOrderService.prototype.CreateWorkOrderAssignment = function (baseurl, contact) {
+        return this.http.post(baseurl + "CreateWorkOrderAssignment/", contact);
+    };
+    ;
+    WorkOrderService.prototype.GetWorkOrderAssignment = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetWorkOrderAssignment/" + contact);
+    };
+    ;
+    WorkOrderService.prototype.DeleteWorkOrderAssignment = function (baseurl, contact) {
+        return this.http.post(baseurl + "DeleteWorkOrderAssignment/" + contact, null);
+    };
+    ;
+    WorkOrderService.prototype.SendEmailWorkOrderAssignment = function (baseurl, contact) {
+        return this.http.post(baseurl + "SendEmailWorkOrderAssignment/", contact);
+    };
+    ;
+    WorkOrderService.prototype.GetWorkOrderDocuments = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetWorkOrderDocuments/" + contact);
+    };
+    ;
+    WorkOrderService.prototype.DeleteWorkOrderDocuments = function (baseurl, contact, value, objectdata) {
+        return this.http.post(baseurl + "DeleteWorkOrderDocuments/" + contact + "/" + value + "/" + objectdata + "/", null);
+    };
+    ;
+    WorkOrderService.prototype.GetWorkOrderAssignmentForUser = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetWorkOrderAssignmentForUser/" + contact);
+    };
+    ;
+    WorkOrderService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]])
+    ], WorkOrderService);
+    return WorkOrderService;
 }());
 
 
@@ -1149,7 +1273,7 @@ var FixedpluginModule = /** @class */ (function () {
 /***/ "./src/app/shared/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<footer class=\"footer\">\n    <div class=\"container-fluid\">\n        <!--<nav class=\"pull-left\">\n            <ul>\n                <li>\n                    <a href=\"#\">\n                        Home\n                    </a>\n                </li>\n                <li>\n                    <a href=\"#\">\n                        Company\n                    </a>\n                </li>\n                <li>\n                    <a href=\"#\">\n                        Portfolio\n                    </a>\n                </li>\n                <li>\n                    <a href=\"#\">\n                        Blog\n                    </a>\n                </li>\n            </ul>\n        </nav>-->\n        <!--<p class=\"copyright pull-right\">\n            &copy;\n            {{test | date: 'yyyy'}}\n            <a href=\"https://www.creative-tim.com\">Creative Tim</a>, made with love for a better web\n        </p>-->\n        <p class=\"copyright pull-left\">\r\n            Version 0.1.9\r\n        </p>\n    </div>\n</footer>\n"
+module.exports = "<footer class=\"footer\">\r\n    <div class=\"container-fluid\">\r\n        <!--<nav class=\"pull-left\">\r\n            <ul>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Home\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Company\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Portfolio\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Blog\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </nav>-->\r\n        <!--<p class=\"copyright pull-right\">\r\n            &copy;\r\n            {{test | date: 'yyyy'}}\r\n            <a href=\"https://www.creative-tim.com\">Creative Tim</a>, made with love for a better web\r\n        </p>-->\r\n        <p class=\"copyright pull-right\">\r\n            Powered by FrontLine Operation(c)2018\r\n        </p>\r\n        <p class=\"copyright pull-left\">\r\n            Version 0.1.10\r\n        </p>\r\n    </div>\r\n</footer>\r\n"
 
 /***/ }),
 
@@ -1222,7 +1346,7 @@ var FooterModule = /** @class */ (function () {
 /***/ "./src/app/shared/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav #navbar class=\"navbar navbar-transparent navbar-absolute\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-minimize\">\n            <button id=\"minimizeSidebar\" class=\"btn btn-round btn-white btn-fill btn-just-icon\">\n                <i class=\"material-icons visible-on-sidebar-regular\">more_vert</i>\n                <i class=\"material-icons visible-on-sidebar-mini\">view_list</i>\n            </button>\n        </div>\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" (click)=\"sidebarToggle()\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"{{getPath()}}\"> {{getTitle()}} </a>\n        </div>\n        <div class=\"collapse navbar-collapse\">\n            <div (window:resize)=\"onResize($event)\">\n                <ul class=\"nav navbar-nav navbar-right\">\n                    <!--<li>\n                        <a href=\"#pablo\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n                            <i class=\"material-icons\">dashboard</i>\n                            <p class=\"hidden-lg hidden-md\">Dashboard</p>\n                        </a>\n                    </li>-->\n                    <li class=\"dropdown\">\n                        <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n                            <i class=\"material-icons\">notifications</i>\n                            <span class=\"notification\">5</span>\n                            <p class=\"hidden-lg hidden-md\">\n                                Notifications\n                                <b class=\"caret\"></b>\n                            </p>\n                        </a>\n                        <ul class=\"dropdown-menu\">\n                            <li>\n                                <a href=\"#\">Mike John responded to your email</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">You have 5 new tasks</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">You're now friend with Andrew</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">Another Notification</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">Another One</a>\n                            </li>\n                        </ul>\n                    </li>\n                    <li>\n                        <a href=\"#pablo\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n                            <i class=\"material-icons\">person</i>\n                            <p class=\"hidden-lg hidden-md\">Profile</p>\n                        </a>\n                    </li>\n                    <li class=\"separator hidden-lg hidden-md\"></li>\n                </ul>\n                <!--<form class=\"navbar-form navbar-right\" role=\"search\">\n                    <div class=\"form-group form-search is-empty\">\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\n                        <span class=\"material-input\"></span>\n                    </div>\n                    <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\n                        <i class=\"material-icons\">search</i>\n                        <div class=\"ripple-container\"></div>\n                    </button>\n                </form>-->\n            </div>\n        </div>\n    </div>\n</nav>\n"
+module.exports = "<nav #navbar class=\"navbar navbar-transparent navbar-absolute\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-minimize\">\n            <button id=\"minimizeSidebar\" class=\"btn btn-round btn-white btn-fill btn-just-icon\">\n                <i class=\"material-icons visible-on-sidebar-regular\">more_vert</i>\n                <i class=\"material-icons visible-on-sidebar-mini\">view_list</i>\n            </button>\n        </div>\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" (click)=\"sidebarToggle()\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"{{getPath()}}\"> {{getTitle()}} </a>\n        </div>\n        <div class=\"collapse navbar-collapse\">\n            <div (window:resize)=\"onResize($event)\">\n                <ul class=\"nav navbar-nav navbar-right\">\n                    <!--<li>\n                        <a href=\"#pablo\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n                            <i class=\"material-icons\">dashboard</i>\n                            <p class=\"hidden-lg hidden-md\">Dashboard</p>\n                        </a>\n                    </li>-->\n                    <li class=\"dropdown\">\n                        <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n                            <i class=\"material-icons\">notifications</i>\n                            <span class=\"notification\">5</span>\n                            <p class=\"hidden-lg hidden-md\">\n                                Notifications\n                                <b class=\"caret\"></b>\n                            </p>\n                        </a>\n                        <ul class=\"dropdown-menu\">\n                            <li>\r\n                                <a href=\"#\">Work Order</a>\r\n                            </li>\n                            <ng-container *ngFor=\"let wAst of workOrdList\">\r\n                                <li>\r\n                                    <a> --- {{wAst.WorkOrderNo}}</a>\r\n                                </li>\r\n                            </ng-container>\n                            <!--<li>\n                                <a href=\"#\">Mike John responded to your email</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">You have 5 new tasks</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">You're now friend with Andrew</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">Another Notification</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">Another One</a>\n                            </li>-->\n                        </ul>\n                    </li>\n                    <li>\n                        <a href=\"#pablo\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n                            <i class=\"material-icons\">person</i>\n                            <p class=\"hidden-lg hidden-md\">Profile</p>\n                        </a>\n                    </li>\n                    <li class=\"separator hidden-lg hidden-md\"></li>\n                </ul>\n                <!--<form class=\"navbar-form navbar-right\" role=\"search\">\n                    <div class=\"form-group form-search is-empty\">\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\n                        <span class=\"material-input\"></span>\n                    </div>\n                    <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\n                        <i class=\"material-icons\">search</i>\n                        <div class=\"ripple-container\"></div>\n                    </button>\n                </form>-->\n            </div>\n        </div>\n    </div>\n</nav>\n"
 
 /***/ }),
 
@@ -1234,6 +1358,8 @@ module.exports = "<nav #navbar class=\"navbar navbar-transparent navbar-absolute
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__sidebar_sidebar_component__ = __webpack_require__("./src/app/sidebar/sidebar.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_workOrderService__ = __webpack_require__("./src/app/services/workOrderService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_commonService__ = __webpack_require__("./src/app/services/commonService.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1246,20 +1372,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var misc = {
     navbar_menu_visible: 0,
     active_collapse: true,
     disabled_collapse_init: 0,
 };
 var NavbarComponent = /** @class */ (function () {
-    function NavbarComponent(location, renderer, element) {
+    function NavbarComponent(location, renderer, element, workOrderService, commonService) {
         this.renderer = renderer;
         this.element = element;
+        this.workOrderService = workOrderService;
+        this.commonService = commonService;
         this.location = location;
         this.nativeElement = element.nativeElement;
         this.sidebarVisible = false;
     }
     NavbarComponent.prototype.ngOnInit = function () {
+        if (JSON.parse(sessionStorage.getItem('LogEmployee')) != null) {
+            this.logEmployee = JSON.parse(sessionStorage.getItem('LogEmployee'));
+            this.getWorkOrderAssignment(this.logEmployee["ID"]);
+        }
+        else {
+            this.workOrdList = "No Work Order";
+        }
         this.listTitles = __WEBPACK_IMPORTED_MODULE_1__sidebar_sidebar_component__["a" /* ROUTES */].filter(function (listTitle) { return listTitle; });
         var navbar = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
@@ -1351,6 +1488,21 @@ var NavbarComponent = /** @class */ (function () {
         }
     };
     ;
+    NavbarComponent.prototype.getWorkOrderAssignment = function (userId) {
+        var _this = this;
+        $('.loader').show();
+        this.workOrderService.GetWorkOrderAssignmentForUser(this.commonService.baseApiUrl, userId).subscribe(function (data) {
+            var datawAsg = JSON.stringify(data);
+            var wAsgParse = JSON.parse(datawAsg);
+            var wAsgList = JSON.parse(wAsgParse["_body"]);
+            _this.workOrdList = null;
+            if (wAsgList != null) {
+                _this.workOrdList = wAsgList;
+                console.log(_this.workOrdList);
+                $('.loader').hide();
+            }
+        });
+    };
     NavbarComponent.prototype.getTitle = function () {
         //let titlee: any = this.location.prepareExternalUrl(this.location.path());
         //for (let i = 0; i < this.listTitles.length; i++) {
@@ -1386,6 +1538,10 @@ var NavbarComponent = /** @class */ (function () {
                     if (jWname == "job-assignment") {
                         return 'Job Assignment';
                     }
+                    var mname = titlee.match(/create-maintenance/g);
+                    if (mname == "create-maintenance") {
+                        return 'Create Maintenancet';
+                    }
                 }
             }
         }
@@ -1401,9 +1557,14 @@ var NavbarComponent = /** @class */ (function () {
     NavbarComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-navbar-cmp',
-            template: __webpack_require__("./src/app/shared/navbar/navbar.component.html")
+            template: __webpack_require__("./src/app/shared/navbar/navbar.component.html"),
+            providers: [__WEBPACK_IMPORTED_MODULE_4__services_commonService__["a" /* CommonService */], __WEBPACK_IMPORTED_MODULE_3__services_workOrderService__["a" /* WorkOrderService */]],
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common__["Location"], __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer"], __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common__["Location"],
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer"],
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"],
+            __WEBPACK_IMPORTED_MODULE_3__services_workOrderService__["a" /* WorkOrderService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_commonService__["a" /* CommonService */]])
     ], NavbarComponent);
     return NavbarComponent;
 }());
@@ -1502,16 +1663,16 @@ var ROUTES = [{
         icontype: 'grid_on'
     },
     //{
-    //    path: '/work-order',
-    //    title: 'Work Order',
+    //    path: '/timesheet',
+    //    title: 'Timesheet',
     //    type: 'link',
     //    icontype: 'timeline'
-    //}, 
+    //    }, 
     {
-        path: '/components/panels',
+        path: '/maintenance',
         title: 'Maintenance',
         type: 'link',
-        icontype: 'place'
+        icontype: 'build'
     }, {
         path: '/widgets',
         title: 'Reports',

@@ -194,20 +194,20 @@ var JobsComponent = /** @class */ (function () {
                     this.isSyncAccess = jobAccess[0].SyncAccess;
                 }
             }
+            if (this.isViewAccess == false) {
+                this.router.navigate(['dashboard']);
+            }
+            this.timer.newTimer('1sec', 30);
+            this.getJobDetails();
+            this.jobDataTable = {
+                jobHeaderRow: ['Job#', 'Date', 'Description', 'Client', 'WOs', 'Status', 'Actions'],
+                jobFooterRow: ['Job#', 'Date', 'Description', 'Client', 'WOs', 'Status', 'Actions'],
+                jobDataRows: this.jobList
+            };
         }
         else {
             this.router.navigate(['pages/login']);
         }
-        if (this.isViewAccess == false) {
-            this.router.navigate(['dashboard']);
-        }
-        this.timer.newTimer('1sec', 30);
-        this.getJobDetails();
-        this.jobDataTable = {
-            jobHeaderRow: ['Job#', 'Date', 'Description', 'Client', 'WOs', 'Status', 'Actions'],
-            jobFooterRow: ['Job#', 'Date', 'Description', 'Client', 'WOs', 'Status', 'Actions'],
-            jobDataRows: this.jobList
-        };
     };
     JobsComponent.prototype.isJobsAndWorkOrdersDone = function () {
         var _this = this;

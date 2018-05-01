@@ -50,20 +50,25 @@ var WorkOrderComponent = /** @class */ (function () {
     }
     WorkOrderComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.activatedRoute.queryParams.subscribe(function (params) {
-            if (params['jobID'] == undefined) {
-                _this.router.navigate(['jobs']);
-            }
-            else {
-                _this.workOrdJobID = params['jobID'];
-                _this.getWorkOrderDetails(_this.workOrdJobID);
-                _this.workOrdDataTable = {
-                    workOrdHeaderRow: ['WOs', 'Date Due', 'Description', 'Status', 'Assigned', 'Actions'],
-                    workOrdFooterRow: ['WOs', 'Date Due', 'Description', 'Status', 'Assigned', 'Actions'],
-                    workOrdDataRows: _this.workOrderList
-                };
-            }
-        });
+        if (JSON.parse(sessionStorage.getItem('LogEmployee')) != null) {
+            this.activatedRoute.queryParams.subscribe(function (params) {
+                if (params['jobID'] == undefined) {
+                    _this.router.navigate(['jobs']);
+                }
+                else {
+                    _this.workOrdJobID = params['jobID'];
+                    _this.getWorkOrderDetails(_this.workOrdJobID);
+                    _this.workOrdDataTable = {
+                        workOrdHeaderRow: ['WOs', 'Date Due', 'Description', 'Status', 'Assigned', 'Actions'],
+                        workOrdFooterRow: ['WOs', 'Date Due', 'Description', 'Status', 'Assigned', 'Actions'],
+                        workOrdDataRows: _this.workOrderList
+                    };
+                }
+            });
+        }
+        else {
+            this.router.navigate(['pages/login']);
+        }
     };
     WorkOrderComponent.prototype.getWorkOrderDetails = function (jobID) {
         var _this = this;
