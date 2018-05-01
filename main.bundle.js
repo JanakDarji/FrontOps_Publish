@@ -475,7 +475,7 @@ var FieldErrorDisplayModule = /** @class */ (function () {
 /***/ "./src/app/layouts/admin/admin-layout.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"wrapper\">\n    <div class=\"sidebar\" data-active-color=\"white\" data-background-color=\"red\" data-image=\"../assets/img/sidebar-1.jpg\">\n        <app-sidebar-cmp></app-sidebar-cmp>\n        <div class=\"sidebar-background\" style=\"background-image: url(assets/img/sidebar-1.jpg)\"></div>\n    </div>\n    <div class=\"main-panel\">\n        <app-navbar-cmp></app-navbar-cmp>\n        <router-outlet></router-outlet>\n        <div *ngIf=\"!isMap()\">\n            <app-footer-cmp></app-footer-cmp>\n        </div>\n    </div>\n    <app-fixedplugin></app-fixedplugin>\n</div>\n"
+module.exports = "\n<div class=\"wrapper\">\n    <div class=\"sidebar\" data-active-color=\"white\" data-background-color=\"black\" data-image=\"../assets/img/sidebar-1.jpg\">\n        <app-sidebar-cmp></app-sidebar-cmp>\n        <div class=\"sidebar-background\" style=\"background-image: url(assets/img/sidebar-1.jpg)\"></div>\n    </div>\n    <div class=\"main-panel\">\n        <app-navbar-cmp></app-navbar-cmp>\n        <router-outlet></router-outlet>\n        <div *ngIf=\"!isMap()\">\n            <app-footer-cmp></app-footer-cmp>\n        </div>\n    </div>\n    <app-fixedplugin></app-fixedplugin>\n</div>\n"
 
 /***/ }),
 
