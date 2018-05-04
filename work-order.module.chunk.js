@@ -122,7 +122,7 @@ var WorkOrderComponent = /** @class */ (function () {
         });
     };
     WorkOrderComponent.prototype.goToWorkAssignment = function (WorkId) {
-        this.router.navigate(['job-assignment'], { queryParams: { workID: WorkId } });
+        this.router.navigate(['wo-assignment'], { queryParams: { workID: WorkId } });
     };
     WorkOrderComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({

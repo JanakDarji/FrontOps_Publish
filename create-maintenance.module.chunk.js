@@ -201,9 +201,11 @@ var CreateMaintenanceComponent = /** @class */ (function () {
             if (mTList != null) {
                 _this.maintenanceData = mTList;
                 var elems = document.querySelectorAll(".label-floating");
-                [].forEach.call(elems, function (el) {
-                    el.classList.remove("is-empty");
-                });
+                if (elems != null) {
+                    [].forEach.call(elems, function (el) {
+                        el.classList.remove("is-empty");
+                    });
+                }
                 $("#remainingC").html("Text Remaining : " + (240 - _this.maintenanceData.Description.length));
                 _this.mtForm.controls["workOrdNo"].setValue(_this.maintenanceData.WorkOrderNo);
                 _this.mtForm.controls["mType"].setValue(_this.maintenanceData.MaintenanceTypeId);

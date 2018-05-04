@@ -442,9 +442,11 @@ var DataTableComponent = /** @class */ (function () {
                     this.mapUserList.DivisionId = emp.DivisionId;
                     this.mapUserList.edDivisionId = emp.edDivisionId;
                     var elems = document.querySelectorAll(".label-floating");
-                    [].forEach.call(elems, function (el) {
-                        el.classList.remove("is-empty");
-                    });
+                    if (elems != null) {
+                        [].forEach.call(elems, function (el) {
+                            el.classList.remove("is-empty");
+                        });
+                    }
                     this.getStatesByCountry(emp.edCountry != null ? emp.edCountry : "1");
                     if (emp.UserStatus == "New") {
                         this.stageUser.controls["firstname"].setValue(emp.Firstname);

@@ -31,11 +31,6 @@ var map = {
 		"common",
 		"forms.module"
 	],
-	"./job-assignment/job-assignment.module": [
-		"./src/app/job-assignment/job-assignment.module.ts",
-		"common",
-		"job-assignment.module"
-	],
 	"./jobs/jobs.module": [
 		"./src/app/jobs/jobs.module.ts",
 		"common",
@@ -92,6 +87,11 @@ var map = {
 	"./widgets/widgets.module": [
 		"./src/app/widgets/widgets.module.ts",
 		"widgets.module"
+	],
+	"./wo-assignment/wo-assignment.module": [
+		"./src/app/wo-assignment/wo-assignment.module.ts",
+		"common",
+		"wo-assignment.module"
 	],
 	"./work-order/work-order.module": [
 		"./src/app/work-order/work-order.module.ts",
@@ -328,8 +328,8 @@ var AppRoutes = [
                 path: 'jobs',
                 loadChildren: './jobs/jobs.module#JobsModule'
             }, {
-                path: 'job-assignment',
-                loadChildren: './job-assignment/job-assignment.module#JobAssignmentModule'
+                path: 'wo-assignment',
+                loadChildren: './wo-assignment/wo-assignment.module#WoAssignmentModule'
             }, {
                 path: 'work-order',
                 loadChildren: './work-order/work-order.module#WorkOrderModule'
@@ -1024,8 +1024,8 @@ var WorkOrderService = /** @class */ (function () {
         return this.http.post(baseurl + "DeleteWorkOrderAssignment/" + contact, null);
     };
     ;
-    WorkOrderService.prototype.SendEmailWorkOrderAssignment = function (baseurl, contact) {
-        return this.http.post(baseurl + "SendEmailWorkOrderAssignment/", contact);
+    WorkOrderService.prototype.SendEmailWorkOrderAssignment = function (baseurl, contact, value) {
+        return this.http.post(baseurl + "SendEmailWorkOrderAssignment/" + value + "/", contact);
     };
     ;
     WorkOrderService.prototype.GetWorkOrderDocuments = function (baseurl, contact) {
@@ -1273,7 +1273,7 @@ var FixedpluginModule = /** @class */ (function () {
 /***/ "./src/app/shared/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<footer class=\"footer\">\r\n    <div class=\"container-fluid\">\r\n        <!--<nav class=\"pull-left\">\r\n            <ul>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Home\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Company\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Portfolio\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Blog\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </nav>-->\r\n        <!--<p class=\"copyright pull-right\">\r\n            &copy;\r\n            {{test | date: 'yyyy'}}\r\n            <a href=\"https://www.creative-tim.com\">Creative Tim</a>, made with love for a better web\r\n        </p>-->\r\n        <p class=\"copyright pull-right\">\r\n            Powered by FrontLine Operation(c)2018\r\n        </p>\r\n        <p class=\"copyright pull-left\">\r\n            Version 0.1.10\r\n        </p>\r\n    </div>\r\n</footer>\r\n"
+module.exports = "<footer class=\"footer\">\r\n    <div class=\"container-fluid\">\r\n        <!--<nav class=\"pull-left\">\r\n            <ul>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Home\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Company\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Portfolio\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Blog\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </nav>-->\r\n        <!--<p class=\"copyright pull-right\">\r\n            &copy;\r\n            {{test | date: 'yyyy'}}\r\n            <a href=\"https://www.creative-tim.com\">Creative Tim</a>, made with love for a better web\r\n        </p>-->\r\n        <p class=\"copyright pull-right\">\r\n            Powered by Frontline Operations &copy; 2018\r\n        </p>\r\n        <p class=\"copyright pull-left\">\r\n            Version 0.1.11\r\n        </p>\r\n    </div>\r\n</footer>\r\n"
 
 /***/ }),
 
@@ -1498,7 +1498,6 @@ var NavbarComponent = /** @class */ (function () {
             _this.workOrdList = null;
             if (wAsgList != null) {
                 _this.workOrdList = wAsgList;
-                console.log(_this.workOrdList);
                 $('.loader').hide();
             }
         });
@@ -1534,9 +1533,9 @@ var NavbarComponent = /** @class */ (function () {
                     if (wname == "work-order") {
                         return 'Work Order';
                     }
-                    var jWname = titlee.match(/job-assignment/g);
-                    if (jWname == "job-assignment") {
-                        return 'Job Assignment';
+                    var jWname = titlee.match(/wo-assignment/g);
+                    if (jWname == "wo-assignment") {
+                        return 'WO Assignment';
                     }
                     var mname = titlee.match(/create-maintenance/g);
                     if (mname == "create-maintenance") {
