@@ -292,6 +292,7 @@ var WoAssignmentComponent = /** @class */ (function () {
                 _this.isSend = false;
             }
             else {
+                _this.sendDateTime = null;
                 _this.isSend = true;
             }
         });
