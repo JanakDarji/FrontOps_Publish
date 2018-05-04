@@ -285,6 +285,9 @@ var WoAssignmentComponent = /** @class */ (function () {
                 if (wAsgList[0].SendDateTime != null) {
                     _this.sendDateTime = wAsgList[0].SendDateTime;
                 }
+                else {
+                    _this.sendDateTime = null;
+                }
                 $('.loader').hide();
                 _this.isSend = false;
             }
