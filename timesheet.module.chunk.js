@@ -40,7 +40,7 @@ var TimesheetService = /** @class */ (function () {
 /***/ "./src/app/timesheet/timesheet.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<title>Timesheet</title>\r\n\r\n<div class=\"main-content\">\r\n    <div class=\"container-fluid\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <div class=\"card\">\r\n                    <div class=\"card-content\">\r\n                        <h3 class=\"card-title\">Timesheet</h3>\r\n                        <div class=\"toolbar\">\r\n                        </div>\r\n                        <div class=\"material-datatables table-responsive\">\r\n                            <table id=\"tSheetDatatables\" class=\"table table-striped table-no-bordered table-hover\" cellspacing=\"0\" width=\"100%\" style=\"width:100%\">\r\n                                <thead>\r\n                                    <tr>\r\n                                        <th>{{ tSheetDataTable.tSheetHeaderRow[0] }}</th>\r\n                                        <th>{{ tSheetDataTable.tSheetHeaderRow[1] }}</th>\r\n                                        <th>{{ tSheetDataTable.tSheetHeaderRow[2] }}</th>\r\n                                        <th>{{ tSheetDataTable.tSheetHeaderRow[3] }}</th>\r\n                                        <th class=\"disabled-sorting text-right\">{{ tSheetDataTable.tSheetHeaderRow[4] }}</th>\r\n                                    </tr>\r\n                                </thead>\r\n                                <tbody>\r\n                                    <tr *ngFor=\"let tSheetTrack of tSheetDataTable.tSheetDataRows\">\r\n                                        <td>\r\n                                            {{ tSheetTrack.TimeTrackId }}\r\n                                            <div class=\"checkbox form-horizontal-checkbox\" style=\"top:-10px;left:10px;\">\r\n                                                <label>\r\n                                                    <input type=\"checkbox\" name=\"optionsCheckboxes\"> \r\n                                                </label>\r\n                                            </div>\r\n                                        </td>\r\n                                        <td>{{ tSheetTrack.UserName }}</td>\r\n                                        <td>{{ tSheetTrack.WorkOrderNo }}</td>\r\n                                        <td>{{tSheetTrack.TotalWorkTime}}</td>\r\n                                        <td class=\"text-right\">\r\n                                            <button class=\"btn btn-simple btn-warning btn-icon edit\">\r\n                                                <i class=\"material-icons\">dvr</i>\r\n                                            </button>\r\n                                        </td>\r\n                                    </tr>\r\n                                </tbody>\r\n                            </table>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<title>Timesheet</title>\r\n\r\n<div class=\"main-content\">\r\n    <div class=\"container-fluid\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <div class=\"card\">\r\n                    <div class=\"card-content\">\r\n                        <h3 class=\"card-title\">Timesheet</h3>\r\n                            <button class=\"btn btn-success\">Approve</button>\r\n                        <button class=\"btn btn-danger\">Reject</button>\r\n                        <div class=\"toolbar\">\r\n                        </div>\r\n                        <div class=\"material-datatables table-responsive\">\r\n                            <form [formGroup]=\"tSheetTrackr\">\r\n                                <table id=\"tSheetDatatables\" class=\"table table-striped table-no-bordered table-hover\" cellspacing=\"0\" width=\"100%\" style=\"width:100%\">\r\n                                    <thead>\r\n                                        <tr>\r\n                                            <th>{{ tSheetDataTable.tSheetHeaderRow[0] }}</th>\r\n                                            <th>{{ tSheetDataTable.tSheetHeaderRow[1] }}</th>\r\n                                            <th>{{ tSheetDataTable.tSheetHeaderRow[2] }}</th>\r\n                                            <th>{{ tSheetDataTable.tSheetHeaderRow[3] }}</th>\r\n                                            <th class=\"disabled-sorting text-right\">{{ tSheetDataTable.tSheetHeaderRow[4] }}</th>\r\n                                        </tr>\r\n                                    </thead>\r\n                                    <tbody>\r\n                                        <tr *ngFor=\"let tSheetTrack of tSheetDataTable.tSheetDataRows\">\r\n                                            <td>\r\n                                                {{ tSheetTrack.TimeTrackId }}\r\n                                                <div class=\"checkbox form-horizontal-checkbox\" style=\"top:-10px;left:10px;\">\r\n                                                    <label>\r\n                                                        <input type=\"checkbox\" formControlName=\"trackChk\" name=\"trackChk\" [id]=\"tSheetTrack.ID\">\r\n                                                    </label>\r\n                                                </div>\r\n                                            </td>\r\n                                            <td>{{ tSheetTrack.UserName }}</td>\r\n                                            <td>{{ tSheetTrack.WorkOrderNo }}</td>\r\n                                            <td>{{tSheetTrack.TotalWorkTime}}</td>\r\n                                            <td class=\"text-right\">\r\n                                                <button class=\"btn btn-simple btn-warning btn-icon edit\">\r\n                                                    <i class=\"material-icons\">dvr</i>\r\n                                                </button>\r\n                                            </td>\r\n                                        </tr>\r\n                                    </tbody>\r\n                                </table>\r\n                                </form>\r\n</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -57,11 +57,12 @@ module.exports = ""
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TimesheetComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_commonService__ = __webpack_require__("./src/app/services/commonService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_timesheetService__ = __webpack_require__("./src/app/services/timesheetService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_commonService__ = __webpack_require__("./src/app/services/commonService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_timesheetService__ = __webpack_require__("./src/app/services/timesheetService.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -77,6 +78,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var TimesheetComponent = /** @class */ (function () {
     function TimesheetComponent(http, router, commonService, timesheetService, activatedRoute) {
         this.http = http;
@@ -84,6 +86,9 @@ var TimesheetComponent = /** @class */ (function () {
         this.commonService = commonService;
         this.timesheetService = timesheetService;
         this.activatedRoute = activatedRoute;
+        this.tSheetTrackr = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormGroup"]({
+            trackChk: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]()
+        });
     }
     TimesheetComponent.prototype.ngOnInit = function () {
         if (JSON.parse(sessionStorage.getItem('LogEmployee')) != null) {
@@ -151,13 +156,13 @@ var TimesheetComponent = /** @class */ (function () {
             selector: 'app-timesheet',
             template: __webpack_require__("./src/app/timesheet/timesheet.component.html"),
             styles: [__webpack_require__("./src/app/timesheet/timesheet.component.scss")],
-            providers: [__WEBPACK_IMPORTED_MODULE_4__services_commonService__["a" /* CommonService */], __WEBPACK_IMPORTED_MODULE_5__services_timesheetService__["a" /* TimesheetService */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_5__services_commonService__["a" /* CommonService */], __WEBPACK_IMPORTED_MODULE_6__services_timesheetService__["a" /* TimesheetService */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["d" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_4__services_commonService__["a" /* CommonService */],
-            __WEBPACK_IMPORTED_MODULE_5__services_timesheetService__["a" /* TimesheetService */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["Http"],
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["d" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_5__services_commonService__["a" /* CommonService */],
+            __WEBPACK_IMPORTED_MODULE_6__services_timesheetService__["a" /* TimesheetService */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]])
     ], TimesheetComponent);
     return TimesheetComponent;
 }());
