@@ -16586,7 +16586,6 @@ var WoAssignmentComponent = /** @class */ (function () {
                 ToDate: tDate,
                 WorkOrderAssignmentStatus: "Created"
             };
-            alert(fDate);
             this.workOrderService.CreateWorkOrderAssignment(this.commonService.baseApiUrl, contact).subscribe(function (data) {
                 var dataUsers = JSON.stringify(data);
                 var userParse = JSON.parse(dataUsers);
