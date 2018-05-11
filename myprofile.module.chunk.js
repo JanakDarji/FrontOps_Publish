@@ -128,7 +128,7 @@ var MyProfileComponent = /** @class */ (function () {
             this.myProfilePage.controls["password"].setValue(this.userProfile.Password);
             this.myProfilePage.controls["street"].setValue(this.userProfile.Street);
             //this.myProfilePage.controls["division"].setValue(this.userProfile.DivisionId);
-            document.getElementById('division').innerHTML = this.userProfile.DivisionId == 1 ? "Aspect Toowoomba" : this.userProfile.DivisionId == 2 ? "Toowoomba Bench Tops" : "Bradbec";
+            document.getElementById('division').innerHTML = this.userProfile.DivisionId == 1 ? "All" : this.userProfile.DivisionId == 2 ? "Aspect Toowoomba" : this.userProfile.DivisionId == 3 ? "Toowoomba Bench Tops" : "Bradbec";
             this.profilePic = this.userProfile.ProfileImage;
             this.userStatus = this.userProfile.IsActive;
             $(document).ready(function () {

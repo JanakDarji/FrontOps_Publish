@@ -79,6 +79,7 @@ var DashboardComponent = /** @class */ (function () {
     //}
     // constructor(private navbarTitleService: NavbarTitleService) { }
     DashboardComponent.prototype.ngOnInit = function () {
+        $('.loader').hide();
         // this.tableData = {
         //     headerRow: ['ID', 'Name', 'Salary', 'Country', 'City'],
         //     dataRows: [

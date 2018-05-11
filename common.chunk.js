@@ -2055,6 +2055,8 @@ AgmPolyline.propDecorators = {
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services__ = __webpack_require__("./node_modules/@agm/core/services.js");
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__services__["a"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_1__services__["b"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_1__services__["c"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_module__ = __webpack_require__("./node_modules/@agm/core/core.module.js");
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__core_module__["a"]; });
 // main modules
@@ -2077,9 +2079,9 @@ AgmPolyline.propDecorators = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_managers_circle_manager__ = __webpack_require__("./node_modules/@agm/core/services/managers/circle-manager.js");
 /* unused harmony reexport CircleManager */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_managers_info_window_manager__ = __webpack_require__("./node_modules/@agm/core/services/managers/info-window-manager.js");
-/* unused harmony reexport InfoWindowManager */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__services_managers_info_window_manager__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_managers_marker_manager__ = __webpack_require__("./node_modules/@agm/core/services/managers/marker-manager.js");
-/* unused harmony reexport MarkerManager */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_3__services_managers_marker_manager__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_managers_polygon_manager__ = __webpack_require__("./node_modules/@agm/core/services/managers/polygon-manager.js");
 /* unused harmony reexport PolygonManager */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_managers_polyline_manager__ = __webpack_require__("./node_modules/@agm/core/services/managers/polyline-manager.js");
@@ -2093,7 +2095,7 @@ AgmPolyline.propDecorators = {
 /* unused harmony reexport LAZY_MAPS_API_CONFIG */
 /* unused harmony reexport LazyMapsAPILoader */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_maps_api_loader_maps_api_loader__ = __webpack_require__("./node_modules/@agm/core/services/maps-api-loader/maps-api-loader.js");
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_9__services_maps_api_loader_maps_api_loader__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_9__services_maps_api_loader_maps_api_loader__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_maps_api_loader_noop_maps_api_loader__ = __webpack_require__("./node_modules/@agm/core/services/maps-api-loader/noop-maps-api-loader.js");
 /* unused harmony reexport NoOpMapsAPILoader */
 
@@ -24944,6 +24946,55 @@ var RoleService = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]])
     ], RoleService);
     return RoleService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/timesheetService.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TimesheetService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var TimesheetService = /** @class */ (function () {
+    function TimesheetService(http) {
+        this.http = http;
+    }
+    TimesheetService.prototype.GetTimesheetTrackList = function (baseurl) {
+        return this.http.get(baseurl + "GetTimesheetTrackList/");
+    };
+    ;
+    TimesheetService.prototype.GetTimesheetTrack = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetTimesheetTrack/" + contact);
+    };
+    ;
+    TimesheetService.prototype.GetTimesheetDaily = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetTimesheetDaily/" + contact);
+    };
+    ;
+    TimesheetService.prototype.UpdateTimesheetTrack = function (baseurl, contact, value) {
+        return this.http.post(baseurl + "UpdateTimesheetTrack/" + contact, value);
+    };
+    ;
+    TimesheetService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]])
+    ], TimesheetService);
+    return TimesheetService;
 }());
 
 
