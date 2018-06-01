@@ -129,6 +129,7 @@ var LoginComponent = /** @class */ (function () {
             });
         }
         else {
+            $('.loader').hide();
             this.validateAllFormFields(this.login);
         }
     };

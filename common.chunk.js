@@ -41116,6 +41116,10 @@ var ChecklistFormService = /** @class */ (function () {
         return this.http.post(baseurl + "UpdateCheckListFormStatus/", contact);
     };
     ;
+    ChecklistFormService.prototype.CreateChecklistFormWorkOrderAssignment = function (baseurl, contact) {
+        return this.http.post(baseurl + "CreateChecklistFormWorkOrderAssignment/", contact);
+    };
+    ;
     ChecklistFormService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]])
