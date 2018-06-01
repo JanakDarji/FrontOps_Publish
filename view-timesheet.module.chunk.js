@@ -1657,7 +1657,7 @@ ClusterIcon.prototype['onRemove'] = ClusterIcon.prototype.onRemove;
 /***/ "./src/app/view-timesheet/view-timesheet.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<title>Aspect View Timesheet</title>\r\n<div class=\"main-content\">\r\n    <div class=\"container-fluid\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <div class=\"card\">\r\n                    <div class=\"card-content\">\r\n                        <h3 class=\"card-title\">View Timesheet</h3>\r\n                        <div class=\"toolbar\">\r\n                        </div>\r\n                        <div class=\"tab-content\">\r\n                            <div class=\"panel-body\">\r\n                                    <div class=\"col-sm-6\">\r\n                                        <table class=\"table table-responsive table-bordered table-hover\" style=\"float:left !important\">\r\n                                            <tbody>\r\n                                                <tr>\r\n                                                    <td>Name</td>\r\n                                                    <td>{{ timesheetTrack.UserName }} </td>\r\n                                                </tr>\r\n                                                <tr>\r\n                                                    <td>Job Number</td>\r\n                                                    <td>\r\n                                                        {{timesheetTrack.JobNumber }}\r\n                                                    </td>\r\n                                                </tr>\r\n                                                <tr>\r\n                                                    <td> Site </td>\r\n                                                    <td>--</td>\r\n                                                </tr>\r\n                                                <tr>\r\n                                                    <td>Start Time</td>\r\n                                                    <td>{{timesheetTrack.StartTime }}</td>\r\n                                                </tr>\r\n                                                <tr>\r\n                                                    <td>End Time</td>\r\n                                                    <td>{{timesheetTrack.EndTime }}</td>\r\n                                                </tr>\r\n                                                <tr>\r\n                                                    <td>Break Time</td>\r\n                                                    <td>{{timesheetTrack.TotalBreakTime }}</td>\r\n                                                </tr>\r\n                                                <tr>\r\n                                                    <td>Total Time</td>\r\n                                                    <td>{{timesheetTrack.TotalWorkTime }}</td>\r\n                                                </tr>\r\n                                            </tbody>\r\n                                        </table>\r\n                                        <div class=\"row\">\r\n                                            <div class=\"col-sm-4\">\r\n                                                <div class=\"dropdown\">\r\n                                                    <button href=\"javascript:void(0);\" class=\"dropdown-toggle btn btn-primary btn-round btn-block\" data-toggle=\"dropdown\">\r\n                                                        Approve/Reject\r\n                                                        <b class=\"caret\"></b>\r\n                                                    </button>\r\n                                                    <ul class=\"dropdown-menu dropdown-menu-left\">\r\n                                                        <li>\r\n                                                            <a data-toggle=\"modal\" (click)=\"approvedTimeSheet(true)\" data-target=\"#myModal\">Approve</a>\r\n                                                        </li>\r\n                                                        <li>\r\n                                                            <a id=\"synUsers\" (click)=\"approvedTimeSheet(false)\">Reject</a>\r\n                                                        </li>\r\n                                                    </ul>\r\n                                                </div>\r\n                                            </div>\r\n                                            <div class=\"col-sm-3\">\r\n                                                <button class=\"btn btn-success\" (click)=\"goToTimesheet()\">Cancel</button>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"col-sm-6\">\r\n                                        <agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"true\" [zoom]=\"zoom\" style=\"height:400px;\">\r\n                                            <agm-marker-cluster *ngFor=\"let point of timesheetLatLong\">\r\n                                                <ng-container *ngIf=\"point.StartLat != null || point.StartLong != null\">\r\n                                                    <agm-marker [latitude]=\"point.StartLat\" [longitude]=\"point.StartLong\">\r\n                                                    </agm-marker>\r\n                                                </ng-container>\r\n                                                <ng-container *ngIf=\"point.EndLat || point.EndLong\">\r\n                                                    <agm-marker [latitude]=\"point.EndLat\" [longitude]=\"point.EndLong\">\r\n                                                    </agm-marker>\r\n                                                </ng-container>\r\n                                                <ng-container *ngIf=\"point.StartBreakLat || point.StartBreakLong\">\r\n                                                    <agm-marker [latitude]=\"point.StartBreakLat\" [longitude]=\"point.StartBreakLong\">\r\n                                                    </agm-marker>\r\n                                                </ng-container>\r\n                                                <ng-container *ngIf=\"point.EndBreakLat || point.EndBreakLong\">\r\n                                                    <agm-marker [latitude]=\"point.EndBreakLat\" [longitude]=\"point.EndBreakLong\">\r\n                                                    </agm-marker>\r\n                                                </ng-container>\r\n                                            </agm-marker-cluster>\r\n                                        </agm-map>\r\n                                    </div>\r\n                                </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<title>Aspect View Timesheet</title>\n<div class=\"main-content\">\n    <div class=\"container-fluid\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <div class=\"card\">\n                    <div class=\"card-content\">\n                        <h3 class=\"card-title\">View Timesheet</h3>\n                        <div class=\"toolbar\">\n                        </div>\n                        <form [formGroup]=\"viewTimesheetPage\">\n                        <div class=\"tab-content form-group\">\n                            <div class=\"panel-body\">\n                                <div class=\"row\">\n                                    <div class=\"col-sm-6\">\n                                        <div class=\"col-sm-2 pull-right\" [hidden]=\"!showhidecontrol\">\n                                            <button class=\"btn btn-success\" (click)=\"saveTimesheet()\" data-target=\"#myModal\">Save</button>\n                                        </div>\n                                        <span [hidden]=\"hidebuttons\">\n                                            <button class=\"btn btn-warning pull-right\" (click)=\"toggleControl()\">{{showhidecontrol ? \"Cancel\" : \"Edit\"}}</button>\n                                        </span>\n                                        <table class=\"table table-responsive table-bordered table-hover\" style=\"float:left !important\">\n                                            <tbody>\n                                                <tr>\n                                                    <td>Name</td>\n                                                    <td>{{ timesheetTrack.UserName }} </td>\n                                                </tr>\n                                                <tr>\n                                                    <td>Job Number</td>\n                                                    <td>\n                                                        {{timesheetTrack.JobNumber }}\n                                                    </td>\n                                                </tr>\n                                                <tr>\n                                                    <td> Site </td>\n                                                    <td>--</td>\n                                                </tr>\n                                                <tr>\n                                                    <td>Start Time</td>\n                                                    <td id=\"showStartTime\" [hidden]=\"showhidecontrol\">{{timesheetTrack.StartTime | date: 'dd-MM-yyyy hh:mm a'}}</td>\n                                                    <td id=\"EditStartTime\" [hidden]=\"!showhidecontrol\">\n                                                        <!--<div class=\"label-floating\" [ngClass]=\"displayFieldCss(viewTimesheetPage, 'endtime')\">-->\n                                                        <md2-datepicker placeholder=\"{{timesheetTrack.StartTime | date: 'dd-MM-yyyy hh:mm a'}}\" formControlName=\"starttime\" name=\"starttime\" format=\"dd-MM-y HH:mm A\" (change)=\"setTime()\" type=\"datetime\" startView=\"month\"></md2-datepicker> <!---->\n                                                        <app-field-error-display [displayError]=\"isFieldValid(viewTimesheetPage, 'starttime')\" errorMsg=\"Start Time is required.\">\n                                                        </app-field-error-display>\n                                                        <!--</div>-->\n                                                    </td>\n                                                </tr>\n                                                <tr>\n                                                    <td>End Time</td>\n                                                    <td [hidden]=\"showhidecontrol\">{{timesheetTrack.EndTime | date: 'dd-MM-yyyy hh:mm a'}}</td>\n                                                    <td [hidden]=\"!showhidecontrol\">\n                                                        <!--<div class=\"label-floating\" [ngClass]=\"displayFieldCss(viewTimesheetPage, 'endtime')\">-->\n                                                        <md2-datepicker placeholder=\"{{timesheetTrack.EndTime | date: 'dd-MM-yyyy hh:mm a'}}\" formControlName=\"endtime\" name=\"endtime\" format=\"dd-MM-y HH:mm A\" (change)=\"setTime()\" type=\"datetime\" startView=\"month\"></md2-datepicker> <!---->\n                                                        <app-field-error-display [displayError]=\"isFieldValid(viewTimesheetPage, 'endtime')\" errorMsg=\"End Time should be greater than Start Time.\">\n                                                        </app-field-error-display>\n                                                        <!--</div>-->\n                                                    </td>\n                                                </tr>\n                                                <tr>\n                                                    <td>Break Time</td>\n                                                    <td [hidden]=\"showhidecontrol\">{{timesheetTrack.TotalBreakTime }}</td>\n                                                    <td [hidden]=\"!showhidecontrol\">\n                                                        <label #oldbrektime>{{timesheetTrack.TotalBreakTime}}</label>\n                                                        <span>\n                                                            <input type=\"text\" placeholder=\"Hour(s)\" name=\"breakhour\" formControlName=\"breakhour\" id=\"txthour\" maxlength=\"2\" size=\"2\" style=\"width:100px;\" class=\"number-decimal-only\" /> <!---->\n                                                            <app-field-error-display [displayError]=\"isFieldValid(viewTimesheetPage, 'breakhour')\" errorMsg=\"Break hour required.\">\r\n                                                            </app-field-error-display>\n                                                            <input type=\"text\" placeholder=\"Minutes(s)\" name=\"breakminute\" formControlName=\"breakminute\" id=\"txtminute\" maxlength=\"2\" size=\"2\" style=\"width:100px;\" class=\"number-decimal-only\" /> <!---->\n                                                            <app-field-error-display [displayError]=\"isFieldValid(viewTimesheetPage, 'breakminute')\" errorMsg=\"Break minute required.\">\r\n                                                            </app-field-error-display>\n                                                        </span>\n\n                                                        <!--<md2-datepicker placeholder=\"{{timesheetTrack.TotalBreakTime}}\" name=\"breaktime\" format=\"HH:mm\" type=\"time\" startView=\"clock\"></md2-datepicker>-->\n                                                    </td>\n                                                </tr>\n                                                <tr>\n                                                    <td>Total Time</td>\n                                                    <td>{{timesheetTrack.TotalWorkTime }}</td>\n                                                </tr>\n                                            </tbody>\n                                        </table>\n\n                                    </div>\n                                    <div class=\"col-sm-6\">\n                                        <agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"true\" [zoom]=\"zoom\" style=\"height:400px;\">\n                                            <agm-marker-cluster *ngFor=\"let point of timesheetLatLong\">\n                                                <ng-container *ngIf=\"point.StartLat != null || point.StartLong != null\">\n                                                    <agm-marker [latitude]=\"point.StartLat\" [longitude]=\"point.StartLong\">\n                                                    </agm-marker>\n                                                </ng-container>\n                                                <ng-container *ngIf=\"point.EndLat || point.EndLong\">\n                                                    <agm-marker [latitude]=\"point.EndLat\" [longitude]=\"point.EndLong\">\n                                                    </agm-marker>\n                                                </ng-container>\n                                                <ng-container *ngIf=\"point.StartBreakLat || point.StartBreakLong\">\n                                                    <agm-marker [latitude]=\"point.StartBreakLat\" [longitude]=\"point.StartBreakLong\">\n                                                    </agm-marker>\n                                                </ng-container>\n                                                <ng-container *ngIf=\"point.EndBreakLat || point.EndBreakLong\">\n                                                    <agm-marker [latitude]=\"point.EndBreakLat\" [longitude]=\"point.EndBreakLong\">\n                                                    </agm-marker>\n                                                </ng-container>\n                                            </agm-marker-cluster>\n                                        </agm-map>\n                                    </div>\n                                </div>\n                                <div class=\"row\">\n                                    <div class=\"col-sm-6\" [hidden]=\"hidebuttons\">\n                                        <div [hidden]=\"showhidecontrol\">\n                                            <button class=\"btn btn-success\" (click)=\"approveRejectTimesheet(1)\" data-target=\"#myModal\">Approve</button>\n                                            <button class=\"btn btn-danger\" (click)=\"approveRejectTimesheet(2)\">Reject</button>\n                                            <button class=\"btn btn-blue-grey pull-right\" (click)=\"goToTimesheet()\">Back</button>\n                                        </div>\n\n                                        <!--<div class=\"dropdown\">\n                                            <button href=\"javascript:void(0);\" class=\"dropdown-toggle btn btn-primary btn-round btn-block\" data-toggle=\"dropdown\">\n                                                Approve/Reject\n                                                <b class=\"caret\"></b>\n                                            </button>\n                                            <ul class=\"dropdown-menu dropdown-menu-left\">\n                                                <li>\n                                                    <a data-toggle=\"modal\" (click)=\"approvedTimeSheet(true)\" data-target=\"#myModal\">Approve</a>\n                                                </li>\n                                                <li>\n                                                    <a id=\"synUsers\" (click)=\"approvedTimeSheet(false)\">Reject</a>\n                                                </li>\n                                            </ul>\n                                        </div>-->\n                                    </div>\n\n                                </div>\n                            </div>\n                        </div>\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n    </div>\n</div>"
 
 /***/ }),
 
@@ -1674,10 +1674,15 @@ module.exports = ""
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ViewTimesheetComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_commonService__ = __webpack_require__("./src/app/services/commonService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_timesheetService__ = __webpack_require__("./src/app/services/timesheetService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_commonService__ = __webpack_require__("./src/app/services/commonService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_timesheetService__ = __webpack_require__("./src/app/services/timesheetService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_sweetalert2__ = __webpack_require__("./node_modules/sweetalert2/dist/sweetalert2.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_sweetalert2__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1692,15 +1697,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
+
 var ViewTimesheetComponent = /** @class */ (function () {
-    function ViewTimesheetComponent(http, router, commonService, timesheetService, activatedRoute) {
+    function ViewTimesheetComponent(http, router, commonService, timesheetService, activatedRoute, formBuilder, datepipe, dateAdapter) {
         this.http = http;
         this.router = router;
         this.commonService = commonService;
         this.timesheetService = timesheetService;
         this.activatedRoute = activatedRoute;
+        this.formBuilder = formBuilder;
+        this.datepipe = datepipe;
+        this.dateAdapter = dateAdapter;
         this.timesheetTrack = {};
+        this.showhidecontrol = false;
+        this.hidebuttons = true;
+        this.times = { year: 31557600, month: 2629746, day: 86400, hour: 3600, minute: 60, second: 1 };
+        this.viewTimesheetPage = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormGroup"]({
+            starttime: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            endtime: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            breakhour: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            breakminute: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]()
+        });
+        dateAdapter.setLocale('en-GB');
     }
+    ViewTimesheetComponent.prototype.isFieldValid = function (form, field) {
+        return !form.get(field).valid && form.get(field).touched;
+    };
+    ViewTimesheetComponent.prototype.displayFieldCss = function (form, field) {
+        return {
+            'has-error': this.isFieldValid(form, field),
+            'has-feedback': this.isFieldValid(form, field)
+        };
+    };
     ViewTimesheetComponent.prototype.ngOnInit = function () {
         var _this = this;
         if (JSON.parse(sessionStorage.getItem('LogEmployee')) != null) {
@@ -1711,20 +1742,85 @@ var ViewTimesheetComponent = /** @class */ (function () {
                 else {
                     //var woAsgtID = params['woasgtID'];
                     _this.workOrdAsgtID = params['woasgtID'];
-                    _this.getWorkOrderDetails(_this.workOrdAsgtID);
-                    _this.getTimesheetDaily(_this.workOrdAsgtID);
+                    _this.tsheetDailyId = params['tsheetDailyID'];
+                    //this.getWorkOrderDetails(this.workOrdAsgtID);
+                    //this.getTimesheetDaily(this.workOrdAsgtID);
+                    _this.getWorkOrderDetails(_this.tsheetDailyId);
+                    _this.getTimesheetDaily(_this.tsheetDailyId);
+                    var loggedinUserRoleId = JSON.parse(sessionStorage.getItem('LogEmployee')).RoleId;
+                    if (loggedinUserRoleId == 6 || loggedinUserRoleId == 1) {
+                        _this.hidebuttons = false;
+                    }
+                    else {
+                        _this.hidebuttons = true;
+                    }
                     //this.latitude = -33.865143
                     //this.longitude = 151.209900;
                     _this.zoom = 10;
                 }
+            });
+            this.viewTimesheetPage = this.formBuilder.group({
+                starttime: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+                endtime: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+                breakhour: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+                breakminute: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+            });
+            $(document).ready(function () {
+                //$('#txthour').val('00');
+                //$('#txtminute').val('00');
+                $('.number-decimal-only').keypress(function (e) {
+                    var keyCode = e.which ? e.which : e.keyCode;
+                    if ((keyCode != 46 || $(this).val().indexOf('.') != -1) &&
+                        (keyCode < 48 || keyCode > 57))
+                        return false;
+                    return true;
+                });
+                $('#txthour').keyup(function () {
+                    if ($(this).val() > 24) {
+                        alert("Hours must be less or equal to 24.");
+                        $(this).val('24');
+                    }
+                });
+                $('#txtminute').keyup(function () {
+                    if ($(this).val() > 59) {
+                        alert("Minutes must be less than 60.");
+                        $(this).val('59');
+                    }
+                    if ($(this).val() == 59 && $('#txthour').val() > 23) {
+                        alert("Could not allowed break more than 24 hours.");
+                        $('#txthour').val('23');
+                    }
+                });
+                $("#txtminute").blur(function () {
+                    var wtime = this.worktime;
+                    //alert(wtime);
+                });
             });
         }
         else {
             this.router.navigate(['pages/login']);
         }
     };
+    ViewTimesheetComponent.prototype.showSwal = function (text) {
+        __WEBPACK_IMPORTED_MODULE_7_sweetalert2___default()({
+            type: 'success',
+            text: text,
+            buttonsStyling: false,
+            confirmButtonClass: 'btn btn-success'
+        }).then(function () {
+            //location.reload();
+        });
+    };
+    ViewTimesheetComponent.prototype.showSwalAR = function (text) {
+        __WEBPACK_IMPORTED_MODULE_7_sweetalert2___default()({
+            type: 'success',
+            text: text,
+            buttonsStyling: false,
+            confirmButtonClass: 'btn btn-success'
+        }).catch(__WEBPACK_IMPORTED_MODULE_7_sweetalert2___default.a.noop);
+    };
     ViewTimesheetComponent.prototype.approvedTimeSheet = function (status) {
-        alert();
+        //alert();
         this.userProfile = JSON.parse(sessionStorage.getItem('LogEmployee'));
         var contact = {
             ApprovedBy: this.userProfile.ID,
@@ -1751,6 +1847,11 @@ var ViewTimesheetComponent = /** @class */ (function () {
             var tSheetList = JSON.parse(tSheetParse["_body"]);
             if (tSheetList != null) {
                 _this.timesheetTrack = tSheetList;
+                _this.viewTimesheetPage.controls["starttime"].setValue(tSheetList.StartTime);
+                _this.viewTimesheetPage.controls["endtime"].setValue(tSheetList.EndTime);
+                var spiltTime = tSheetList.TotalBreakTime.split(":");
+                _this.viewTimesheetPage.controls["breakhour"].setValue(spiltTime != null ? spiltTime[0] : '00');
+                _this.viewTimesheetPage.controls["breakminute"].setValue(spiltTime != null ? spiltTime[1] : '00');
                 $('.loader').hide();
             }
             else {
@@ -1777,18 +1878,123 @@ var ViewTimesheetComponent = /** @class */ (function () {
             }
         });
     };
+    ViewTimesheetComponent.prototype.toggleControl = function () {
+        this.showhidecontrol = !this.showhidecontrol;
+    };
+    ViewTimesheetComponent.prototype.saveTimesheet = function () {
+        var _this = this;
+        if (this.viewTimesheetPage.valid) {
+            var contact = {
+                StartTime: this.selectedstartdate,
+                EndTime: this.selectedenddate,
+                WorkOrderAssignmentID: this.workOrdAsgtID,
+                ID: this.tsheetDailyId
+            };
+            //let breaktimeinseconds: any = this.transform((this.breakhour * 3600) + (this.breakminute * 60));
+            var breaktimeinseconds = this.viewTimesheetPage.controls["breakhour"].value + '-' + this.viewTimesheetPage.controls["breakminute"].value;
+            this.timesheetService.UpdateTimesheetDaily(this.commonService.baseApiUrl, this.workOrdAsgtID + ',' + breaktimeinseconds, contact).subscribe(function (data) {
+                var datatSheet = JSON.stringify(data);
+                var tSheetParse = JSON.parse(datatSheet);
+                var tSheetList = JSON.parse(tSheetParse["_body"]);
+                if (tSheetList != null) {
+                    _this.showhidecontrol = false;
+                    _this.getWorkOrderDetails(_this.tsheetDailyId);
+                    _this.showSwal("Timesheet saved successfully!!");
+                    $('.loader').hide();
+                }
+            });
+        }
+        else {
+            $('.loader').hide();
+            this.validateAllFormFields(this.viewTimesheetPage);
+        }
+    };
+    ViewTimesheetComponent.prototype.approveRejectTimesheet = function (status) {
+        var _this = this;
+        this.userProfile = JSON.parse(sessionStorage.getItem('LogEmployee'));
+        var contact = {
+            ApprovedBy: this.userProfile.ID,
+            ApprovedStatus: status,
+            ID: this.tsheetDailyId
+        };
+        this.timesheetService.ApproveRejectTimesheet(this.commonService.baseApiUrl, this.tsheetDailyId, contact).subscribe(function (data) {
+            var datatSheet = JSON.stringify(data);
+            var tSheetParse = JSON.parse(datatSheet);
+            var tSheetList = JSON.parse(tSheetParse["_body"]);
+            if (tSheetList != null) {
+                if (status == 1) {
+                    _this.showSwalAR("Timesheet approved!!");
+                }
+                else {
+                    _this.showSwalAR("Timesheet rejected!!");
+                }
+                $('.loader').hide();
+            }
+        });
+    };
+    ViewTimesheetComponent.prototype.validateAllFormFields = function (formGroup) {
+        var _this = this;
+        Object.keys(formGroup.controls).forEach(function (field) {
+            var control = formGroup.get(field);
+            if (control instanceof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]) {
+                control.markAsTouched({ onlySelf: true });
+            }
+            else if (control instanceof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormGroup"]) {
+                _this.validateAllFormFields(control);
+            }
+        });
+    };
+    ViewTimesheetComponent.prototype.setTime = function () {
+        //this.viewTimesheetPage = this.formBuilder.group({
+        //    starttime: [this.datepipe.transform(this.viewTimesheetPage.controls["starttime"].value, 'yyyy/MM/dd HH:mm:ss'), Validators.required],
+        //    endtime: [this.datepipe.transform(this.viewTimesheetPage.controls["endtime"].value, 'yyyy/MM/dd HH:mm:ss'), Validators.required]
+        //}, {
+        //        validator: PasswordValidation.StartEndDateValidation // your validation method
+        //    });
+        //alert(this.selectedstartdate);
+        //alert(this.selectedenddate);
+        if (this.selectedstartdate != "undefined" && this.selectedenddate != "undefined") {
+            if (this.selectedstartdate > this.selectedenddate) {
+            }
+            else {
+                this.worktime = (this.selectedenddate - this.selectedstartdate).toString();
+                if (this.worktime != 'NaN') {
+                }
+            }
+        }
+    };
+    ViewTimesheetComponent.prototype.transform = function (seconds) {
+        var time_string = '';
+        var plural = '';
+        for (var key in this.times) {
+            if (Math.floor(seconds / this.times[key]) > 0) {
+                if (Math.floor(seconds / this.times[key]) > 1) {
+                    plural = 's';
+                }
+                else {
+                    plural = '';
+                }
+                time_string += Math.floor(seconds / this.times[key]).toString() + ' ' + key.toString() + plural + ' ';
+                seconds = seconds - this.times[key] * Math.floor(seconds / this.times[key]);
+            }
+        }
+        return time_string;
+    };
     ViewTimesheetComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-view-timesheet',
             template: __webpack_require__("./src/app/view-timesheet/view-timesheet.component.html"),
             styles: [__webpack_require__("./src/app/view-timesheet/view-timesheet.component.scss")],
-            providers: [__WEBPACK_IMPORTED_MODULE_3__services_commonService__["a" /* CommonService */], __WEBPACK_IMPORTED_MODULE_4__services_timesheetService__["a" /* TimesheetService */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_4__services_commonService__["a" /* CommonService */], __WEBPACK_IMPORTED_MODULE_5__services_timesheetService__["a" /* TimesheetService */], __WEBPACK_IMPORTED_MODULE_8__angular_common__["DatePipe"]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["Http"],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_3__services_commonService__["a" /* CommonService */],
-            __WEBPACK_IMPORTED_MODULE_4__services_timesheetService__["a" /* TimesheetService */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__angular_http__["Http"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["d" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_4__services_commonService__["a" /* CommonService */],
+            __WEBPACK_IMPORTED_MODULE_5__services_timesheetService__["a" /* TimesheetService */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"],
+            __WEBPACK_IMPORTED_MODULE_8__angular_common__["DatePipe"],
+            __WEBPACK_IMPORTED_MODULE_6__angular_material__["a" /* DateAdapter */]])
     ], ViewTimesheetComponent);
     return ViewTimesheetComponent;
 }());
@@ -1812,6 +2018,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_module__ = __webpack_require__("./src/app/app.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__agm_core__ = __webpack_require__("./node_modules/@agm/core/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__agm_js_marker_clusterer__ = __webpack_require__("./node_modules/@agm/js-marker-clusterer/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_md2__ = __webpack_require__("./node_modules/md2/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__field_error_display_field_error_display_module__ = __webpack_require__("./src/app/field-error-display/field-error-display.module.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1827,6 +2035,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+//import { TimeDurationPickerModule } from 'angular2-time-duration-picker';
 var ViewTimesheetModule = /** @class */ (function () {
     function ViewTimesheetModule() {
     }
@@ -1842,7 +2053,11 @@ var ViewTimesheetModule = /** @class */ (function () {
                     apiKey: 'AIzaSyALhBWvI6EuL2Vul0ykYis51D_ckKtxVCc',
                     libraries: ["places"]
                 }),
-                __WEBPACK_IMPORTED_MODULE_8__agm_js_marker_clusterer__["a" /* AgmJsMarkerClustererModule */]
+                __WEBPACK_IMPORTED_MODULE_8__agm_js_marker_clusterer__["a" /* AgmJsMarkerClustererModule */],
+                __WEBPACK_IMPORTED_MODULE_9_md2__["a" /* Md2DatepickerModule */],
+                __WEBPACK_IMPORTED_MODULE_9_md2__["b" /* MdNativeDateModule */],
+                __WEBPACK_IMPORTED_MODULE_10__field_error_display_field_error_display_module__["a" /* FieldErrorDisplayModule */]
+                //TimeDurationPickerModule
             ],
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_5__view_timesheet_component__["a" /* ViewTimesheetComponent */]

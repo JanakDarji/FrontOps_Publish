@@ -12,10 +12,20 @@ var map = {
 		"./src/app/charts/charts.module.ts",
 		"charts.module"
 	],
+	"./checklist-form/checklist-form.module": [
+		"./src/app/checklist-form/checklist-form.module.ts",
+		"common",
+		"checklist-form.module"
+	],
 	"./components/components.module": [
 		"./src/app/components/components.module.ts",
 		"common",
 		"components.module"
+	],
+	"./create-checklistform/create-checklistform.module": [
+		"./src/app/create-checklistform/create-checklistform.module.ts",
+		"common",
+		"create-checklistform.module"
 	],
 	"./create-maintenance/create-maintenance.module": [
 		"./src/app/create-maintenance/create-maintenance.module.ts",
@@ -214,6 +224,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+//import { CreateChecklistformComponent } from './create-checklistform/create-checklistform.component';
+//import { ChecklistFormComponent } from './checklist-form/checklist-form.component';
 var MaterialModule = /** @class */ (function () {
     function MaterialModule() {
     }
@@ -251,7 +263,8 @@ var MaterialModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_6__angular_material__["D" /* MatTabsModule */],
                 __WEBPACK_IMPORTED_MODULE_6__angular_material__["E" /* MatToolbarModule */],
                 __WEBPACK_IMPORTED_MODULE_6__angular_material__["F" /* MatTooltipModule */]
-            ]
+            ],
+            declarations: []
         })
     ], MaterialModule);
     return MaterialModule;
@@ -371,7 +384,13 @@ var AppRoutes = [
             }, {
                 path: '',
                 loadChildren: './timeline/timeline.module#TimelineModule'
-            }
+            }, {
+                path: 'checklist-form',
+                loadChildren: './checklist-form/checklist-form.module#ChecklistFormModule'
+            }, {
+                path: 'create-checklistform',
+                loadChildren: './create-checklistform/create-checklistform.module#CreateChecklistformModule'
+            },
         ]
     }, {
         path: '',
@@ -933,9 +952,9 @@ var CommonService = /** @class */ (function () {
     function CommonService() {
         //localhostURL--- http://localhost:53562/api/FrontOps/
         //HcsHubURL--- http://frontopapi.hcshub.com/api/FrontOps/
-        //ProductionUrl--- http://aspectdemo.frontline-ops.com/
+        //ProductionUrl--- https://aspectdemo.frontline-ops.com/
         //Production Api http://api.frontline-ops.com/api/FrontOps/
-        this.baseApiUrl = "http://api.frontline-ops.com/api/FrontOps/";
+        this.baseApiUrl = "https://aspectdemo.frontline-ops.com/";
     }
     CommonService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])()
@@ -1012,8 +1031,8 @@ var WorkOrderService = /** @class */ (function () {
     function WorkOrderService(http) {
         this.http = http;
     }
-    WorkOrderService.prototype.GetWorkOrdersByJobId = function (baseurl, contact) {
-        return this.http.get(baseurl + "GetWorkOrdersByJobId/" + contact);
+    WorkOrderService.prototype.GetWorkOrdersByJobId = function (baseurl, contact, value) {
+        return this.http.get(baseurl + "GetWorkOrdersByJobId/" + contact + "/" + value);
     };
     ;
     WorkOrderService.prototype.GetWorkOrdersByWorkOrdID = function (baseurl, contact) {
@@ -1046,6 +1065,14 @@ var WorkOrderService = /** @class */ (function () {
     ;
     WorkOrderService.prototype.GetWorkOrderAssignmentForUser = function (baseurl, contact) {
         return this.http.get(baseurl + "GetWorkOrderAssignmentForUser/" + contact);
+    };
+    ;
+    WorkOrderService.prototype.UpdateWorkOrderAssignmentNotify = function (baseurl, contact, value) {
+        return this.http.post(baseurl + "UpdateWorkOrderAssignmentNotify/" + contact + "/" + value, null);
+    };
+    ;
+    WorkOrderService.prototype.GetWorkOrderAssignmentForNotify = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetWorkOrderAssignmentForNotify/" + contact);
     };
     ;
     WorkOrderService = __decorate([
@@ -1281,7 +1308,7 @@ var FixedpluginModule = /** @class */ (function () {
 /***/ "./src/app/shared/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<footer class=\"footer\">\r\n    <div class=\"container-fluid\">\r\n        <!--<nav class=\"pull-left\">\r\n            <ul>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Home\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Company\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Portfolio\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Blog\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </nav>-->\r\n        <!--<p class=\"copyright pull-right\">\r\n            &copy;\r\n            {{test | date: 'yyyy'}}\r\n            <a href=\"https://www.creative-tim.com\">Creative Tim</a>, made with love for a better web\r\n        </p>-->\r\n        <p class=\"copyright pull-right\">\r\n            Powered by Frontline Operations &copy; 2018\r\n        </p>\r\n        <p class=\"copyright pull-left\">\r\n            Version 0.1.13\r\n        </p>\r\n    </div>\r\n</footer>\r\n"
+module.exports = "<footer class=\"footer\">\r\n    <div class=\"container-fluid\">\r\n        <!--<nav class=\"pull-left\">\r\n            <ul>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Home\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Company\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Portfolio\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Blog\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </nav>-->\r\n        <!--<p class=\"copyright pull-right\">\r\n            &copy;\r\n            {{test | date: 'yyyy'}}\r\n            <a href=\"https://www.creative-tim.com\">Creative Tim</a>, made with love for a better web\r\n        </p>-->\r\n        <p class=\"copyright pull-right\">\r\n            Powered by Frontline Operations &copy; 2018\r\n        </p>\r\n        <p class=\"copyright pull-left\">\r\n            Version 0.1.17\r\n        </p>\r\n    </div>\r\n</footer>\r\n"
 
 /***/ }),
 
@@ -1354,7 +1381,7 @@ var FooterModule = /** @class */ (function () {
 /***/ "./src/app/shared/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav #navbar class=\"navbar navbar-transparent navbar-absolute\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-minimize\">\n            <button id=\"minimizeSidebar\" class=\"btn btn-round btn-white btn-fill btn-just-icon\">\n                <i class=\"material-icons visible-on-sidebar-regular\">more_vert</i>\n                <i class=\"material-icons visible-on-sidebar-mini\">view_list</i>\n            </button>\n        </div>\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" (click)=\"sidebarToggle()\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"{{getPath()}}\"> {{getTitle()}} </a>\n        </div>\n        <div class=\"collapse navbar-collapse\">\n            <div (window:resize)=\"onResize($event)\">\n                <ul class=\"nav navbar-nav navbar-right\">\n                    <!--<li>\n                        <a href=\"#pablo\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n                            <i class=\"material-icons\">dashboard</i>\n                            <p class=\"hidden-lg hidden-md\">Dashboard</p>\n                        </a>\n                    </li>-->\n                    <li class=\"dropdown\">\n                        <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n                            <i class=\"material-icons\">notifications</i>\n                            <span class=\"notification\">{{totalWOrder}}</span>\n                            <p class=\"hidden-lg hidden-md\">\n                                Notifications\n                                <b class=\"caret\"></b>\n                            </p>\n                        </a>\n                        <ul class=\"dropdown-menu\">\n                            <li>\r\n                                <a href=\"#\">Work Order</a>\r\n                            </li>\n                            <ng-container *ngFor=\"let wAst of workOrdList\">\r\n                                <li>\r\n                                    <a> --- {{wAst.WorkOrderNo}}</a>\r\n                                </li>\r\n                            </ng-container>\n                            <!--<li>\n                                <a href=\"#\">Mike John responded to your email</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">You have 5 new tasks</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">You're now friend with Andrew</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">Another Notification</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">Another One</a>\n                            </li>-->\n                        </ul>\n                    </li>\n                    <!--<li>\n                        <a href=\"#pablo\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n                            <i class=\"material-icons\">person</i>\n                            <p class=\"hidden-lg hidden-md\">Profile</p>\n                        </a>\n                    </li>-->\n                    <li class=\"separator hidden-lg hidden-md\"></li>\n                </ul>\n                <!--<form class=\"navbar-form navbar-right\" role=\"search\">\n                    <div class=\"form-group form-search is-empty\">\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\n                        <span class=\"material-input\"></span>\n                    </div>\n                    <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\n                        <i class=\"material-icons\">search</i>\n                        <div class=\"ripple-container\"></div>\n                    </button>\n                </form>-->\n            </div>\n        </div>\n    </div>\n</nav>\n"
+module.exports = "<nav #navbar class=\"navbar navbar-transparent navbar-absolute\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-minimize\">\n            <button id=\"minimizeSidebar\" class=\"btn btn-round btn-white btn-fill btn-just-icon\">\n                <i class=\"material-icons visible-on-sidebar-regular\">more_vert</i>\n                <i class=\"material-icons visible-on-sidebar-mini\">view_list</i>\n            </button>\n        </div>\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" (click)=\"sidebarToggle()\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"{{getPath()}}\"> {{getTitle()}} </a>\n        </div>\n        <div class=\"collapse navbar-collapse\">\n            <div (window:resize)=\"onResize($event)\">\n                <ul class=\"nav navbar-nav navbar-right\">\n                    <!--<li>\n                        <a href=\"#pablo\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n                            <i class=\"material-icons\">dashboard</i>\n                            <p class=\"hidden-lg hidden-md\">Dashboard</p>\n                        </a>\n                    </li>-->\n                    <li class=\"dropdown\">\n                        <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n                            <i class=\"material-icons\">notifications</i>\n                            <span class=\"notification\">{{totalWOrder}}</span>\n                            <p class=\"hidden-lg hidden-md\">\n                                Notifications\n                                <b class=\"caret\"></b>\n                            </p>\n                        </a>\n                        <ul class=\"dropdown-menu\" style=\"width:285px;\">\n                            <li>\n                                <!--<a style=\"display:inline-block;\" href=\"javascript:void(0);\">Work Order</a>-->\n                                <a style=\"display:inline-block;margin-left:190px;\" href=\"javascript:void(0);\" (click)=\"updateWorkOrderAssignmentNotify('0')\">Clear All</a>\n                            </li>\n                            <ng-container *ngFor=\"let wAst of workOrdList\">\n                                <li>\n                                    <a style=\"display:inline-block;\" href=\"javascript:void(0);\"> --- {{wAst.WorkOrderNo}}</a>\n                                    <a style=\"display:inline-block;\" href=\"javascript:void(0);\" (click)=\"updateWorkOrderAssignmentNotify(wAst.ID)\">Clear</a>\n                                </li>\n                            </ng-container>\n                            <!--<li>\n                                <a href=\"#\">Mike John responded to your email</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">You have 5 new tasks</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">You're now friend with Andrew</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">Another Notification</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">Another One</a>\n                            </li>-->\n                        </ul>\n                    </li>\n                    <!--<li>\n                        <a href=\"#pablo\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n                            <i class=\"material-icons\">person</i>\n                            <p class=\"hidden-lg hidden-md\">Profile</p>\n                        </a>\n                    </li>-->\n                    <li class=\"separator hidden-lg hidden-md\"></li>\n                </ul>\n                <!--<form class=\"navbar-form navbar-right\" role=\"search\">\n                    <div class=\"form-group form-search is-empty\">\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\n                        <span class=\"material-input\"></span>\n                    </div>\n                    <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\n                        <i class=\"material-icons\">search</i>\n                        <div class=\"ripple-container\"></div>\n                    </button>\n                </form>-->\n            </div>\n        </div>\n    </div>\n</nav>\n"
 
 /***/ }),
 
@@ -1499,7 +1526,7 @@ var NavbarComponent = /** @class */ (function () {
     NavbarComponent.prototype.getWorkOrderAssignment = function (userId) {
         var _this = this;
         $('.loader').show();
-        this.workOrderService.GetWorkOrderAssignmentForUser(this.commonService.baseApiUrl, userId).subscribe(function (data) {
+        this.workOrderService.GetWorkOrderAssignmentForNotify(this.commonService.baseApiUrl, userId).subscribe(function (data) {
             var datawAsg = JSON.stringify(data);
             var wAsgParse = JSON.parse(datawAsg);
             var wAsgList = JSON.parse(wAsgParse["_body"]);
@@ -1508,6 +1535,19 @@ var NavbarComponent = /** @class */ (function () {
                 _this.workOrdList = wAsgList;
                 _this.totalWOrder = wAsgList.length;
                 $('.loader').hide();
+            }
+        });
+    };
+    NavbarComponent.prototype.updateWorkOrderAssignmentNotify = function (asgtID) {
+        var _this = this;
+        $('.loader').show();
+        this.workOrderService.UpdateWorkOrderAssignmentNotify(this.commonService.baseApiUrl, asgtID, this.logEmployee["ID"]).subscribe(function (data) {
+            var datawAsg = JSON.stringify(data);
+            var wAsgParse = JSON.parse(datawAsg);
+            var wAsgList = JSON.parse(wAsgParse["_body"]);
+            if (wAsgList == true) {
+                $('.loader').hide();
+                _this.getWorkOrderAssignment(_this.logEmployee["ID"]);
             }
         });
     };
@@ -1624,7 +1664,7 @@ var NavbarModule = /** @class */ (function () {
 /***/ "./src/app/sidebar/sidebar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"logo\">\r\n    <div class=\"logo-normal\">\r\n        <a href=\"index.html#/dashboard\" class=\"simple-text\">\r\n            ASPECT@FRONTLINE\r\n        </a>\r\n    </div>\r\n    <!--<div class=\"logo-img\">\r\n        <img src=\"/assets/img/angular2-logo-white.png\"/>\r\n    </div>-->\r\n</div>\r\n\r\n<div class=\"sidebar-wrapper\">\r\n    <div class=\"user\">\r\n        <div class=\"photo\">\r\n            <img src=\"{{logEmployee.ProfileImage}}\" /> <!--src=\"../assets/img/faces/avatar.jpg\" />-->\r\n        </div>\r\n        <div class=\"info\">\r\n            <a data-toggle=\"collapse\" href=\"#collapseExample\" class=\"collapsed\">\r\n                <span>\r\n                    {{logEmployee.Firstname}} {{logEmployee.Lastname}}\r\n                    <b class=\"caret\"></b>\r\n                </span>\r\n            </a>\r\n            <div class=\"nav-container\">\r\n                <ul class=\"nav\">\r\n                    <div class=\"collapse\" id=\"collapseExample\">\r\n                        <ul class=\"nav\">\r\n                            <li>\r\n                                <a href=\"/index.html#/myprofile\">\r\n                                    <!--<span class=\"sidebar-mini\">MP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-->\r\n                                    <span class=\"sidebar-normal\">My Profile</span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"javascript:void(0)\">\r\n                                    <!--<span class=\"sidebar-mini\">SO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-->\r\n                                    <span class=\"sidebar-normal\" (click)=\"LogOut()\">Sign Off</span>\r\n                                </a>\r\n                            </li>\r\n                            <!--<li>\r\n                                <a href=\"javascript:void(0)\">\r\n                                    <span class=\"sidebar-mini\">S</span>\r\n                                    <span class=\"sidebar-normal\">Settings</span>\r\n                                </a>\r\n                            </li>-->\r\n                        </ul>\r\n                    </div>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div *ngIf=\"isMobileMenu()\">\r\n        <form class=\"navbar-form navbar-right\" role=\"search\">\r\n            <div class=\"form-group form-search is-empty\">\r\n                <input class=\"form-control\" placeholder=\"Search\" type=\"text\">\r\n                <span class=\"material-input\"></span>\r\n                <span class=\"material-input\"></span>\r\n            </div>\r\n            <button class=\"btn btn-white btn-round btn-just-icon\" type=\"submit\">\r\n                <i class=\"material-icons\">search</i>\r\n                <div class=\"ripple-container\"></div>\r\n            </button>\r\n        </form>\r\n        <ul class=\"nav nav-mobile-menu\">\r\n            <li class=\"\">\r\n                <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#pablo\" aria-expanded=\"false\">\r\n                    <i class=\"material-icons\">dashboard</i>\r\n                    <p class=\"hidden-lg hidden-md\">Dashboard</p>\r\n                    <div class=\"ripple-container\"></div>\r\n                </a>\r\n            </li>\r\n            <li class=\"dropdown\">\r\n                <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\">\r\n                    <i class=\"material-icons\">notifications</i>\r\n                    <span class=\"notification\">5</span>\r\n                    <p class=\"hidden-lg hidden-md\">\r\n                        Notifications\r\n                        <b class=\"caret\"></b>\r\n                    </p>\r\n                    <div class=\"ripple-container\"></div>\r\n                </a>\r\n                <ul class=\"dropdown-menu\">\r\n                    <li>\r\n                        <a href=\"#\">Mike John responded to your email</a>\r\n                    </li>\r\n                    <li>\r\n                        <a href=\"#\">You have 5 new tasks</a>\r\n                    </li>\r\n                    <li>\r\n                        <a href=\"#\">You're now friend with Andrew</a>\r\n                    </li>\r\n                    <li>\r\n                        <a href=\"#\">Another Notification</a>\r\n                    </li>\r\n                    <li>\r\n                        <a href=\"#\">Another One</a>\r\n                    </li>\r\n                </ul>\r\n            </li>\r\n            <li class=\"\">\r\n                <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#pablo\" aria-expanded=\"false\">\r\n                    <i class=\"material-icons\">person</i>\r\n                    <p class=\"hidden-lg hidden-md\">Profile</p>\r\n                    <div class=\"ripple-container\"></div>\r\n                </a>\r\n            </li>\r\n            <li class=\"separator hidden-lg hidden-md\"></li>\r\n        </ul>\r\n    </div>\r\n    <div class=\"nav-container\">\r\n        <ul class=\"nav\">\r\n            <li routerLinkActive=\"active\" *ngFor=\"let menuitem of menuItems\">\r\n                <!--If is a single link-->\r\n                <ng-container *ngIf=\"menuitem.title === 'Users' && IsUserLink == true\">\r\n                    <a [routerLink]=\"[menuitem.path]\" *ngIf=\"menuitem.type === 'link'\">\r\n                        <i class=\"material-icons\">{{menuitem.icontype}}</i>\r\n                        <p>{{menuitem.title}}</p>\r\n                    </a>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"menuitem.title === 'Jobs' && IsJobLink == true\">\r\n                    <a [routerLink]=\"[menuitem.path]\" *ngIf=\"menuitem.type === 'link'\">\r\n                        <i class=\"material-icons\">{{menuitem.icontype}}</i>\r\n                        <p>{{menuitem.title}}</p>\r\n                    </a>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"menuitem.title === 'Maintenance' && IsMaintenaceLink == true\">\r\n                    <a [routerLink]=\"[menuitem.path]\" *ngIf=\"menuitem.type === 'link'\">\r\n                        <i class=\"material-icons\">{{menuitem.icontype}}</i>\r\n                        <p>{{menuitem.title}}</p>\r\n                    </a>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"menuitem.title === 'Reports' && IsReportLink == true\">\r\n                    <a [routerLink]=\"[menuitem.path]\" *ngIf=\"menuitem.type === 'link'\">\r\n                        <i class=\"material-icons\">{{menuitem.icontype}}</i>\r\n                        <p>{{menuitem.title}}</p>\r\n                    </a>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"menuitem.title === 'Settings' && IsSettingLink == true\">\r\n                    <a [routerLink]=\"[menuitem.path]\" *ngIf=\"menuitem.type === 'link'\">\r\n                        <i class=\"material-icons\">{{menuitem.icontype}}</i>\r\n                        <p>{{menuitem.title}}</p>\r\n                    </a>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"menuitem.title != 'Jobs' && menuitem.title != 'Users' && menuitem.title != 'Maintenance' && menuitem.title != 'Reports' && menuitem.title != 'Settings' \">\r\n                    <a [routerLink]=\"[menuitem.path]\" *ngIf=\"menuitem.type === 'link'\">\r\n                        <i class=\"material-icons\">{{menuitem.icontype}}</i>\r\n                        <p>{{menuitem.title}}</p>\r\n                    </a>\r\n                </ng-container>\r\n\r\n                <!--If it have a submenu-->\r\n                <ng-container *ngIf=\"menuitem.title === 'Settings' && IsSettingLink == true\">\r\n                    <a [routerLink]=\"[menuitem.path]\" *ngIf=\"menuitem.type === 'sub'\" (click)=\"updatePS()\">\r\n                        <i class=\"material-icons\">{{menuitem.icontype}}</i>\r\n                        <p>{{menuitem.title}}</p>\r\n                    </a>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"menuitem.title != 'Settings'\">\r\n                    <a data-toggle=\"collapse\" href=\"#{{menuitem.collapse}}\" *ngIf=\"menuitem.type === 'sub'\" (click)=\"updatePS()\">\r\n                        <i class=\"material-icons\">{{menuitem.icontype}}</i>\r\n                        <p>{{menuitem.title}}<b class=\"caret\"></b></p>\r\n                    </a>\r\n                </ng-container>\r\n                    <!--Display the submenu items-->\r\n                    <div id=\"{{menuitem.collapse}}\" class=\"collapse\" *ngIf=\"menuitem.type === 'sub'\">\r\n                        <ul class=\"nav\">\r\n                            <li routerLinkActive=\"active\" *ngFor=\"let childitem of menuitem.children\">\r\n                                <a [routerLink]=\"[menuitem.path, childitem.path]\">\r\n                                    <span class=\"sidebar-mini\">{{childitem.ab}}</span>\r\n                                    <span class=\"sidebar-normal\">{{childitem.title}}</span>\r\n                                </a>\r\n                            </li>\r\n                        </ul>\r\n                    </div>\r\n            <!--<li>\r\n                <a href=\"http://md-pro-angular.creative-tim.com/documentation/tutorial?ref=md-pro-archive\">\r\n                    <i class=\"material-icons\">school</i>\r\n                    <p>Documentation</p>\r\n                </a>\r\n            </li>-->\r\n        </ul>\r\n    </div>\r\n</div>\r\n"
+module.exports = "\r\n<div class=\"logo\">\r\n    <div class=\"logo-normal\">\r\n        <a href=\"index.html#/dashboard\" class=\"simple-text\">\r\n            ASPECT@FRONTLINE\r\n        </a>\r\n    </div>\r\n    <!--<div class=\"logo-img\">\r\n        <img src=\"/assets/img/angular2-logo-white.png\"/>\r\n    </div>-->\r\n</div>\r\n\r\n<div class=\"sidebar-wrapper\">\r\n    <div class=\"user\">\r\n        <div class=\"photo\">\r\n            <img src=\"{{logEmployee.ProfileImage}}\" /> <!--src=\"../assets/img/faces/avatar.jpg\" />-->\r\n        </div>\r\n        <div class=\"info\">\r\n            <a data-toggle=\"collapse\" href=\"#collapseExample\" class=\"collapsed\">\r\n                <span>\r\n                    {{logEmployee.Firstname}} {{logEmployee.Lastname}}\r\n                    <b class=\"caret\"></b>\r\n                </span>\r\n            </a>\r\n            <div class=\"nav-container\">\r\n                <ul class=\"nav\">\r\n                    <div class=\"collapse\" id=\"collapseExample\">\r\n                        <ul class=\"nav\">\r\n                            <li>\r\n                                <a href=\"/index.html#/myprofile\">\r\n                                    <!--<span class=\"sidebar-mini\">MP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-->\r\n                                    <span class=\"sidebar-normal\">My Profile</span>\r\n                                </a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"javascript:void(0)\">\r\n                                    <!--<span class=\"sidebar-mini\">SO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-->\r\n                                    <span class=\"sidebar-normal\" (click)=\"LogOut()\">Sign Off</span>\r\n                                </a>\r\n                            </li>\r\n                            <!--<li>\r\n                                <a href=\"javascript:void(0)\">\r\n                                    <span class=\"sidebar-mini\">S</span>\r\n                                    <span class=\"sidebar-normal\">Settings</span>\r\n                                </a>\r\n                            </li>-->\r\n                        </ul>\r\n                    </div>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div *ngIf=\"isMobileMenu()\">\r\n        <form class=\"navbar-form navbar-right\" role=\"search\">\r\n            <div class=\"form-group form-search is-empty\">\r\n                <input class=\"form-control\" placeholder=\"Search\" type=\"text\">\r\n                <span class=\"material-input\"></span>\r\n                <span class=\"material-input\"></span>\r\n            </div>\r\n            <button class=\"btn btn-white btn-round btn-just-icon\" type=\"submit\">\r\n                <i class=\"material-icons\">search</i>\r\n                <div class=\"ripple-container\"></div>\r\n            </button>\r\n        </form>\r\n        <ul class=\"nav nav-mobile-menu\">\r\n            <li class=\"\">\r\n                <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#pablo\" aria-expanded=\"false\">\r\n                    <i class=\"material-icons\">dashboard</i>\r\n                    <p class=\"hidden-lg hidden-md\">Dashboard</p>\r\n                    <div class=\"ripple-container\"></div>\r\n                </a>\r\n            </li>\r\n            <li class=\"dropdown\">\r\n                <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\">\r\n                    <i class=\"material-icons\">notifications</i>\r\n                    <span class=\"notification\">5</span>\r\n                    <p class=\"hidden-lg hidden-md\">\r\n                        Notifications\r\n                        <b class=\"caret\"></b>\r\n                    </p>\r\n                    <div class=\"ripple-container\"></div>\r\n                </a>\r\n                <ul class=\"dropdown-menu\">\r\n                    <li>\r\n                        <a href=\"#\">Mike John responded to your email</a>\r\n                    </li>\r\n                    <li>\r\n                        <a href=\"#\">You have 5 new tasks</a>\r\n                    </li>\r\n                    <li>\r\n                        <a href=\"#\">You're now friend with Andrew</a>\r\n                    </li>\r\n                    <li>\r\n                        <a href=\"#\">Another Notification</a>\r\n                    </li>\r\n                    <li>\r\n                        <a href=\"#\">Another One</a>\r\n                    </li>\r\n                </ul>\r\n            </li>\r\n            <li class=\"\">\r\n                <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#pablo\" aria-expanded=\"false\">\r\n                    <i class=\"material-icons\">person</i>\r\n                    <p class=\"hidden-lg hidden-md\">Profile</p>\r\n                    <div class=\"ripple-container\"></div>\r\n                </a>\r\n            </li>\r\n            <li class=\"separator hidden-lg hidden-md\"></li>\r\n        </ul>\r\n    </div>\r\n    <div class=\"nav-container\">\r\n        <ul class=\"nav\">\r\n            <li routerLinkActive=\"active\" *ngFor=\"let menuitem of menuItems\">\r\n                <!--If is a single link-->\r\n                <ng-container *ngIf=\"menuitem.title === 'Users' && IsUserLink == true\">\r\n                    <a [routerLink]=\"[menuitem.path]\" *ngIf=\"menuitem.type === 'link'\">\r\n                        <i class=\"material-icons\">{{menuitem.icontype}}</i>\r\n                        <p>{{menuitem.title}}</p>\r\n                    </a>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"menuitem.title === 'Jobs' && IsJobLink == true\">\r\n                    <a [routerLink]=\"[menuitem.path]\" *ngIf=\"menuitem.type === 'link'\">\r\n                        <i class=\"material-icons\">{{menuitem.icontype}}</i>\r\n                        <p>{{menuitem.title}}</p>\r\n                    </a>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"menuitem.title === 'Maintenance' && IsMaintenaceLink == true\">\r\n                    <a [routerLink]=\"[menuitem.path]\" *ngIf=\"menuitem.type === 'link'\">\r\n                        <i class=\"material-icons\">{{menuitem.icontype}}</i>\r\n                        <p>{{menuitem.title}}</p>\r\n                    </a>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"menuitem.title === 'Reports' && IsReportLink == true\">\r\n                    <a [routerLink]=\"[menuitem.path]\" *ngIf=\"menuitem.type === 'link'\">\r\n                        <i class=\"material-icons\">{{menuitem.icontype}}</i>\r\n                        <p>{{menuitem.title}}</p>\r\n                    </a>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"menuitem.title === 'Settings' && IsSettingLink == true\">\r\n                    <a [routerLink]=\"[menuitem.path]\" *ngIf=\"menuitem.type === 'link'\">\r\n                        <i class=\"material-icons\">{{menuitem.icontype}}</i>\r\n                        <p>{{menuitem.title}}</p>\r\n                    </a>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"menuitem.title != 'Jobs' && menuitem.title != 'Users' && menuitem.title != 'Maintenance' && menuitem.title != 'Reports' && menuitem.title != 'Settings' \">\r\n                    <a [routerLink]=\"[menuitem.path]\" *ngIf=\"menuitem.type === 'link'\">\r\n                        <i class=\"material-icons\">{{menuitem.icontype}}</i>\r\n                        <p>{{menuitem.title}}</p>\r\n                    </a>\r\n                </ng-container>\r\n                <!--If it have a submenu-->\r\n                <ng-container *ngIf=\"menuitem.title === 'Settings' && IsSettingLink == true\">\r\n                    <a [routerLink]=\"[menuitem.path]\" *ngIf=\"menuitem.type === 'sub'\" (click)=\"updatePS()\">\r\n                        <i class=\"material-icons\">{{menuitem.icontype}}</i>\r\n                        <p>{{menuitem.title}}</p>\r\n                    </a>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"menuitem.title != 'Settings'\">\r\n                    <a data-toggle=\"collapse\" href=\"#{{menuitem.collapse}}\" *ngIf=\"menuitem.type === 'sub'\" (click)=\"updatePS()\">\r\n                        <i class=\"material-icons\">{{menuitem.icontype}}</i>\r\n                        <p>{{menuitem.title}}<b class=\"caret\"></b></p>\r\n                    </a>\r\n                </ng-container>\r\n                \r\n                    <!--Display the submenu items-->\r\n                    <div id=\"{{menuitem.collapse}}\" class=\"collapse\" *ngIf=\"menuitem.type === 'sub'\">\r\n                        <ul class=\"nav\">\r\n                            <li routerLinkActive=\"active\" *ngFor=\"let childitem of menuitem.children\">\r\n                                <a [routerLink]=\"[menuitem.path, childitem.path]\">\r\n                                    <span class=\"sidebar-mini\">{{childitem.ab}}</span>\r\n                                    <span class=\"sidebar-normal\">{{childitem.title}}</span>\r\n                                </a>\r\n                            </li>\r\n                        </ul>\r\n                    </div>\r\n            <!--<li>\r\n                <a href=\"http://md-pro-angular.creative-tim.com/documentation/tutorial?ref=md-pro-archive\">\r\n                    <i class=\"material-icons\">school</i>\r\n                    <p>Documentation</p>\r\n                </a>\r\n            </li>-->\r\n        </ul>\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1663,34 +1703,42 @@ var ROUTES = [{
         title: 'Jobs',
         type: 'link',
         icontype: 'apps'
-    }, {
+    },
+    {
         path: '/calendar',
         title: 'Calendar',
         type: 'link',
         icontype: 'content_paste'
-    }, {
+    },
+    {
         path: '/users',
         title: 'Users',
         type: 'link',
         icontype: 'grid_on'
-    },
-    {
+    }, {
         path: '/timesheet',
         title: 'Timesheet',
         type: 'link',
         icontype: 'timeline'
-    },
-    {
+    }, {
         path: '/maintenance',
         title: 'Maintenance',
         type: 'link',
         icontype: 'build'
-    }, {
+    },
+    {
+        path: '/checklist-form',
+        title: 'ChecklistForm',
+        type: 'link',
+        icontype: 'timeline'
+    },
+    {
         path: '/widgets',
         title: 'Reports',
         type: 'link',
         icontype: 'widgets'
-    }, {
+    },
+    {
         path: '/pages',
         title: 'Settings',
         type: 'sub',
