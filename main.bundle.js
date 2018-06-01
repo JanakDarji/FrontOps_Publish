@@ -953,8 +953,8 @@ var CommonService = /** @class */ (function () {
         //localhostURL--- http://localhost:53562/api/FrontOps/
         //HcsHubURL--- http://frontopapi.hcshub.com/api/FrontOps/
         //ProductionUrl--- https://aspectdemo.frontline-ops.com/
-        //Production Api http://api.frontline-ops.com/api/FrontOps/
-        this.baseApiUrl = "https://aspectdemo.frontline-ops.com/";
+        //Production Api https://api.frontline-ops.com/api/FrontOps/
+        this.baseApiUrl = "https://api.frontline-ops.com/api/FrontOps/";
     }
     CommonService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])()
