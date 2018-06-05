@@ -71,6 +71,11 @@ var map = {
 		"common",
 		"reset-password.module"
 	],
+	"./settings/settings.module": [
+		"./src/app/settings/settings.module.ts",
+		"common",
+		"settings.module"
+	],
 	"./tables/tables.module": [
 		"./src/app/tables/tables.module.ts",
 		"common",
@@ -390,6 +395,9 @@ var AppRoutes = [
             }, {
                 path: 'create-checklistform',
                 loadChildren: './create-checklistform/create-checklistform.module#CreateChecklistformModule'
+            }, {
+                path: 'settings',
+                loadChildren: './settings/settings.module#SettingsModule'
             },
         ]
     }, {
@@ -1308,7 +1316,7 @@ var FixedpluginModule = /** @class */ (function () {
 /***/ "./src/app/shared/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<footer class=\"footer\">\r\n    <div class=\"container-fluid\">\r\n        <!--<nav class=\"pull-left\">\r\n            <ul>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Home\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Company\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Portfolio\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Blog\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </nav>-->\r\n        <!--<p class=\"copyright pull-right\">\r\n            &copy;\r\n            {{test | date: 'yyyy'}}\r\n            <a href=\"https://www.creative-tim.com\">Creative Tim</a>, made with love for a better web\r\n        </p>-->\r\n        <p class=\"copyright pull-right\">\r\n            Powered by Frontline Operations &copy; 2018\r\n        </p>\r\n        <p class=\"copyright pull-left\">\r\n            Version 0.1.17\r\n        </p>\r\n    </div>\r\n</footer>\r\n"
+module.exports = "<footer class=\"footer\">\r\n    <div class=\"container-fluid\">\r\n        <!--<nav class=\"pull-left\">\r\n            <ul>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Home\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Company\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Portfolio\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Blog\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </nav>-->\r\n        <!--<p class=\"copyright pull-right\">\r\n            &copy;\r\n            {{test | date: 'yyyy'}}\r\n            <a href=\"https://www.creative-tim.com\">Creative Tim</a>, made with love for a better web\r\n        </p>-->\r\n        <p class=\"copyright pull-right\">\r\n            Powered by Frontline Operations &copy; 2018\r\n        </p>\r\n        <p class=\"copyright pull-left\">\r\n            Version 0.1.18\r\n        </p>\r\n    </div>\r\n</footer>\r\n"
 
 /***/ }),
 
@@ -1703,8 +1711,17 @@ var ROUTES = [{
         title: 'Jobs',
         type: 'link',
         icontype: 'apps'
-    },
-    {
+    }, {
+        path: '/maintenance',
+        title: 'Maintenance',
+        type: 'link',
+        icontype: 'build'
+    }, {
+        path: '/timesheet',
+        title: 'Timesheet',
+        type: 'link',
+        icontype: 'timeline'
+    }, {
         path: '/calendar',
         title: 'Calendar',
         type: 'link',
@@ -1715,16 +1732,6 @@ var ROUTES = [{
         title: 'Users',
         type: 'link',
         icontype: 'grid_on'
-    }, {
-        path: '/timesheet',
-        title: 'Timesheet',
-        type: 'link',
-        icontype: 'timeline'
-    }, {
-        path: '/maintenance',
-        title: 'Maintenance',
-        type: 'link',
-        icontype: 'build'
     },
     {
         path: '/checklist-form',
@@ -1738,17 +1745,27 @@ var ROUTES = [{
         type: 'link',
         icontype: 'widgets'
     },
+    //{
+    //    path: '/pages',
+    //    title: 'Pages',
+    //    type: 'sub',
+    //    icontype: 'image',
+    //    collapse: 'pages',
+    //    children: [
+    //        //{ path: 'pricing', title: 'Roles', ab: 'P' },
+    //        { path: 'login', title: 'Reason Codes', ab: 'LP' },
+    //        { path: 'register', title: 'Checklist Builder', ab: 'RP' },
+    //        { path: 'lock', title: 'Comepetencies', ab: 'LSP' }
+    //    ]
+    //},
     {
-        path: '/pages',
-        title: 'Settings',
+        path: '/settings',
+        title: 'settings',
         type: 'sub',
         icontype: 'image',
-        collapse: 'pages',
+        collapse: 'settings',
         children: [
-            //{ path: 'pricing', title: 'Roles', ab: 'P' },
-            { path: 'login', title: 'Reason Codes', ab: 'LP' },
-            { path: 'register', title: 'Checklist Builder', ab: 'RP' },
-            { path: 'lock', title: 'Comepetencies', ab: 'LSP' }
+            { path: 'maintenance', title: 'Maintenance', ab: 'MT' }
         ]
     }
 ];

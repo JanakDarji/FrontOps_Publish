@@ -3115,6 +3115,50 @@ var BROWSER_GLOBALS_PROVIDERS = [WindowRef, DocumentRef];
 
 /***/ }),
 
+/***/ "./node_modules/angular2-uuid/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var UUID = (function () {
+    function UUID() {
+        // no-op
+    }
+    UUID.UUID = function () {
+        if (typeof (window) !== "undefined" && typeof (window.crypto) !== "undefined" && typeof (window.crypto.getRandomValues) !== "undefined") {
+            // If we have a cryptographically secure PRNG, use that
+            // http://stackoverflow.com/questions/6906916/collisions-when-generating-uuids-in-javascript
+            var buf = new Uint16Array(8);
+            window.crypto.getRandomValues(buf);
+            return (this.pad4(buf[0]) + this.pad4(buf[1]) + "-" + this.pad4(buf[2]) + "-" + this.pad4(buf[3]) + "-" + this.pad4(buf[4]) + "-" + this.pad4(buf[5]) + this.pad4(buf[6]) + this.pad4(buf[7]));
+        }
+        else {
+            // Otherwise, just use Math.random
+            // https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
+            // https://stackoverflow.com/questions/11605068/why-does-jshint-argue-against-bitwise-operators-how-should-i-express-this-code
+            return this.random4() + this.random4() + "-" + this.random4() + "-" + this.random4() + "-" +
+                this.random4() + "-" + this.random4() + this.random4() + this.random4();
+        }
+    };
+    UUID.pad4 = function (num) {
+        var ret = num.toString(16);
+        while (ret.length < 4) {
+            ret = "0" + ret;
+        }
+        return ret;
+    };
+    UUID.random4 = function () {
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+    };
+    return UUID;
+}());
+exports.UUID = UUID;
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
 /***/ "./node_modules/md2/accordion/accordion.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -20348,6 +20392,90 @@ __export(__webpack_require__("./node_modules/ng2-file-upload/file-upload/file-li
 var file_upload_module_1 = __webpack_require__("./node_modules/ng2-file-upload/file-upload/file-upload.module.js");
 exports.FileUploadModule = file_upload_module_1.FileUploadModule;
 
+
+/***/ }),
+
+/***/ "./node_modules/ng2-simple-timer/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports.SimpleTimer = __webpack_require__("./node_modules/ng2-simple-timer/lib/simple-timer.js").SimpleTimer;
+
+
+/***/ }),
+
+/***/ "./node_modules/ng2-simple-timer/lib/simple-timer.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var Rx_1 = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
+var angular2_uuid_1 = __webpack_require__("./node_modules/angular2-uuid/index.js");
+var SimpleTimer = (function () {
+    function SimpleTimer() {
+        this.timer = {};
+        this.subscription = {};
+    }
+    SimpleTimer.prototype.getTimer = function () {
+        return Object.keys(this.timer);
+    };
+    SimpleTimer.prototype.getSubscription = function () {
+        return Object.keys(this.subscription);
+    };
+    SimpleTimer.prototype.newTimer = function (name, sec) {
+        if (name === undefined || sec === undefined || this.timer[name]) {
+            return false;
+        }
+        var o = Rx_1.Observable.timer(0, sec * 1000);
+        this.timer[name] = { second: sec, observable: o };
+        return true;
+    };
+    SimpleTimer.prototype.delTimer = function (name) {
+        var _this = this;
+        if (name === undefined || !this.timer[name]) {
+            return false;
+        }
+        var s = this.getSubscription();
+        s.forEach(function (i) {
+            if (_this.subscription[i].name === name) {
+                _this.unsubscribe(i);
+            }
+        });
+        delete this.timer[name].observable;
+        delete this.timer[name];
+    };
+    SimpleTimer.prototype.subscribe = function (name, callback) {
+        if (!this.timer[name]) {
+            return '';
+        }
+        var id = name + '-' + angular2_uuid_1.UUID.UUID();
+        this.subscription[id] = {
+            name: name,
+            subscription: this.timer[name].observable.subscribe(callback)
+        };
+        return id;
+    };
+    SimpleTimer.prototype.unsubscribe = function (id) {
+        if (!id || !this.subscription[id]) {
+            return false;
+        }
+        this.subscription[id].subscription.unsubscribe();
+        delete this.subscription[id];
+    };
+    return SimpleTimer;
+}());
+SimpleTimer = __decorate([
+    core_1.Injectable()
+], SimpleTimer);
+exports.SimpleTimer = SimpleTimer;
+//# sourceMappingURL=simple-timer.js.map
 
 /***/ }),
 
@@ -41116,8 +41244,12 @@ var ChecklistFormService = /** @class */ (function () {
         return this.http.post(baseurl + "UpdateCheckListFormStatus/", contact);
     };
     ;
-    ChecklistFormService.prototype.CreateChecklistFormWorkOrderAssignment = function (baseurl, contact) {
-        return this.http.post(baseurl + "CreateChecklistFormWorkOrderAssignment/", contact);
+    ChecklistFormService.prototype.CreateChecklistFormWorkOrderAssignment = function (baseurl, contact, value) {
+        return this.http.post(baseurl + "CreateChecklistFormWorkOrderAssignment/" + contact + "/", value);
+    };
+    ;
+    ChecklistFormService.prototype.GetChecklistFormWorkOrderAssignment = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetChecklistFormWorkOrderAssignment/" + contact);
     };
     ;
     ChecklistFormService = __decorate([
@@ -41194,12 +41326,28 @@ var MaintenanceService = /** @class */ (function () {
     function MaintenanceService(http) {
         this.http = http;
     }
-    MaintenanceService.prototype.GetWorkOrderForMaintenance = function (baseurl) {
-        return this.http.get(baseurl + "GetWorkOrderForMaintenance/");
+    MaintenanceService.prototype.GetWorkOrderForMaintenance = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetWorkOrderForMaintenance/" + contact);
     };
     ;
     MaintenanceService.prototype.CreateMaintenance = function (baseurl, contact) {
         return this.http.post(baseurl + "CreateMaintenance/", contact);
+    };
+    ;
+    MaintenanceService.prototype.CreateMaintenanceType = function (baseurl, contact) {
+        return this.http.post(baseurl + "CreateMaintenanceType/", contact);
+    };
+    ;
+    MaintenanceService.prototype.CreateMaintenancePartType = function (baseurl, contact) {
+        return this.http.post(baseurl + "CreateMaintenancePartType/", contact);
+    };
+    ;
+    MaintenanceService.prototype.DeleteMaintenanceType = function (baseurl, contact) {
+        return this.http.post(baseurl + "DeleteMaintenanceType/" + contact, null);
+    };
+    ;
+    MaintenanceService.prototype.DeleteMaintenancePartType = function (baseurl, contact) {
+        return this.http.post(baseurl + "DeleteMaintenancePartType/" + contact, null);
     };
     ;
     MaintenanceService.prototype.GetMaintenanceDetails = function (baseurl) {
@@ -41220,6 +41368,14 @@ var MaintenanceService = /** @class */ (function () {
     ;
     MaintenanceService.prototype.GetMaintenancePartType = function (baseurl) {
         return this.http.get(baseurl + "GetMaintenancePartType/");
+    };
+    ;
+    MaintenanceService.prototype.GetActiveMaintenanceType = function (baseurl) {
+        return this.http.get(baseurl + "GetActiveMaintenanceType/");
+    };
+    ;
+    MaintenanceService.prototype.GetActiveMaintenancePartType = function (baseurl) {
+        return this.http.get(baseurl + "GetActiveMaintenancePartType/");
     };
     ;
     MaintenanceService.prototype.GetMaintenanceDocument = function (baseurl, contact) {
@@ -41276,6 +41432,47 @@ var RoleService = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]])
     ], RoleService);
     return RoleService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/schedulerService.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SchedulerService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var SchedulerService = /** @class */ (function () {
+    function SchedulerService(http) {
+        this.http = http;
+    }
+    SchedulerService.prototype.AddNewSchedulerInQueue = function (baseurl, contact) {
+        return this.http.post(baseurl + "AddNewSchedulerInQueue/" + contact, null);
+    };
+    ;
+    SchedulerService.prototype.GetSchedulerDoneStatus = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetSchedulerDoneStatus/" + contact);
+    };
+    ;
+    SchedulerService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]])
+    ], SchedulerService);
+    return SchedulerService;
 }());
 
 

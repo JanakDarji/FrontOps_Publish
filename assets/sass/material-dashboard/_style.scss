@@ -9,4 +9,11 @@
 .dataTables_info, .dataTables_paginate{ margin-top:20px !important;}
 
 .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
-    background-color: #e91e63;  border-color: #e91e63;}
+    background-color: #b4b8b8;  border-color: #b4b8b8;}
+
+.fixed-plugin{ display:none;}
+.sidebar[data-active-color="white"] li.active > a { background-color: #00bcd4;}
+.sidebar[data-active-color="white"] .nav li.active > a:not([data-toggle="collapse"]) { color: #ffffff;}
+.sidebar[data-active-color="white"] .nav li.active > a:not([data-toggle="collapse"]) i { color: rgba(255, 255, 255, 0.9);}
+.sidebar .user .photo img { height: 100%;}
+    
