@@ -12,20 +12,10 @@ var map = {
 		"./src/app/charts/charts.module.ts",
 		"charts.module"
 	],
-	"./checklist-form/checklist-form.module": [
-		"./src/app/checklist-form/checklist-form.module.ts",
-		"common",
-		"checklist-form.module"
-	],
 	"./components/components.module": [
 		"./src/app/components/components.module.ts",
 		"common",
 		"components.module"
-	],
-	"./create-checklistform/create-checklistform.module": [
-		"./src/app/create-checklistform/create-checklistform.module.ts",
-		"common",
-		"create-checklistform.module"
 	],
 	"./create-maintenance/create-maintenance.module": [
 		"./src/app/create-maintenance/create-maintenance.module.ts",
@@ -389,13 +379,15 @@ var AppRoutes = [
             }, {
                 path: '',
                 loadChildren: './timeline/timeline.module#TimelineModule'
-            }, {
-                path: 'checklist-form',
-                loadChildren: './checklist-form/checklist-form.module#ChecklistFormModule'
-            }, {
-                path: 'create-checklistform',
-                loadChildren: './create-checklistform/create-checklistform.module#CreateChecklistformModule'
-            }, {
+            },
+            //{
+            //    path: 'checklist-form',
+            //    loadChildren: './checklist-form/checklist-form.module#ChecklistFormModule'
+            //}, {
+            //    path: 'create-checklistform',
+            //    loadChildren: './create-checklistform/create-checklistform.module#CreateChecklistformModule'
+            //},
+            {
                 path: 'settings',
                 loadChildren: './settings/settings.module#SettingsModule'
             },
@@ -962,6 +954,7 @@ var CommonService = /** @class */ (function () {
         //HcsHubURL--- http://frontopapi.hcshub.com/api/FrontOps/
         //ProductionUrl--- https://aspectdemo.frontline-ops.com/
         //Production Api https://api.frontline-ops.com/api/FrontOps/
+        //Live https://aspectapi.frontline-ops.com/api/FrontOps/
         this.baseApiUrl = "https://api.frontline-ops.com/api/FrontOps/";
     }
     CommonService = __decorate([
@@ -1389,7 +1382,7 @@ var FooterModule = /** @class */ (function () {
 /***/ "./src/app/shared/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav #navbar class=\"navbar navbar-transparent navbar-absolute\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-minimize\">\n            <button id=\"minimizeSidebar\" class=\"btn btn-round btn-white btn-fill btn-just-icon\">\n                <i class=\"material-icons visible-on-sidebar-regular\">more_vert</i>\n                <i class=\"material-icons visible-on-sidebar-mini\">view_list</i>\n            </button>\n        </div>\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" (click)=\"sidebarToggle()\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"{{getPath()}}\"> {{getTitle()}} </a>\n        </div>\n        <div class=\"collapse navbar-collapse\">\n            <div (window:resize)=\"onResize($event)\">\n                <ul class=\"nav navbar-nav navbar-right\">\n                    <!--<li>\n                        <a href=\"#pablo\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n                            <i class=\"material-icons\">dashboard</i>\n                            <p class=\"hidden-lg hidden-md\">Dashboard</p>\n                        </a>\n                    </li>-->\n                    <li class=\"dropdown\">\n                        <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n                            <i class=\"material-icons\">notifications</i>\n                            <span class=\"notification\">{{totalWOrder}}</span>\n                            <p class=\"hidden-lg hidden-md\">\n                                Notifications\n                                <b class=\"caret\"></b>\n                            </p>\n                        </a>\n                        <ul class=\"dropdown-menu\" style=\"width:285px;\">\n                            <li>\n                                <!--<a style=\"display:inline-block;\" href=\"javascript:void(0);\">Work Order</a>-->\n                                <a style=\"display:inline-block;margin-left:190px;\" href=\"javascript:void(0);\" (click)=\"updateWorkOrderAssignmentNotify('0')\">Clear All</a>\n                            </li>\n                            <ng-container *ngFor=\"let wAst of workOrdList\">\n                                <li>\n                                    <a style=\"display:inline-block;\" href=\"javascript:void(0);\"> --- {{wAst.WorkOrderNo}}</a>\n                                    <a style=\"display:inline-block;\" href=\"javascript:void(0);\" (click)=\"updateWorkOrderAssignmentNotify(wAst.ID)\">Clear</a>\n                                </li>\n                            </ng-container>\n                            <!--<li>\n                                <a href=\"#\">Mike John responded to your email</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">You have 5 new tasks</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">You're now friend with Andrew</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">Another Notification</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">Another One</a>\n                            </li>-->\n                        </ul>\n                    </li>\n                    <!--<li>\n                        <a href=\"#pablo\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n                            <i class=\"material-icons\">person</i>\n                            <p class=\"hidden-lg hidden-md\">Profile</p>\n                        </a>\n                    </li>-->\n                    <li class=\"separator hidden-lg hidden-md\"></li>\n                </ul>\n                <!--<form class=\"navbar-form navbar-right\" role=\"search\">\n                    <div class=\"form-group form-search is-empty\">\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\n                        <span class=\"material-input\"></span>\n                    </div>\n                    <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\n                        <i class=\"material-icons\">search</i>\n                        <div class=\"ripple-container\"></div>\n                    </button>\n                </form>-->\n            </div>\n        </div>\n    </div>\n</nav>\n"
+module.exports = "<nav #navbar class=\"navbar navbar-transparent navbar-absolute\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-minimize\">\n            <button id=\"minimizeSidebar\" class=\"btn btn-round btn-white btn-fill btn-just-icon\">\n                <i class=\"material-icons visible-on-sidebar-regular\">more_vert</i>\n                <i class=\"material-icons visible-on-sidebar-mini\">view_list</i>\n            </button>\n        </div>\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle\" (click)=\"sidebarToggle()\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"{{getPath()}}\"> {{getTitle()}} </a>\n        </div>\n        <div class=\"collapse navbar-collapse\">\n            <div (window:resize)=\"onResize($event)\">\n                <ul class=\"nav navbar-nav navbar-right\">\n                    <!--<li>\n                        <a href=\"#pablo\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n                            <i class=\"material-icons\">dashboard</i>\n                            <p class=\"hidden-lg hidden-md\">Dashboard</p>\n                        </a>\n                    </li>-->\n                    <li class=\"dropdown\">\n                        <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n                            <i class=\"material-icons\">notifications</i>\n                            <span class=\"notification\">{{totalWOrder}}</span>\n                            <p class=\"hidden-lg hidden-md\">\n                                Notifications\n                                <b class=\"caret\"></b>\n                            </p>\n                        </a>\n                        <ul class=\"dropdown-menu\" style=\"width:285px;\">\n                            <li>\n                                <!--<a style=\"display:inline-block;\" href=\"javascript:void(0);\">Work Order</a>-->\n                                <a style=\"display:inline-block;margin-left:190px;\" href=\"javascript:void(0);\" (click)=\"updateWorkOrderAssignmentNotify('0')\">Clear All</a>\n                            </li>\n                            <ng-container *ngFor=\"let wAst of workOrdList\">\n                                <li>\n                                    <a style=\"display:inline-block;\" href=\"javascript:void(0);\" (click)=\"goToWorkAssignment(wAst.WorkOrderNo)\"> --- {{wAst.WorkOrderNo}}</a>\n                                    <a style=\"display:inline-block;\" href=\"javascript:void(0);\" (click)=\"updateWorkOrderAssignmentNotify(wAst.ID)\">Clear</a>\n                                </li>\n                            </ng-container>\n                            <!--<li>\n                                <a href=\"#\">Mike John responded to your email</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">You have 5 new tasks</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">You're now friend with Andrew</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">Another Notification</a>\n                            </li>\n                            <li>\n                                <a href=\"#\">Another One</a>\n                            </li>-->\n                        </ul>\n                    </li>\n                    <!--<li>\n                        <a href=\"#pablo\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n                            <i class=\"material-icons\">person</i>\n                            <p class=\"hidden-lg hidden-md\">Profile</p>\n                        </a>\n                    </li>-->\n                    <li class=\"separator hidden-lg hidden-md\"></li>\n                </ul>\n                <!--<form class=\"navbar-form navbar-right\" role=\"search\">\n                    <div class=\"form-group form-search is-empty\">\n                        <input type=\"text\" class=\"form-control\" placeholder=\"Search\">\n                        <span class=\"material-input\"></span>\n                    </div>\n                    <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\n                        <i class=\"material-icons\">search</i>\n                        <div class=\"ripple-container\"></div>\n                    </button>\n                </form>-->\n            </div>\n        </div>\n    </div>\n</nav>\n"
 
 /***/ }),
 
@@ -1400,9 +1393,10 @@ module.exports = "<nav #navbar class=\"navbar navbar-transparent navbar-absolute
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavbarComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__sidebar_sidebar_component__ = __webpack_require__("./src/app/sidebar/sidebar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_workOrderService__ = __webpack_require__("./src/app/services/workOrderService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_commonService__ = __webpack_require__("./src/app/services/commonService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_workOrderService__ = __webpack_require__("./src/app/services/workOrderService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_commonService__ = __webpack_require__("./src/app/services/commonService.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1417,17 +1411,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var misc = {
     navbar_menu_visible: 0,
     active_collapse: true,
     disabled_collapse_init: 0,
 };
 var NavbarComponent = /** @class */ (function () {
-    function NavbarComponent(location, renderer, element, workOrderService, commonService) {
+    function NavbarComponent(location, renderer, element, workOrderService, commonService, router) {
         this.renderer = renderer;
         this.element = element;
         this.workOrderService = workOrderService;
         this.commonService = commonService;
+        this.router = router;
         this.location = location;
         this.nativeElement = element.nativeElement;
         this.sidebarVisible = false;
@@ -1610,6 +1606,9 @@ var NavbarComponent = /** @class */ (function () {
     NavbarComponent.prototype.getPath = function () {
         return this.location.prepareExternalUrl(this.location.path());
     };
+    NavbarComponent.prototype.goToWorkAssignment = function (WorkId) {
+        this.router.navigate(['wo-assignment'], { queryParams: { workID: WorkId } });
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('app-navbar-cmp'),
         __metadata("design:type", Object)
@@ -1618,13 +1617,14 @@ var NavbarComponent = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-navbar-cmp',
             template: __webpack_require__("./src/app/shared/navbar/navbar.component.html"),
-            providers: [__WEBPACK_IMPORTED_MODULE_4__services_commonService__["a" /* CommonService */], __WEBPACK_IMPORTED_MODULE_3__services_workOrderService__["a" /* WorkOrderService */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_5__services_commonService__["a" /* CommonService */], __WEBPACK_IMPORTED_MODULE_4__services_workOrderService__["a" /* WorkOrderService */]],
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common__["Location"],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__angular_common__["Location"],
             __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer"],
             __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"],
-            __WEBPACK_IMPORTED_MODULE_3__services_workOrderService__["a" /* WorkOrderService */],
-            __WEBPACK_IMPORTED_MODULE_4__services_commonService__["a" /* CommonService */]])
+            __WEBPACK_IMPORTED_MODULE_4__services_workOrderService__["a" /* WorkOrderService */],
+            __WEBPACK_IMPORTED_MODULE_5__services_commonService__["a" /* CommonService */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["d" /* Router */]])
     ], NavbarComponent);
     return NavbarComponent;
 }());
@@ -1733,12 +1733,12 @@ var ROUTES = [{
         type: 'link',
         icontype: 'grid_on'
     },
-    {
-        path: '/checklist-form',
-        title: 'ChecklistForm',
-        type: 'link',
-        icontype: 'timeline'
-    },
+    //{
+    //    path: '/checklist-form',
+    //    title: 'Checklist',
+    //    type: 'link',
+    //    icontype: 'timeline'
+    //},
     {
         path: '/widgets',
         title: 'Reports',
@@ -1762,10 +1762,11 @@ var ROUTES = [{
         path: '/settings',
         title: 'settings',
         type: 'sub',
-        icontype: 'image',
+        icontype: 'settings',
         collapse: 'settings',
         children: [
-            { path: 'maintenance', title: 'Maintenance', ab: '' }
+            { path: 'maintenance', title: 'Maintenance', ab: '' },
+            { path: 'checklist-form', title: 'Checklist', ab: '' }
         ]
     }
 ];
