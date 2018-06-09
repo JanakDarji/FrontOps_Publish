@@ -41606,6 +41606,10 @@ var UserService = /** @class */ (function () {
         return this.http.post(baseurl + "ResetPassword/" + contact + '/' + value, null);
     };
     ;
+    UserService.prototype.GetLastSyncDetail = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetLastSyncDetail/" + contact);
+    };
+    ;
     UserService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]])

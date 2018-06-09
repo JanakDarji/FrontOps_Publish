@@ -609,7 +609,17 @@ var UsersComponent = /** @class */ (function () {
             _this.stageEmployeeList = null;
             if (empList != null) {
                 $("#datatables").dataTable().fnDestroy();
-                _this.lastSyncDate = empList[0].LastSyncDate != null ? empList[0].LastSyncDate : "No Sync";
+                _this.userService.GetLastSyncDetail(_this.commonService.baseApiUrl, "1").subscribe(function (data) {
+                    var dataSync = JSON.stringify(data);
+                    var syncParse = JSON.parse(dataSync);
+                    var syncList = JSON.parse(syncParse["_body"]);
+                    if (syncList != null) {
+                        _this.lastSyncDate = syncList.LastSyncDate;
+                    }
+                    else {
+                        _this.lastSyncDate = "No Sync";
+                    }
+                });
                 localStorage.setItem("StagEmployeeList", JSON.stringify(empList));
                 _this.stageEmployeeList = empList;
                 _this.dataTable = {

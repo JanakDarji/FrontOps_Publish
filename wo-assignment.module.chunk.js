@@ -258,7 +258,7 @@ var WoAssignmentComponent = /** @class */ (function () {
         var _this = this;
         $('.loader').show();
         if (this.workOrderAssignmentList != null) {
-            this.workOrderService.SendEmailWorkOrderAssignment(this.commonService.baseApiUrl, this.workOrderAssignmentList, this.wrokOrdAddress).subscribe(function (data) {
+            this.workOrderService.SendEmailWorkOrderAssignment(this.commonService.baseApiUrl, this.wrokOrdAddress.replace("&", 'and'), this.workOrderAssignmentList).subscribe(function (data) {
                 var dataUsers = JSON.stringify(data);
                 var userParse = JSON.parse(dataUsers);
                 var userInfo = JSON.parse(userParse["_body"]);

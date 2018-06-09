@@ -277,8 +277,10 @@ var CreateChecklistformComponent = /** @class */ (function () {
             var dataUsers = JSON.stringify(data);
             var userParse = JSON.parse(dataUsers);
             var userInfo = JSON.parse(userParse["_body"]);
+            localStorage.removeItem("AutoWorkOrdList");
             if (userInfo != null) {
                 _this.autoWorkOrdList = userInfo;
+                localStorage.setItem("AutoWorkOrdList", JSON.stringify(_this.autoWorkOrdList));
                 $('.loader').hide();
             }
         });
@@ -376,7 +378,10 @@ var CreateChecklistformComponent = /** @class */ (function () {
                     });
                 }
                 if (_this.checkformData.WorkOrderID != null) {
-                    _this.filterItem(_this.checkformData.WorkOrderID);
+                    //this.filterItem(this.checkformData.WorkOrderID);
+                    var autoWOData = JSON.parse(localStorage.getItem("AutoWorkOrdList")).filter(function (item) { return item.ID == _this.checkformData.WorkOrderID; });
+                    _this.selectedWOrd = autoWOData[0];
+                    console.log(_this.selectedWOrd);
                     _this.chklistForm.controls["workOrdNo"].setValue(_this.selectedWOrd.WorkOrderNo);
                 }
                 else {
@@ -473,17 +478,17 @@ var CreateChecklistformComponent = /** @class */ (function () {
     CreateChecklistformComponent.prototype.valueChanged = function (newVal) {
         this.selectedWOrd = newVal;
     };
-    CreateChecklistformComponent.prototype.filterItem = function (value) {
-        if (this.autoWorkOrdList == null) {
-            this.getWorkOrders();
-        }
-        else {
-            var dataMt = JSON.stringify(Object.assign([], this.autoWorkOrdList).filter(function (item) { return item.ID == value; }));
-            var mTParse = JSON.parse(dataMt);
-            this.selectedWOrd = mTParse[0];
-            //this.selectedWOrd = mTParse[0].WorkOrderNo;
-        }
-    };
+    //filterItem(value) {
+    //    if (this.autoWorkOrdList == null) {
+    //        this.getWorkOrders();
+    //    }
+    //    else {
+    //        var dataMt = JSON.stringify(Object.assign([], this.autoWorkOrdList).filter(item => item.ID == value));
+    //        var mTParse = JSON.parse(dataMt);
+    //        this.selectedWOrd = mTParse[0];
+    //        //this.selectedWOrd = mTParse[0].WorkOrderNo;
+    //    }
+    //}
     CreateChecklistformComponent.prototype.validateAllFormFields = function (formGroup) {
         var _this = this;
         Object.keys(formGroup.controls).forEach(function (field) {
