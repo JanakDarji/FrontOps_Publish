@@ -41244,16 +41244,19 @@ var ChecklistFormService = /** @class */ (function () {
         return this.http.post(baseurl + "UpdateCheckListFormStatus/", contact);
     };
     ;
-    ChecklistFormService.prototype.CreateChecklistFormWorkOrderAssignment = function (baseurl, contact, value) {
-        return this.http.post(baseurl + "CreateChecklistFormWorkOrderAssignment/" + contact + "/", value);
-    };
-    ;
+    //CreateChecklistFormWorkOrderAssignment(baseurl, contact, value) {
+    //    return this.http.post(baseurl + "CreateChecklistFormWorkOrderAssignment/" + contact + "/", value);
+    //};
     ChecklistFormService.prototype.GetChecklistFormWorkOrderAssignment = function (baseurl, contact) {
         return this.http.get(baseurl + "GetChecklistFormWorkOrderAssignment/" + contact);
     };
     ;
     ChecklistFormService.prototype.GetChecklistFormWOAssignmentTaskAnswer = function (baseurl, contact) {
         return this.http.get(baseurl + "GetChecklistFormWOAssignmentTaskAnswer/" + contact);
+    };
+    ;
+    ChecklistFormService.prototype.CheckChkListFormListExist = function (baseurl, contact, value) {
+        return this.http.get(baseurl + "CheckChkListFormListExist/" + contact + "/" + value);
     };
     ;
     ChecklistFormService = __decorate([

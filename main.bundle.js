@@ -1761,7 +1761,7 @@ var ROUTES = [{
     //},
     {
         path: '/settings',
-        title: 'settings',
+        title: 'Settings',
         type: 'sub',
         icontype: 'settings',
         collapse: 'settings',
