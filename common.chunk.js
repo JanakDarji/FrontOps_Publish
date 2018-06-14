@@ -41434,6 +41434,14 @@ var MaintenanceService = /** @class */ (function () {
         return this.http.post(baseurl + "RemoveMaintenanceDocument/" + contact + "/" + value + "/" + objectdata + "/", null);
     };
     ;
+    MaintenanceService.prototype.MaintenanceTypeExist = function (baseurl, contact, value) {
+        return this.http.get(baseurl + "MaintenanceTypeExist/" + contact + "/" + value);
+    };
+    ;
+    MaintenanceService.prototype.MaintenancePartTypeExist = function (baseurl, contact, value) {
+        return this.http.get(baseurl + "MaintenancePartTypeExist/" + contact + "/" + value);
+    };
+    ;
     MaintenanceService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]])

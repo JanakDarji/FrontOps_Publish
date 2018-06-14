@@ -251,10 +251,11 @@ var CreateMaintenanceComponent = /** @class */ (function () {
     CreateMaintenanceComponent.prototype.createMaintenance = function (status) {
         var _this = this;
         $('.loader').show();
+        var mtID = this.maintenanceData == undefined ? this.mtprimID : this.maintenanceData.ID;
         if (this.mtForm.valid) {
             var crntUsr = JSON.parse(sessionStorage.getItem('LogEmployee'));
             var contact = {
-                ID: this.maintenanceData == undefined ? this.mtprimID : this.maintenanceData.ID,
+                ID: mtID,
                 UserId: crntUsr.ID,
                 WorkOrderId: this.selectedWOrd == undefined ? this.maintenanceData.WorkOrderId : this.selectedWOrd.ID,
                 OldWorkOrderId: this.selectedWOrd == undefined ? this.maintenanceData.OldWorkOrderId : this.selectedWOrd.OldWorkOrderId,
@@ -272,7 +273,12 @@ var CreateMaintenanceComponent = /** @class */ (function () {
                     $('.loader').hide();
                     _this.mtprimID = userInfo;
                     _this.uploader.uploadAll();
-                    _this.showSwal("Maintenance created successfully!!");
+                    if (mtID > 0) {
+                        _this.showSwal("Maintenance has been updated successfully!");
+                    }
+                    else {
+                        _this.showSwal("Maintenance has been created successfully!");
+                    }
                 }
             });
         }
