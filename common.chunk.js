@@ -41251,8 +41251,8 @@ var ChecklistFormService = /** @class */ (function () {
         return this.http.get(baseurl + "GetChecklistFormWorkOrderAssignment/" + contact);
     };
     ;
-    ChecklistFormService.prototype.GetChecklistFormWOAssignmentTaskAnswer = function (baseurl, contact) {
-        return this.http.get(baseurl + "GetChecklistFormWOAssignmentTaskAnswer/" + contact);
+    ChecklistFormService.prototype.GetChecklistFormWOAssignmentTaskAnswer = function (baseurl, contact, value) {
+        return this.http.get(baseurl + "GetChecklistFormWOAssignmentTaskAnswer/" + contact + "/" + value);
     };
     ;
     ChecklistFormService.prototype.CheckChkListFormListExist = function (baseurl, contact, value) {
@@ -41378,6 +41378,10 @@ var MaintenanceService = /** @class */ (function () {
         return this.http.get(baseurl + "GetWorkOrderForMaintenance/" + contact);
     };
     ;
+    MaintenanceService.prototype.GetAssignWorkOrderForMaintenance = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetAssignWorkOrderForMaintenance/" + contact);
+    };
+    ;
     MaintenanceService.prototype.CreateMaintenance = function (baseurl, contact) {
         return this.http.post(baseurl + "CreateMaintenance/", contact);
     };
@@ -41440,6 +41444,30 @@ var MaintenanceService = /** @class */ (function () {
     ;
     MaintenanceService.prototype.MaintenancePartTypeExist = function (baseurl, contact, value) {
         return this.http.get(baseurl + "MaintenancePartTypeExist/" + contact + "/" + value);
+    };
+    ;
+    MaintenanceService.prototype.CreateMaintenanceAssignment = function (baseurl, contact) {
+        return this.http.post(baseurl + "CreateMaintenanceAssignment/", contact);
+    };
+    ;
+    MaintenanceService.prototype.GetMaintenanceAssignment = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetMaintenanceAssignment/" + contact);
+    };
+    ;
+    MaintenanceService.prototype.UpdateMaintenanceStatus = function (baseurl, contact, value) {
+        return this.http.post(baseurl + "UpdateMaintenanceStatus/" + contact, value);
+    };
+    ;
+    MaintenanceService.prototype.GetAssignWOUserForMaintenance = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetAssignWOUserForMaintenance/" + contact);
+    };
+    ;
+    MaintenanceService.prototype.DeleteMaintenanceAssignment = function (baseurl, contact) {
+        return this.http.post(baseurl + "DeleteMaintenanceAssignment/" + contact, null);
+    };
+    ;
+    MaintenanceService.prototype.SendEmailMaintenanceAssignment = function (baseurl, contact) {
+        return this.http.post(baseurl + "SendEmailMaintenanceAssignment/", contact);
     };
     ;
     MaintenanceService = __decorate([

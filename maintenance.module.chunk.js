@@ -3,7 +3,7 @@ webpackJsonp(["maintenance.module"],{
 /***/ "./src/app/maintenance/maintenance.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<title>Maintenance</title>\n<div class=\"main-content\">\n    <div class=\"container-fluid\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <div class=\"card\">\n                    <div class=\"card-content\">\n                    \t<div class=\"row\">\n                    \t\t<div class=\"col-md-6\">\n                        \t\t<h3 class=\"card-title\">Maintenance</h3>\n                       \t\t</div>\n\n                       \t\t<div class=\"col-md-6\" *ngIf=\"isAddAccess == true\">\n                        \t\t<a class=\"btn btn-facebook btn-round btn-success pull-right\" href=\"/index.html#/create-maintenance\">Create Maintenance</a>\n\n                        \t</div>\n                        </div>\n                        <div class=\"row\"></div>\n                        <div class=\"toolbar\">\n                        </div>\n                        <div class=\"material-datatables table-responsive\">\n                            <table id=\"mTanceDatatables\" class=\"table table-striped table-no-bordered table-hover\" cellspacing=\"0\" width=\"100%\" style=\"width:100%\">\n                                <thead>\n                                    <tr>\n                                        <th>{{ mTanceDataTable.mTanceHeaderRow[0] }}</th>\n                                        <th>{{ mTanceDataTable.mTanceHeaderRow[1] }}</th>\n                                        <th>{{ mTanceDataTable.mTanceHeaderRow[2] }}</th>\n                                        <th>{{ mTanceDataTable.mTanceHeaderRow[3] }}</th>\n                                        <th>{{ mTanceDataTable.mTanceHeaderRow[4] }}</th>\n                                        <th>{{ mTanceDataTable.mTanceHeaderRow[5] }}</th>\n                                        <th class=\"disabled-sorting text-right\">{{ mTanceDataTable.mTanceHeaderRow[6] }}</th>\n                                    </tr>\n                                </thead>\n                                <tbody>\n                                    <tr *ngFor=\"let mTance of mTanceDataTable.mTanceDataRows\">\n                                        <td>{{ mTance.ID }}</td>\n                                        <td>{{ mTance.WorkOrderNo }}</td>\n                                        <td>{{ mTance.MTypeTitle }}</td>\n                                        <td>{{ mTance.Username }}</td>\n                                        <td>\n                                            <div *ngIf=\"mTance.MaintenanceDate\">{{ mTance.MaintenanceDate | date: 'dd/MM/yyyy'}} </div>\n                                            <div *ngIf=\"!mTance.MaintenanceDate\">{{ mTance.MaintenanceDate }} </div>\n                                        </td>\n                                        <td>{{ mTance.Status }}</td>\n                                        <td class=\"text-right\">\n                                            <button *ngIf=\"isEditAccess == true\" class=\"btn btn-simple btn-warning btn-icon edit\" (click)=\"goToCreateMaintenance(mTance.ID)\">\n                                                <i class=\"material-icons\">dvr</i>\n                                            </button>\n                                        </td>\n                                    </tr>\n                                </tbody>\n                            </table>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<title>Maintenance</title>\n<div class=\"main-content\">\n    <div class=\"container-fluid\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <div class=\"card\">\n                    <div class=\"card-content\">\n                        <div class=\"row\">\r\n                            <div class=\"col-md-6\">\r\n                                <h3 class=\"card-title\">Maintenance</h3>\r\n                            </div>\r\n                        </div>\n                            <div class=\"row\">\r\n                                <div class=\"col-md-6\" *ngIf=\"userProfile.RoleId == 1 || userProfile.RoleId == 2 || userProfile.RoleId == 6\">\r\n                                    <button class=\"btn btn-success\" (click)=\"approvedMaintenance('Approved')\">Approve</button>\r\n                                    <button class=\"btn btn-danger\" (click)=\"approvedMaintenance('Rejected')\">Reject</button>\r\n                                </div>\r\n                                <div *ngIf=\"isAddAccess == true\" [ngClass]=\"userProfile.RoleId == 1 || userProfile.RoleId == 2 || userProfile.RoleId == 6?'col-md-6':'col-md-12'\">\r\n                                    <a class=\"btn btn-facebook btn-round btn-success pull-right\" href=\"/index.html#/create-maintenance\">Create Maintenance</a>\r\n                                </div>\r\n                            </div>\n                        <div class=\"row\"></div>\n                        <div class=\"toolbar\">\n                        </div>\n                        <form [formGroup]=\"mTanceForm\">\r\n                            <div class=\"material-datatables table-responsive\">\r\n                                <table id=\"mTanceDatatables\" class=\"table table-striped table-no-bordered table-hover\" cellspacing=\"0\" width=\"100%\" style=\"width:100%\">\r\n                                    <thead>\r\n                                        <tr>\r\n                                            <th>{{ mTanceDataTable.mTanceHeaderRow[0] }}</th>\r\n                                            <th class=\"disabled-sorting\" *ngIf=\"userProfile.RoleId == 1 || userProfile.RoleId == 2 || userProfile.RoleId == 6\">\r\n                                                <div class=\"checkbox form-horizontal-checkbox\" style=\"top:-10px;left:10px;\">\r\n                                                    <label>\r\n                                                        <input type=\"checkbox\" formControlName=\"checkAll\" name=\"chkAll\" id=\"chkAll\">\r\n                                                    </label>\r\n                                                </div>\r\n                                            </th>\r\n                                            <th>{{ mTanceDataTable.mTanceHeaderRow[1] }}</th>\r\n                                            <th>{{ mTanceDataTable.mTanceHeaderRow[2] }}</th>\r\n                                            <th>{{ mTanceDataTable.mTanceHeaderRow[3] }}</th>\r\n                                            <th>{{ mTanceDataTable.mTanceHeaderRow[4] }}</th>\r\n                                            <th>{{ mTanceDataTable.mTanceHeaderRow[5] }}</th>\r\n                                            <th class=\"disabled-sorting text-right\">{{ mTanceDataTable.mTanceHeaderRow[6] }}</th>\r\n                                        </tr>\r\n                                    </thead>\r\n                                    <tbody>\r\n                                        <tr *ngFor=\"let mTance of mTanceDataTable.mTanceDataRows\">\r\n                                            <td>{{ mTance.ID }}</td>\r\n                                            <td *ngIf=\"userProfile.RoleId == 1 || userProfile.RoleId == 2 || userProfile.RoleId == 6\">\r\n                                                <div class=\"checkbox form-horizontal-checkbox\" style=\"top:-10px;left:10px;\">\r\n                                                    <label>\r\n                                                        <input type=\"checkbox\" formControlName=\"trackChk\" name=\"trackChk\" [id]=\"mTance.ID\" [value]=\"mTance.ID\">\r\n                                                    </label>\r\n                                                </div>\r\n                                            </td>\r\n                                            <td>{{ mTance.WorkOrderNo }}</td>\r\n                                            <td>{{ mTance.MTypeTitle }}</td>\r\n                                            <td>{{ mTance.Username }}</td>\r\n                                            <td>\r\n                                                <div *ngIf=\"mTance.MaintenanceDate\">{{ mTance.MaintenanceDate | date: 'dd/MM/yyyy'}} </div>\r\n                                                <div *ngIf=\"!mTance.MaintenanceDate\">{{ mTance.MaintenanceDate }} </div>\r\n                                            </td>\r\n                                            <td>{{ mTance.Status }}</td>\r\n                                            <td class=\"text-right\">\r\n                                                <button *ngIf=\"isEditAccess == true\" class=\"btn btn-simple btn-warning btn-icon edit\" (click)=\"goToCreateMaintenance(mTance.ID)\">\r\n                                                    <i class=\"material-icons\">dvr</i>\r\n                                                </button>\r\n                                            </td>\r\n                                        </tr>\r\n                                    </tbody>\r\n                                </table>\r\n                            </div>\r\n                            </form>\r\n</div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -20,11 +20,12 @@ module.exports = ""
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MaintenanceComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_commonService__ = __webpack_require__("./src/app/services/commonService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_maintenanceService__ = __webpack_require__("./src/app/services/maintenanceService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_commonService__ = __webpack_require__("./src/app/services/commonService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_maintenanceService__ = __webpack_require__("./src/app/services/maintenanceService.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -40,6 +41,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var MaintenanceComponent = /** @class */ (function () {
     function MaintenanceComponent(http, router, commonService, maintenanceService, activatedRoute) {
         this.http = http;
@@ -47,9 +49,14 @@ var MaintenanceComponent = /** @class */ (function () {
         this.commonService = commonService;
         this.maintenanceService = maintenanceService;
         this.activatedRoute = activatedRoute;
+        this.mTanceForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormGroup"]({
+            trackChk: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            checkAll: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]()
+        });
     }
     MaintenanceComponent.prototype.ngOnInit = function () {
         if (JSON.parse(sessionStorage.getItem('LogEmployee')) != null) {
+            this.userProfile = JSON.parse(sessionStorage.getItem('LogEmployee'));
             var userRoleAccess = JSON.parse(sessionStorage.getItem('AccessRole'));
             if (userRoleAccess != null) {
                 var jobAccess = userRoleAccess.filter(function (job) { return job.ModuleName == "MAINTENANCE"; });
@@ -66,9 +73,42 @@ var MaintenanceComponent = /** @class */ (function () {
                 mTanceFooterRow: ['MT#', 'Job-Wo', 'Type', 'Raised By', 'Date', 'Status', 'Actions'],
                 mTanceDataRows: this.maintenanceList
             };
+            $(document).ready(function () {
+                $("#chkAll").click(function () {
+                    $('input:checkbox').not(this).prop('checked', this.checked);
+                    //$('input:checkbox:not(:checked)').prop('disabled', true);
+                });
+            });
         }
         else {
             this.router.navigate(['pages/login']);
+        }
+    };
+    MaintenanceComponent.prototype.approvedMaintenance = function (status) {
+        var _this = this;
+        $('.loader').show();
+        var chckeValue = [];
+        $('input[name="trackChk"]:checked').each(function () {
+            chckeValue.push(this.id);
+        });
+        if (chckeValue.length > 0) {
+            //this.userProfile = JSON.parse(sessionStorage.getItem('LogEmployee'));
+            var contact = {
+                Status: status
+            };
+            this.maintenanceService.UpdateMaintenanceStatus(this.commonService.baseApiUrl, chckeValue, contact).subscribe(function (data) {
+                var datatSheet = JSON.stringify(data);
+                var tSheetParse = JSON.parse(datatSheet);
+                var tSheetList = JSON.parse(tSheetParse["_body"]);
+                if (tSheetList != null) {
+                    $('.loader').hide();
+                    _this.mTanceForm.reset();
+                    _this.getMaintenanceDetails();
+                }
+            });
+        }
+        else {
+            $('.loader').hide();
         }
     };
     MaintenanceComponent.prototype.getMaintenanceDetails = function () {
@@ -125,13 +165,13 @@ var MaintenanceComponent = /** @class */ (function () {
             selector: 'app-maintenance',
             template: __webpack_require__("./src/app/maintenance/maintenance.component.html"),
             styles: [__webpack_require__("./src/app/maintenance/maintenance.component.scss")],
-            providers: [__WEBPACK_IMPORTED_MODULE_4__services_commonService__["a" /* CommonService */], __WEBPACK_IMPORTED_MODULE_5__services_maintenanceService__["a" /* MaintenanceService */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_5__services_commonService__["a" /* CommonService */], __WEBPACK_IMPORTED_MODULE_6__services_maintenanceService__["a" /* MaintenanceService */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["d" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_4__services_commonService__["a" /* CommonService */],
-            __WEBPACK_IMPORTED_MODULE_5__services_maintenanceService__["a" /* MaintenanceService */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["Http"],
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["d" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_5__services_commonService__["a" /* CommonService */],
+            __WEBPACK_IMPORTED_MODULE_6__services_maintenanceService__["a" /* MaintenanceService */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]])
     ], MaintenanceComponent);
     return MaintenanceComponent;
 }());
