@@ -226,7 +226,7 @@ var MyProfileComponent = /** @class */ (function () {
                     _this.myProfilePage.reset();
                     _this.getUserById(localStorage.getItem("EmployeeId"));
                     $('#myModal').modal('toggle');
-                    _this.showSwal("User updated successfully!");
+                    _this.showSwal("User has been updated");
                 }
                 else {
                     _this.myProfilePage.reset();
