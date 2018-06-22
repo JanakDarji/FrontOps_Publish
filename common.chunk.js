@@ -41187,6 +41187,24 @@ var PasswordValidation = /** @class */ (function () {
             return null;
         }
     };
+    PasswordValidation.StartEndDateDiffValidation = function (AC) {
+        var starttime = AC.get('starttime').value; // to get value in input tag
+        var endtime = AC.get('endtime').value; // to get value in input tag
+        var breakhour = AC.get('breakhour').value;
+        var breakminute = AC.get('breakminute').value;
+        var diff = ((new Date(endtime).getTime() / 1000) - (new Date(starttime).getTime()) / 1000);
+        var hrs = Math.floor(diff / 3600);
+        var mnt = Math.floor(diff % 3600 / 60);
+        var s = Math.floor(diff % 3600 % 60);
+        var stTime = hrs + ':' + mnt;
+        var brTime = breakhour + ':' + breakminute;
+        if (stTime < brTime) {
+            AC.get('breakhour').setErrors({ StartEndDateValidation: true });
+        }
+        else {
+            return null;
+        }
+    };
     return PasswordValidation;
 }());
 
