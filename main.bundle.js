@@ -956,8 +956,8 @@ var CommonService = /** @class */ (function () {
         //ProductionUrl--- https://aspectdemo.frontline-ops.com/
         //Production Api https://api.frontline-ops.com/api/FrontOps/
         //Live https://aspectapi.frontline-ops.com/api/FrontOps/
-        //sydney api https://demomanagerapi.frontline-ops.com/
-        //sydney site http://demomanager.frontline-ops.com/
+        //sydney api https://demomanagerapi.frontline-ops.com/api/FrontOps/
+        //sydney site https://demomanager.frontline-ops.com/
         this.baseApiUrl = "https://api.frontline-ops.com/api/FrontOps/";
     }
     CommonService = __decorate([
@@ -1559,7 +1559,7 @@ var NavbarComponent = /** @class */ (function () {
                     }
                     var mname = titlee.match(/create-maintenance/g);
                     if (mname == "create-maintenance") {
-                        return 'Create Maintenancet';
+                        return 'Maintenancet';
                     }
                     var tview = titlee.match(/view-timesheet/g);
                     if (tview == "view-timesheet") {
