@@ -1559,7 +1559,7 @@ var NavbarComponent = /** @class */ (function () {
                     }
                     var mname = titlee.match(/create-maintenance/g);
                     if (mname == "create-maintenance") {
-                        return 'Maintenancet';
+                        return 'Maintenance';
                     }
                     var tview = titlee.match(/view-timesheet/g);
                     if (tview == "view-timesheet") {
