@@ -41717,6 +41717,75 @@ var UserService = /** @class */ (function () {
 
 
 
+/***/ }),
+
+/***/ "./src/app/services/workOrderService.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WorkOrderService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var WorkOrderService = /** @class */ (function () {
+    function WorkOrderService(http) {
+        this.http = http;
+    }
+    WorkOrderService.prototype.GetWorkOrdersByJobId = function (baseurl, contact, value) {
+        return this.http.get(baseurl + "GetWorkOrdersByJobId/" + contact + "/" + value);
+    };
+    ;
+    WorkOrderService.prototype.GetWorkOrdersByWorkOrdID = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetWorkOrdersByWorkOrdID/" + contact);
+    };
+    ;
+    WorkOrderService.prototype.CreateWorkOrderAssignment = function (baseurl, contact) {
+        return this.http.post(baseurl + "CreateWorkOrderAssignment/", contact);
+    };
+    ;
+    WorkOrderService.prototype.GetWorkOrderAssignment = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetWorkOrderAssignment/" + contact);
+    };
+    ;
+    WorkOrderService.prototype.DeleteWorkOrderAssignment = function (baseurl, contact) {
+        return this.http.post(baseurl + "DeleteWorkOrderAssignment/" + contact, null);
+    };
+    ;
+    WorkOrderService.prototype.SendEmailWorkOrderAssignment = function (baseurl, contact) {
+        return this.http.post(baseurl + "SendEmailWorkOrderAssignment/", contact);
+    };
+    ;
+    WorkOrderService.prototype.GetWorkOrderDocuments = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetWorkOrderDocuments/" + contact);
+    };
+    ;
+    WorkOrderService.prototype.DeleteWorkOrderDocuments = function (baseurl, contact, value, objectdata) {
+        return this.http.post(baseurl + "DeleteWorkOrderDocuments/" + contact + "/" + value + "/" + objectdata + "/", null);
+    };
+    ;
+    WorkOrderService.prototype.GetWorkOrderAssignmentForUser = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetWorkOrderAssignmentForUser/" + contact);
+    };
+    ;
+    WorkOrderService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]])
+    ], WorkOrderService);
+    return WorkOrderService;
+}());
+
+
+
 /***/ })
 
 });
