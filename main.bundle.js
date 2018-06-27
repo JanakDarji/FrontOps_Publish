@@ -958,7 +958,7 @@ var CommonService = /** @class */ (function () {
         //Live https://aspectapi.frontline-ops.com/api/FrontOps/
         //sydney api https://demomanagerapi.frontline-ops.com/
         //sydney site http://demomanager.frontline-ops.com/
-        this.baseApiUrl = "https://aspectdemo.frontline-ops.com/";
+        this.baseApiUrl = "https://api.frontline-ops.com/api/FrontOps/";
     }
     CommonService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])()
