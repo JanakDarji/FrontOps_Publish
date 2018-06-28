@@ -41269,8 +41269,8 @@ var ChecklistFormService = /** @class */ (function () {
         return this.http.get(baseurl + "GetChecklistFormWorkOrderAssignment/" + contact);
     };
     ;
-    ChecklistFormService.prototype.GetChecklistFormWOAssignmentTaskAnswer = function (baseurl, contact, value) {
-        return this.http.get(baseurl + "GetChecklistFormWOAssignmentTaskAnswer/" + contact + "/" + value);
+    ChecklistFormService.prototype.GetChecklistFormWOAssignmentTaskAnswer = function (baseurl, contact, value, objectdata) {
+        return this.http.get(baseurl + "GetChecklistFormWOAssignmentTaskAnswer/" + contact + "/" + value + "/" + objectdata);
     };
     ;
     ChecklistFormService.prototype.CheckChkListFormListExist = function (baseurl, contact, value) {
