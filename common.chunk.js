@@ -43274,7 +43274,7 @@ var TimesheetService = /** @class */ (function () {
     };
     ;
     TimesheetService.prototype.GetTimesheetTrackFilteredList = function (baseurl, contact, value, objectdata) {
-        return this.http.get(baseurl + "GetTimesheetTrackFilteredList/" + contact + "/" + value + "/" + objectdata + "/");
+        return this.http.get(baseurl + "GetTimesheetTrackFilteredList/" + contact + "/" + value + "/" + objectdata);
     };
     ;
     TimesheetService.prototype.UpdateTimesheetDaily = function (baseurl, contact, value) {
