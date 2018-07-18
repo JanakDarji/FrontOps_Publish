@@ -96418,14 +96418,14 @@ module.exports = function(module) {
 /***/ "./src/app/calendar/calendar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<title>Aspect Calendar</title>\n<div class=\"main-content\">\n    <div class=\"container-fluid\">\n        <div class=\"toolbar\">\r\n        </div>\n        <form [formGroup]=\"calendarForm\">\r\n            <div class=\"row\">\r\n                <div class=\"col-md-3\">\r\n                 \r\n                        <div class=\"card\">\r\n                            <div class=\"card-content\">\r\n                                <div class=\"form-group\" style=\"margin:0; padding:0;\">\r\n                                    <label class=\"control-label\">\r\n                                        Select Division\r\n                                    </label>\r\n                                    <div class=\"checkbox form-horizontal-checkbox\" *ngFor=\"let division of divisionList\" style=\"top:-10px;left:10px;\">\r\n                                        <label>\r\n                                            <input type=\"checkbox\" formControlName=\"divChk\" name=\"division\" [id]=\"division.ID\" [value]=\"division.ID\">\r\n                                            {{division.Name}}\r\n                                        </label>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                   \r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-md-12\">\r\n                    <div class=\"card card-calendar\">\r\n                        <div class=\"card-content ps-child\">\r\n                            <div id='wrap'>\r\n                                <div id='external-events'>\r\n                                    <h4>Contractors</h4>\r\n                                    <div class='fc-event' id=\"event\" #event>Barry S</div>\r\n                                    <div class='fc-event'>Peter K</div>\r\n                                    <div class='fc-event'>Jason L</div>\r\n                                    <div class='fc-event'>Harry A</div>\r\n                                    <div class='fc-event'>John S</div>\r\n                                    <div class='fc-event'>Steve S</div>\r\n                                    <div class='fc-event'>David W</div>\r\n                                    <div class='fc-event'>Ben C</div>\r\n                                    <div class='fc-event'>Gary L</div>\r\n                                    <div class='fc-event'>Jonno W</div>\r\n                                    <h4>Floor Staff</h4>\r\n                                    <div class='fc-event'>Hunter L</div>\r\n                                    <div class='fc-event'>Zach A</div>\r\n                                    <div class='fc-event'>Elijah S</div>\r\n                                    <div class='fc-event'>Harvey S</div>\r\n                                    <div class='fc-event'>Joel W</div>\r\n                                    <div class='fc-event'>Vin D</div>\r\n                                    <div class='fc-event'>Jacob L</div>\r\n                                    <div class='fc-event'>Sammy W</div>\r\n                                    <h4>Machines</h4>\r\n                                    <div class='fc-event'>CNC 1</div>\r\n                                    <div class='fc-event'>CNC 2</div>\r\n                                    <div class='fc-event'>CNC 3 </div>\r\n                                </div>\r\n                                <div id='calendar' #calendar></div>\r\n                                <div style='clear:both'></div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                </div>\r\n        </form>\r\n    </div>\n</div>\n"
+module.exports = "\r\n<title>Aspect Calendar</title>\n<div class=\"main-content\">\n    <div class=\"container-fluid\">\n        <div class=\"toolbar\">\r\n        </div>\n        <form [formGroup]=\"calendarForm\">\r\n            <div class=\"row\">\r\n                <div class=\"col-md-3\">\r\n                 \r\n                        <div class=\"card\">\r\n                            <div class=\"card-content\">\r\n                                <div class=\"form-group\" style=\"margin:0; padding:0;\">\r\n                                    <label class=\"control-label\">\r\n                                        Select Division\r\n                                    </label>\r\n                                    <div class=\"checkbox form-horizontal-checkbox\" *ngFor=\"let division of divisionList\" style=\"top:-10px;left:10px;\">\r\n                                        <label>\r\n                                            <input type=\"checkbox\" formControlName=\"divChk\" name=\"division\" [id]=\"division.ID\" [value]=\"division.ID\">\r\n                                            {{division.Name}}\r\n                                        </label>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                   \r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-md-12\">\r\n                    <div class=\"card card-calendar\">\r\n                        <div class=\"card-content ps-child\">\r\n                            <div id='wrap'>\r\n                                <div id='external-events'>\r\n                                    <h4>Manager</h4>\r\n                                    <ng-container *ngFor=\"let usr of autoUsers\">\r\n                                        <ng-container *ngIf=\"usr.RoleName == 'Manager'\">\r\n                                            <div class='fc-event' id=\"event\" #event>{{usr.UserName}}</div>\r\n                                        </ng-container>\r\n                                    </ng-container>\r\n                                    <h4>Project Manager</h4>\r\n                                    <ng-container *ngFor=\"let usr of autoUsers\">\r\n                                        <ng-container *ngIf=\"usr.RoleName == 'Project Manager'\">\r\n                                            <div class='fc-event'>{{usr.UserName}}</div>\r\n                                        </ng-container>\r\n                                    </ng-container>\r\n                                    <h4>Office</h4>\r\n                                    <ng-container *ngFor=\"let usr of autoUsers\">\r\n                                        <ng-container *ngIf=\"usr.RoleName == 'Office'\">\r\n                                            <div class='fc-event'>{{usr.UserName}}</div>\r\n                                        </ng-container>\r\n                                    </ng-container>\r\n                                    <h4>Worker Site</h4>\r\n                                    <ng-container *ngFor=\"let usr of autoUsers\">\r\n                                        <ng-container *ngIf=\"usr.RoleName == 'Worker - Site'\">\r\n                                            <div class='fc-event'>{{usr.UserName}}</div>\r\n                                        </ng-container>\r\n                                    </ng-container>\r\n                                    <h4>Worker Factory</h4>\r\n                                    <ng-container *ngFor=\"let usr of autoUsers\">\r\n                                        <ng-container *ngIf=\"usr.RoleName == 'Worker - Factory'\">\r\n                                            <div class='fc-event'>{{usr.UserName}}</div>\r\n                                        </ng-container>\r\n                                    </ng-container>\r\n                                    <h4>System Admin</h4>\r\n                                    <ng-container *ngFor=\"let usr of autoUsers\">\r\n                                        <ng-container *ngIf=\"usr.RoleName == 'System Admin'\">\r\n                                            <div class='fc-event'>{{usr.UserName}}</div>\r\n                                        </ng-container>\r\n                                    </ng-container>\r\n                                    </div>\r\n                                <div id='calendar' #calendar></div>\r\n                                <div style='clear:both'></div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                </div>\r\n        </form>\r\n    </div>\n</div>\n"
 
 /***/ }),
 
 /***/ "./src/app/calendar/calendar.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = "body {\n  margin-top: 40px !important;\n  text-align: center !important;\n  font-size: 14px !important;\n  font-family: \"Lucida Grande\",Helvetica,Arial,Verdana,sans-serif !important; }\n\n#wrap {\n  width: 1100px !important;\n  margin: 0 auto !important; }\n\n#external-events {\n  float: left !important;\n  width: 150px !important;\n  padding: 0 10px !important;\n  border: 1px solid #ccc !important;\n  background: #eee !important;\n  text-align: left !important; }\n\n#external-events h4 {\n  font-size: 16px !important;\n  margin-top: 0 !important;\n  padding-top: 1em !important; }\n\n#external-events .fc-event {\n  margin: 10px 0 !important;\n  cursor: pointer !important; }\n\n#external-events p {\n  margin: 1.5em 0 !important;\n  font-size: 11px !important;\n  color: #666 !important; }\n\n#external-events p input {\n  margin: 0 !important;\n  vertical-align: middle !important; }\n\n#calendar {\n  float: right !important;\n  width: 900px !important; }\n\n#wrap[_ngcontent-c1] {\n  width: 100% !important;\n  margin: 0 auto !important; }\n\n#calendar[_ngcontent-c1] {\n  float: right !important;\n  width: 81% !important; }\n\n.fc .fc-button-group > * {\n  float: left;\n  margin: 0 0 0 2px;\n  border-radius: 0 !important; }\n\n#external-events[_ngcontent-c1] {\n  float: left !important;\n  width: 200px !important; }\n\n.main-content {\n  margin-top: 20px !important; }\n\n.card.card-calendar {\n  margin: 15px 0px; }\n"
+module.exports = "body {\n  margin-top: 40px !important;\n  text-align: center !important;\n  font-size: 14px !important;\n  font-family: \"Lucida Grande\",Helvetica,Arial,Verdana,sans-serif !important; }\n\n#wrap {\n  width: 1100px !important;\n  margin: 0 auto !important; }\n\n#external-events {\n  float: left !important;\n  width: 150px !important;\n  padding: 0 10px !important;\n  border: 1px solid #ccc !important;\n  background: #eee !important;\n  text-align: left !important; }\n\n#external-events h4 {\n  font-size: 16px !important;\n  margin-top: 0 !important;\n  padding-top: 1em !important; }\n\n#external-events .fc-event {\n  margin: 10px 0 !important;\n  cursor: pointer !important; }\n\n#external-events p {\n  margin: 1.5em 0 !important;\n  font-size: 11px !important;\n  color: #666 !important; }\n\n#external-events p input {\n  margin: 0 !important;\n  vertical-align: middle !important; }\n\n#calendar {\n  float: right !important;\n  width: 900px !important; }\n\n#wrap[_ngcontent-c1] {\n  width: 100% !important;\n  margin: 0 auto !important; }\n\n#calendar[_ngcontent-c1] {\n  float: left !important;\n  width: 81% !important; }\n\n.fc .fc-button-group > * {\n  float: left;\n  margin: 0 0 0 2px;\n  border-radius: 0 !important; }\n\n#external-events[_ngcontent-c1] {\n  float: left !important;\n  width: 200px !important; }\n\n.main-content {\n  margin-top: 20px !important; }\n\n.card.card-calendar {\n  margin: 15px 0px; }\n"
 
 /***/ }),
 
@@ -96440,15 +96440,17 @@ module.exports = "body {\n  margin-top: 40px !important;\n  text-align: center !
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_commonService__ = __webpack_require__("./src/app/services/commonService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_divisionService__ = __webpack_require__("./src/app/services/divisionService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_jquery__ = __webpack_require__("./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_fullcalendar__ = __webpack_require__("./node_modules/fullcalendar/dist/fullcalendar.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_fullcalendar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_fullcalendar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_fullcalendar_scheduler__ = __webpack_require__("./node_modules/fullcalendar-scheduler/dist/scheduler.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_fullcalendar_scheduler___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_fullcalendar_scheduler__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_jqueryui__ = __webpack_require__("./node_modules/jqueryui/jquery-ui.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_jqueryui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_jqueryui__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_userService__ = __webpack_require__("./src/app/services/userService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_divisionService__ = __webpack_require__("./src/app/services/divisionService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_jobsService__ = __webpack_require__("./src/app/services/jobsService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_jquery__ = __webpack_require__("./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_fullcalendar__ = __webpack_require__("./node_modules/fullcalendar/dist/fullcalendar.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_fullcalendar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_fullcalendar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_fullcalendar_scheduler__ = __webpack_require__("./node_modules/fullcalendar-scheduler/dist/scheduler.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_fullcalendar_scheduler___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_fullcalendar_scheduler__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_jqueryui__ = __webpack_require__("./node_modules/jqueryui/jquery-ui.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_jqueryui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_jqueryui__);
 // IMPORTANT: this is a plugin which requires jQuery for initialisation and data manipulation
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -96470,106 +96472,172 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var CalendarComponent = /** @class */ (function () {
-    function CalendarComponent(http, router, formBuilder, commonService, divisionService, activatedRoute) {
+    function CalendarComponent(http, router, formBuilder, commonService, divisionService, activatedRoute, userService, jobService) {
         this.http = http;
         this.router = router;
         this.formBuilder = formBuilder;
         this.commonService = commonService;
         this.divisionService = divisionService;
         this.activatedRoute = activatedRoute;
+        this.userService = userService;
+        this.jobService = jobService;
         this.calendarForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormGroup"]({
             divChk: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]()
         });
+        this.jobData = [];
     }
     CalendarComponent.prototype.ngOnInit = function () {
         if (JSON.parse(sessionStorage.getItem('LogEmployee')) != null) {
+            this.userProfile = JSON.parse(sessionStorage.getItem('LogEmployee'));
+            this.getAutocompleteUser();
             this.GetAllDivisions();
-            __WEBPACK_IMPORTED_MODULE_7_jquery__(function () {
-                __WEBPACK_IMPORTED_MODULE_7_jquery__('#external-events .fc-event').each(function () {
-                    __WEBPACK_IMPORTED_MODULE_7_jquery__(this).data('event', {
-                        title: __WEBPACK_IMPORTED_MODULE_7_jquery__["trim"](__WEBPACK_IMPORTED_MODULE_7_jquery__(this).text()),
-                        stick: true
-                    });
-                    __WEBPACK_IMPORTED_MODULE_7_jquery__(this).draggable({
-                        zIndex: 999,
-                        revert: true,
-                        revertDuration: 0
-                    });
-                });
-                var containerEl = __WEBPACK_IMPORTED_MODULE_7_jquery__('#calendar');
-                containerEl.fullCalendar({
-                    schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
-                    editable: true,
-                    droppable: true,
-                    aspectRatio: 1.2,
-                    scrollTime: '06:00',
-                    header: {
-                        left: 'today prev,next',
-                        center: 'title',
-                        right: 'timelineDay,agendaWeek,month'
-                    },
-                    defaultView: 'timelineDay',
-                    resourceLabelText: 'Jobs',
-                    //resourceGroupField: 'jobnum',
-                    resources: [
-                        {
-                            id: 'b', title: '23405 - Impact Homes', eventColor: 'green', children: [
-                                { id: 'd1', title: '23405-001' },
-                                { id: 'd2', title: '23405-002' },
-                                { id: 'd1', title: '23405-003' }
-                            ]
-                        },
-                        {
-                            id: 'c', title: '21425 - Corella', eventColor: 'orange', children: [
-                                { id: 'd1', title: '21425-001' },
-                                { id: 'd2', title: '21425-002' },
-                                { id: 'd1', title: '21425-003' }
-                            ]
-                        },
-                        {
-                            id: 'd', title: '23423 - Jumbo Blocks', eventColor: 'blue', children: [
-                                { id: 'd1', title: '21525-001' },
-                                { id: 'd2', title: '21525-002' },
-                                { id: 'd1', title: '21525-003' }
-                            ]
-                        },
-                    ],
-                    events: [
-                        { id: '1', resourceId: 'b', start: '2018-07-12T02:00:00', end: '2018-02-07T07:00:00', title: 'event 1' },
-                        { id: '2', resourceId: 'c', start: '2018-02-07T05:00:00', end: '2018-02-07T22:00:00', title: 'event 2' },
-                        { id: '3', resourceId: 'd', start: '2018-02-06', end: '2018-02-08', title: 'event 3' },
-                        { id: '4', resourceId: 'e', start: '2018-02-07T03:00:00', end: '2018-02-07T08:00:00', title: 'event 4' },
-                        { id: '5', resourceId: 'f', start: '2018-02-07T00:30:00', end: '2018-02-07T02:30:00', title: 'event 5' }
-                    ],
-                    drop: function (date) {
-                        if (__WEBPACK_IMPORTED_MODULE_7_jquery__('#drop-remove').is(':checked')) {
-                            __WEBPACK_IMPORTED_MODULE_7_jquery__(this).remove();
-                        }
-                    },
-                    eventReceive: function (event) {
-                        console.log('eventReceive', event);
-                    },
-                    eventDrop: function (event) {
-                        console.log('eventDrop', event);
-                    }
-                });
-            });
+            this.getJobDetailForCalendar();
+            //var jobTable = JSON.parse(localStorage.getItem("JobData"));
+            //$(function () {
+            //    $('#external-events .fc-event').each(function () {
+            //        $(this).data('event', {
+            //            title: $.trim($(this).text()),
+            //            stick: true
+            //        });
+            //        $(this).draggable({
+            //            zIndex: 999,
+            //            revert: true,
+            //            revertDuration: 0
+            //        });
+            //    });
+            //    $('.loader').show();
+            //    (<any>$('#calendar')).fullCalendar({
+            //        schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
+            //        editable: true,
+            //        droppable: true,
+            //        aspectRatio: 1.2,
+            //        scrollTime: '06:00',
+            //        header: {
+            //            left: 'today prev,next',
+            //            center: 'title',
+            //            right: 'timelineDay,agendaWeek,month'
+            //        },
+            //        defaultView: 'timelineDay',
+            //        resourceLabelText: 'Jobs',
+            //        resourceGroupField: 'jobnum',
+            //        resources: jobTable,
+            //        events: [
+            //            //{ id: '1', resourceId: 'b', start: '2018-07-12T02:00:00', end: '2018-02-07T07:00:00', title: 'event 1' },
+            //            //{ id: '2', resourceId: 'c', start: '2018-02-07T05:00:00', end: '2018-02-07T22:00:00', title: 'event 2' },
+            //            //{ id: '3', resourceId: 'd', start: '2018-02-06', end: '2018-02-08', title: 'event 3' },
+            //            //{ id: '4', resourceId: 'e', start: '2018-02-07T03:00:00', end: '2018-02-07T08:00:00', title: 'event 4' },
+            //            //{ id: '5', resourceId: 'f', start: '2018-02-07T00:30:00', end: '2018-02-07T02:30:00', title: 'event 5' }
+            //        ],
+            //        drop: function (date) {
+            //            if ($('#drop-remove').is(':checked')) {
+            //                $(this).remove();
+            //            }
+            //        },
+            //        eventReceive: function (event) {
+            //            console.log('eventReceive', event);
+            //        },
+            //        eventDrop: function (event) {
+            //            console.log('eventDrop', event);
+            //        }
+            //    });
+            //    $('.loader').hide();
+            //});
         }
         else {
             this.router.navigate(['pages/login']);
         }
     };
+    CalendarComponent.prototype.getAutocompleteUser = function () {
+        var _this = this;
+        __WEBPACK_IMPORTED_MODULE_9_jquery__('.loader').show();
+        this.userService.GetRoleBasedUser(this.commonService.baseApiUrl, this.userProfile.ID).subscribe(function (data) {
+            _this.autoUsers = null;
+            var dataUsers = JSON.stringify(data);
+            var userParse = JSON.parse(dataUsers);
+            var userInfo = JSON.parse(userParse["_body"]);
+            if (userInfo != null) {
+                _this.autoUsers = userInfo;
+                __WEBPACK_IMPORTED_MODULE_9_jquery__('.loader').hide();
+            }
+        });
+    };
+    CalendarComponent.prototype.getJobDetailForCalendar = function () {
+        var _this = this;
+        __WEBPACK_IMPORTED_MODULE_9_jquery__('.loader').show();
+        this.jobService.GetJobDetailForCalendar(this.commonService.baseApiUrl, this.userProfile.ID).subscribe(function (data) {
+            _this.jobData = [];
+            //localStorage.removeItem("JobData");
+            var dataUsers = JSON.stringify(data);
+            var userParse = JSON.parse(dataUsers);
+            var userInfo = JSON.parse(userParse["_body"]);
+            if (userInfo != null) {
+                for (var _i = 0, userInfo_1 = userInfo; _i < userInfo_1.length; _i++) {
+                    var job = userInfo_1[_i];
+                    var jobJson = { id: job.WorkOrdID, jobnum: job.JobName, title: job.WorkOrderNo, eventColor: job.ColorCode };
+                    _this.jobData.push(jobJson);
+                }
+                var jsonObj = JSON.stringify(_this.jobData);
+                var jsonData = JSON.parse(jsonObj);
+                __WEBPACK_IMPORTED_MODULE_9_jquery__(function () {
+                    __WEBPACK_IMPORTED_MODULE_9_jquery__('#external-events .fc-event').each(function () {
+                        __WEBPACK_IMPORTED_MODULE_9_jquery__(this).data('event', {
+                            title: __WEBPACK_IMPORTED_MODULE_9_jquery__["trim"](__WEBPACK_IMPORTED_MODULE_9_jquery__(this).text()),
+                            stick: true
+                        });
+                        __WEBPACK_IMPORTED_MODULE_9_jquery__(this).draggable({
+                            zIndex: 999,
+                            revert: true,
+                            revertDuration: 0
+                        });
+                    });
+                    __WEBPACK_IMPORTED_MODULE_9_jquery__('.loader').show();
+                    __WEBPACK_IMPORTED_MODULE_9_jquery__('#calendar').fullCalendar({
+                        schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
+                        editable: true,
+                        droppable: true,
+                        aspectRatio: 1.2,
+                        scrollTime: '06:00',
+                        header: {
+                            left: 'today prev,next',
+                            center: 'title',
+                            right: 'timelineDay,agendaWeek,month'
+                        },
+                        defaultView: 'timelineDay',
+                        resourceLabelText: 'Jobs',
+                        resourceGroupField: 'jobnum',
+                        resources: jsonData,
+                        events: [],
+                        drop: function (date) {
+                            if (__WEBPACK_IMPORTED_MODULE_9_jquery__('#drop-remove').is(':checked')) {
+                                __WEBPACK_IMPORTED_MODULE_9_jquery__(this).remove();
+                            }
+                        },
+                        eventReceive: function (event) {
+                            console.log('eventReceive', event);
+                        },
+                        eventDrop: function (event) {
+                            console.log('eventDrop', event);
+                        }
+                    });
+                    __WEBPACK_IMPORTED_MODULE_9_jquery__('.loader').hide();
+                });
+                //localStorage.setItem("JobData", JSON.stringify(this.jobData));
+                //$('.loader').hide();
+            }
+        });
+    };
     CalendarComponent.prototype.GetAllDivisions = function () {
         var _this = this;
-        __WEBPACK_IMPORTED_MODULE_7_jquery__('.loader').show();
+        __WEBPACK_IMPORTED_MODULE_9_jquery__('.loader').show();
         this.divisionService.GetAllDivisions(this.commonService.baseApiUrl).subscribe(function (data) {
             var dataDiv = JSON.stringify(data);
             var divParse = JSON.parse(dataDiv);
             var divList = JSON.parse(divParse["_body"]);
             if (divList != null) {
                 _this.divisionList = divList;
-                console.log(_this.divisionList);
             }
         });
     };
@@ -96578,14 +96646,16 @@ var CalendarComponent = /** @class */ (function () {
             selector: 'app-calendar-cmp',
             template: __webpack_require__("./src/app/calendar/calendar.component.html"),
             styles: [__webpack_require__("./src/app/calendar/calendar.component.scss")],
-            providers: [__WEBPACK_IMPORTED_MODULE_5__services_commonService__["a" /* CommonService */], __WEBPACK_IMPORTED_MODULE_6__services_divisionService__["a" /* DivisionService */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_5__services_commonService__["a" /* CommonService */], __WEBPACK_IMPORTED_MODULE_7__services_divisionService__["a" /* DivisionService */], __WEBPACK_IMPORTED_MODULE_6__services_userService__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_8__services_jobsService__["a" /* JobsService */]]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["Http"],
             __WEBPACK_IMPORTED_MODULE_3__angular_router__["d" /* Router */],
             __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"],
             __WEBPACK_IMPORTED_MODULE_5__services_commonService__["a" /* CommonService */],
-            __WEBPACK_IMPORTED_MODULE_6__services_divisionService__["a" /* DivisionService */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]])
+            __WEBPACK_IMPORTED_MODULE_7__services_divisionService__["a" /* DivisionService */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */],
+            __WEBPACK_IMPORTED_MODULE_6__services_userService__["a" /* UserService */],
+            __WEBPACK_IMPORTED_MODULE_8__services_jobsService__["a" /* JobsService */]])
     ], CalendarComponent);
     return CalendarComponent;
 }());

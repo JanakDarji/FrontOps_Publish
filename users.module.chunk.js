@@ -427,6 +427,9 @@ var UsersComponent = /** @class */ (function () {
         this.stageUser.controls["country"].setValue("1");
         this.getStatesByCountry("1");
         this.stageUser.controls["state"].setValue("5");
+        this.errorMsg = null;
+        $("#lblEmail").html('');
+        $("#lblEmail").html('Email <small>(required) </small>');
     };
     UsersComponent.prototype.createUser = function () {
         var _this = this;
