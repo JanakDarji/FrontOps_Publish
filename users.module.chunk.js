@@ -483,6 +483,7 @@ var UsersComponent = /** @class */ (function () {
                 $('#myModal').modal('toggle');
                 _this.showSwal("There is some error while user creation/update!!");
                 _this.isUserCreted = false;
+                $('.loader').hide();
             }
         }, function (error) {
             console.log(error.json());
@@ -605,7 +606,7 @@ var UsersComponent = /** @class */ (function () {
                 _this.errorMsg = "Email (already exists)";
             }
             else {
-                _this.errorMsg = null;
+                $("#lblEmail").html('');
                 $("#lblEmail").html('Email <small>(required) </small>');
             }
         });

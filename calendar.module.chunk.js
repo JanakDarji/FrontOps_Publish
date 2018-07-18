@@ -96594,6 +96594,7 @@ var CalendarComponent = /** @class */ (function () {
                             revertDuration: 0
                         });
                     });
+                    //console.log(jsonData);
                     __WEBPACK_IMPORTED_MODULE_9_jquery__('.loader').show();
                     __WEBPACK_IMPORTED_MODULE_9_jquery__('#calendar').fullCalendar({
                         schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
