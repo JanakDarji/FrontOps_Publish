@@ -96496,18 +96496,19 @@ var CalendarComponent = /** @class */ (function () {
             this.GetAllDivisions();
             this.getJobDetailForCalendar();
             //var jobTable = JSON.parse(localStorage.getItem("JobData"));
-            //$(function () {
-            //    $('#external-events .fc-event').each(function () {
-            //        $(this).data('event', {
-            //            title: $.trim($(this).text()),
-            //            stick: true
-            //        });
-            //        $(this).draggable({
-            //            zIndex: 999,
-            //            revert: true,
-            //            revertDuration: 0
-            //        });
-            //    });
+            __WEBPACK_IMPORTED_MODULE_9_jquery__(function () {
+                __WEBPACK_IMPORTED_MODULE_9_jquery__('#external-events .fc-event').each(function () {
+                    __WEBPACK_IMPORTED_MODULE_9_jquery__(this).data('event', {
+                        title: __WEBPACK_IMPORTED_MODULE_9_jquery__["trim"](__WEBPACK_IMPORTED_MODULE_9_jquery__(this).text()),
+                        stick: true
+                    });
+                    __WEBPACK_IMPORTED_MODULE_9_jquery__(this).draggable({
+                        zIndex: 999,
+                        revert: true,
+                        revertDuration: 0
+                    });
+                });
+            });
             //    $('.loader').show();
             //    (<any>$('#calendar')).fullCalendar({
             //        schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
