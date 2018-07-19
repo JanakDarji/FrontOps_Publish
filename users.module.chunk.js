@@ -193,7 +193,7 @@ var UsersComponent = /** @class */ (function () {
                 onNext: function (tab, navigation, index) {
                     self.userEmailExist($('#txtEmail').val());
                     var $valid = $('.wizard-card form').valid();
-                    if (!$valid && self.errorMsg == 'Email (already exists)') {
+                    if (!$valid) {
                         $validator_1.focusInvalid();
                         return false;
                     }
@@ -598,7 +598,7 @@ var UsersComponent = /** @class */ (function () {
         var _this = this;
         //var email = event.target.value;
         var empID = localStorage.getItem("EmployeeId");
-        this.userService.CheckUserEmailExist(this.commonService.baseApiUrl, email, empID).subscribe(function (data) {
+        this.userService.CheckUserEmailExist(this.commonService.baseApiUrl, email.trim(), empID).subscribe(function (data) {
             var dataEmp = JSON.stringify(data);
             var empParse = JSON.parse(dataEmp);
             var empSts = JSON.parse(empParse["_body"]);
