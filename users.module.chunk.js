@@ -191,11 +191,21 @@ var UsersComponent = /** @class */ (function () {
                 'nextSelector': '.btn-next',
                 'previousSelector': '.btn-previous',
                 onNext: function (tab, navigation, index) {
-                    self.userEmailExist($('#txtEmail').val());
-                    var $valid = $('.wizard-card form').valid();
-                    if (!$valid) {
-                        $validator_1.focusInvalid();
-                        return false;
+                    if (index == 1) {
+                        var aa = self.userEmailExist($('#txtEmail').val());
+                        alert(aa);
+                        var $valid = $('.wizard-card form').valid();
+                        if (!$valid) {
+                            $validator_1.focusInvalid();
+                            return false;
+                        }
+                    }
+                    else {
+                        var $valid = $('.wizard-card form').valid();
+                        if (!$valid) {
+                            $validator_1.focusInvalid();
+                            return false;
+                        }
                     }
                 },
                 onInit: function (tab, navigation, index) {
@@ -596,9 +606,10 @@ var UsersComponent = /** @class */ (function () {
     };
     UsersComponent.prototype.userEmailExist = function (email) {
         var _this = this;
+        alert('call');
         //var email = event.target.value;
         var empID = localStorage.getItem("EmployeeId");
-        this.userService.CheckUserEmailExist(this.commonService.baseApiUrl, email.trim(), empID).subscribe(function (data) {
+        return this.userService.CheckUserEmailExist(this.commonService.baseApiUrl, email.trim(), empID).map(function (data) {
             var dataEmp = JSON.stringify(data);
             var empParse = JSON.parse(dataEmp);
             var empSts = JSON.parse(empParse["_body"]);
@@ -610,6 +621,7 @@ var UsersComponent = /** @class */ (function () {
             else {
                 $("#lblEmail").html('Email <small>(required) </small>');
             }
+            return empSts;
         });
     };
     UsersComponent.prototype.getAllEmployee = function () {

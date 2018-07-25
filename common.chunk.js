@@ -43480,6 +43480,25 @@ var WorkOrderService = /** @class */ (function () {
         return this.http.post(baseurl + "GetJobMapForDashboard/", contact);
     };
     ;
+    WorkOrderService.prototype.getMaintenanceMapForDashboard = function (baseurl, contact) {
+        return this.http.post(baseurl + "GetMaintenanceMapForDashboard/", contact);
+    };
+    ;
+    WorkOrderService.prototype.getAssignWorkOrderForDashboard = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetAssignWorkOrderForDashboard/" + contact);
+    };
+    WorkOrderService.prototype.GetWorkOrderForPieChartForDashBoard = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetWorkOrderAssignmentRoleBased/" + contact);
+    };
+    WorkOrderService.prototype.GetCompleteWorkOrderAssignmentRoleBased = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetCompleteWorkOrderAssignmentRoleBased/" + contact);
+    };
+    WorkOrderService.prototype.GetRoleBasedTimeSheetHours = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetRoleBasedTimeSheetHours/" + contact);
+    };
+    WorkOrderService.prototype.GetRoleBasedMaintenance = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetRoleBasedMaintenance/" + contact);
+    };
     WorkOrderService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]])
