@@ -82,16 +82,16 @@ var DashboardComponent = /** @class */ (function () {
             this.latitude = -33.865143;
             this.longitude = 151.209900;
             this.zoom = 10;
+            this.getAllWorkCountForDashboards();
+            this.getAssignWorkOrderForDashboard();
+            this.getWorkDetailForPieChart();
+            this.initLineChart();
+            this.initPieChart();
+            this.getDivision();
         }
         else {
             this.router.navigate(['pages/login']);
         }
-        this.getAllWorkCountForDashboards();
-        this.getAssignWorkOrderForDashboard();
-        this.getWorkDetailForPieChart();
-        this.initLineChart();
-        this.initPieChart();
-        this.getDivision();
     };
     DashboardComponent.prototype.ngAfterViewInit = function () {
     };
