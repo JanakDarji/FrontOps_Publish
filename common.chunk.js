@@ -43013,6 +43013,10 @@ var DivisionService = /** @class */ (function () {
         return this.http.get(baseurl + "GetDivisionByUser/" + contact);
     };
     ;
+    DivisionService.prototype.GetDivisionForCalendar = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetDivisionForCalendar/" + contact);
+    };
+    ;
     DivisionService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]])
@@ -43052,6 +43056,10 @@ var JobsService = /** @class */ (function () {
     ;
     JobsService.prototype.GetJobDetailForCalendar = function (baseurl, contact) {
         return this.http.get(baseurl + "GetJobDetailForCalendar/" + contact);
+    };
+    ;
+    JobsService.prototype.GetClientForCalendar = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetClientForCalendar/" + contact);
     };
     ;
     JobsService = __decorate([
@@ -43363,6 +43371,10 @@ var UserService = /** @class */ (function () {
         return this.http.get(baseurl + "GetAllEmployee/");
     };
     ;
+    UserService.prototype.GetProjectManagerForCalendar = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetProjectManagerForCalendar/" + contact);
+    };
+    ;
     UserService.prototype.GetAutocompleteUser = function (baseurl) {
         return this.http.get(baseurl + "GetAutocompleteUser/");
     };
@@ -43448,6 +43460,10 @@ var WorkOrderService = /** @class */ (function () {
         return this.http.get(baseurl + "GetWorkOrdersByWorkOrdID/" + contact);
     };
     ;
+    WorkOrderService.prototype.GetWorkOrderForCalender = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetWorkOrderForCalender/" + contact);
+    };
+    ;
     WorkOrderService.prototype.CreateWorkOrderAssignment = function (baseurl, contact) {
         return this.http.post(baseurl + "CreateWorkOrderAssignment/", contact);
     };
@@ -43493,12 +43509,23 @@ var WorkOrderService = /** @class */ (function () {
     WorkOrderService.prototype.GetCompleteWorkOrderAssignmentRoleBased = function (baseurl, contact) {
         return this.http.get(baseurl + "GetCompleteWorkOrderAssignmentRoleBased/" + contact);
     };
+    WorkOrderService.prototype.GetWorkOrderAssignmentForCalendar = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetWorkOrderAssignmentForCalendar/" + contact);
+    };
     WorkOrderService.prototype.GetRoleBasedTimeSheetHours = function (baseurl, contact) {
         return this.http.get(baseurl + "GetRoleBasedTimeSheetHours/" + contact);
     };
     WorkOrderService.prototype.GetRoleBasedMaintenance = function (baseurl, contact) {
         return this.http.get(baseurl + "GetRoleBasedMaintenance/" + contact);
     };
+    WorkOrderService.prototype.IsWorkOrderAssignment = function (baseurl, contact, value) {
+        return this.http.get(baseurl + "IsWorkOrderAssignment/" + contact + "/" + value);
+    };
+    ;
+    WorkOrderService.prototype.GetWorkOrderAssignmentByWOID = function (baseurl, contact, value) {
+        return this.http.get(baseurl + "GetWorkOrderAssignmentByWOID/" + contact + "/" + value);
+    };
+    ;
     WorkOrderService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]])

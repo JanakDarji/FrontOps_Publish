@@ -1,5 +1,717 @@
 webpackJsonp(["calendar.module"],{
 
+/***/ "./node_modules/angular2-multiselect-dropdown/angular2-multiselect-dropdown.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__multiselect_component__ = __webpack_require__("./node_modules/angular2-multiselect-dropdown/multiselect.component.js");
+/* unused harmony reexport AngularMultiSelect */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__clickOutside__ = __webpack_require__("./node_modules/angular2-multiselect-dropdown/clickOutside.js");
+/* unused harmony reexport ClickOutsideDirective */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__list_filter__ = __webpack_require__("./node_modules/angular2-multiselect-dropdown/list-filter.js");
+/* unused harmony reexport ListFilterPipe */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__menu_item__ = __webpack_require__("./node_modules/angular2-multiselect-dropdown/menu-item.js");
+/* unused harmony reexport Item */
+/* unused harmony reexport TemplateRenderer */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__multiselect_component__["a"]; });
+
+
+
+
+
+
+//# sourceMappingURL=angular2-multiselect-dropdown.js.map
+
+/***/ }),
+
+/***/ "./node_modules/angular2-multiselect-dropdown/clickOutside.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClickOutsideDirective; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ScrollDirective; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return styleDirective; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setPosition; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+
+var ClickOutsideDirective = /** @class */ (function () {
+    function ClickOutsideDirective(_elementRef) {
+        this._elementRef = _elementRef;
+        this.clickOutside = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+    }
+    ClickOutsideDirective.prototype.onClick = function (event, targetElement) {
+        if (!targetElement) {
+            return;
+        }
+        var clickedInside = this._elementRef.nativeElement.contains(targetElement);
+        if (!clickedInside) {
+            this.clickOutside.emit(event);
+        }
+    };
+    ClickOutsideDirective.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"], args: [{
+                    selector: '[clickOutside]'
+                },] },
+    ];
+    /** @nocollapse */
+    ClickOutsideDirective.ctorParameters = function () { return [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"], },
+    ]; };
+    ClickOutsideDirective.propDecorators = {
+        'clickOutside': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'onClick': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"], args: ['document:click', ['$event', '$event.target'],] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"], args: ['document:touchstart', ['$event', '$event.target'],] },],
+    };
+    return ClickOutsideDirective;
+}());
+
+var ScrollDirective = /** @class */ (function () {
+    function ScrollDirective(_elementRef) {
+        this._elementRef = _elementRef;
+        this.scroll = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+    }
+    ScrollDirective.prototype.onClick = function (event, targetElement) {
+        this.scroll.emit(event);
+    };
+    ScrollDirective.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"], args: [{
+                    selector: '[scroll]'
+                },] },
+    ];
+    /** @nocollapse */
+    ScrollDirective.ctorParameters = function () { return [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"], },
+    ]; };
+    ScrollDirective.propDecorators = {
+        'scroll': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'onClick': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"], args: ['scroll', ['$event'],] },],
+    };
+    return ScrollDirective;
+}());
+
+var styleDirective = /** @class */ (function () {
+    function styleDirective(el) {
+        this.el = el;
+    }
+    styleDirective.prototype.ngOnInit = function () {
+        this.el.nativeElement.style.top = this.styleVal;
+    };
+    styleDirective.prototype.ngOnChanges = function () {
+        this.el.nativeElement.style.top = this.styleVal;
+    };
+    styleDirective.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"], args: [{
+                    selector: '[styleProp]'
+                },] },
+    ];
+    /** @nocollapse */
+    styleDirective.ctorParameters = function () { return [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"], },
+    ]; };
+    styleDirective.propDecorators = {
+        'styleVal': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ['styleProp',] },],
+    };
+    return styleDirective;
+}());
+
+var setPosition = /** @class */ (function () {
+    function setPosition(el) {
+        this.el = el;
+    }
+    setPosition.prototype.ngOnInit = function () {
+        if (this.height) {
+            this.el.nativeElement.style.bottom = parseInt(this.height + 15 + "") + 'px';
+        }
+    };
+    setPosition.prototype.ngOnChanges = function () {
+        if (this.height) {
+            this.el.nativeElement.style.bottom = parseInt(this.height + 15 + "") + 'px';
+        }
+    };
+    setPosition.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"], args: [{
+                    selector: '[setPosition]'
+                },] },
+    ];
+    /** @nocollapse */
+    setPosition.ctorParameters = function () { return [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"], },
+    ]; };
+    setPosition.propDecorators = {
+        'height': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ['setPosition',] },],
+    };
+    return setPosition;
+}());
+
+//# sourceMappingURL=clickOutside.js.map
+
+/***/ }),
+
+/***/ "./node_modules/angular2-multiselect-dropdown/list-filter.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListFilterPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+
+var ListFilterPipe = /** @class */ (function () {
+    function ListFilterPipe() {
+    }
+    ListFilterPipe.prototype.transform = function (items, filter, searchBy) {
+        var _this = this;
+        if (!items || !filter) {
+            return items;
+        }
+        return items.filter(function (item) { return _this.applyFilter(item, filter, searchBy); });
+    };
+    ListFilterPipe.prototype.applyFilter = function (item, filter, searchBy) {
+        var found = false;
+        if (searchBy.length > 0) {
+            for (var t = 0; t < searchBy.length; t++) {
+                if (filter && item[searchBy[t]] && item[searchBy[t]] != "") {
+                    if (item[searchBy[t]].toString().toLowerCase().indexOf(filter.toLowerCase()) >= 0) {
+                        found = true;
+                    }
+                }
+            }
+        }
+        else {
+            for (var prop in item) {
+                if (filter && item[prop]) {
+                    if (item[prop].toString().toLowerCase().indexOf(filter.toLowerCase()) >= 0) {
+                        found = true;
+                    }
+                }
+            }
+        }
+        return found;
+    };
+    ListFilterPipe.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"], args: [{
+                    name: 'listFilter',
+                    pure: false
+                },] },
+    ];
+    /** @nocollapse */
+    ListFilterPipe.ctorParameters = function () { return []; };
+    return ListFilterPipe;
+}());
+
+//# sourceMappingURL=list-filter.js.map
+
+/***/ }),
+
+/***/ "./node_modules/angular2-multiselect-dropdown/menu-item.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Item; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Badge; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return Search; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return TemplateRenderer; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+
+var Item = /** @class */ (function () {
+    function Item() {
+    }
+    Item.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"], args: [{
+                    selector: 'c-item',
+                    template: ""
+                },] },
+    ];
+    /** @nocollapse */
+    Item.ctorParameters = function () { return []; };
+    Item.propDecorators = {
+        'template': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ContentChild"], args: [__WEBPACK_IMPORTED_MODULE_0__angular_core__["TemplateRef"],] },],
+    };
+    return Item;
+}());
+
+var Badge = /** @class */ (function () {
+    function Badge() {
+    }
+    Badge.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"], args: [{
+                    selector: 'c-badge',
+                    template: ""
+                },] },
+    ];
+    /** @nocollapse */
+    Badge.ctorParameters = function () { return []; };
+    Badge.propDecorators = {
+        'template': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ContentChild"], args: [__WEBPACK_IMPORTED_MODULE_0__angular_core__["TemplateRef"],] },],
+    };
+    return Badge;
+}());
+
+var Search = /** @class */ (function () {
+    function Search() {
+    }
+    Search.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"], args: [{
+                    selector: 'c-search',
+                    template: ""
+                },] },
+    ];
+    /** @nocollapse */
+    Search.ctorParameters = function () { return []; };
+    Search.propDecorators = {
+        'template': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ContentChild"], args: [__WEBPACK_IMPORTED_MODULE_0__angular_core__["TemplateRef"],] },],
+    };
+    return Search;
+}());
+
+var TemplateRenderer = /** @class */ (function () {
+    function TemplateRenderer(viewContainer) {
+        this.viewContainer = viewContainer;
+    }
+    TemplateRenderer.prototype.ngOnInit = function () {
+        this.view = this.viewContainer.createEmbeddedView(this.data.template, {
+            '\$implicit': this.data,
+            'item': this.item
+        });
+    };
+    TemplateRenderer.prototype.ngOnDestroy = function () {
+        this.view.destroy();
+    };
+    TemplateRenderer.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"], args: [{
+                    selector: 'c-templateRenderer',
+                    template: ""
+                },] },
+    ];
+    /** @nocollapse */
+    TemplateRenderer.ctorParameters = function () { return [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewContainerRef"], },
+    ]; };
+    TemplateRenderer.propDecorators = {
+        'data': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'item': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+    };
+    return TemplateRenderer;
+}());
+
+//# sourceMappingURL=menu-item.js.map
+
+/***/ }),
+
+/***/ "./node_modules/angular2-multiselect-dropdown/multiselect.component.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export DROPDOWN_CONTROL_VALUE_ACCESSOR */
+/* unused harmony export DROPDOWN_CONTROL_VALIDATION */
+/* unused harmony export AngularMultiSelect */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AngularMultiSelectModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__multiselect_model__ = __webpack_require__("./node_modules/angular2-multiselect-dropdown/multiselect.model.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__clickOutside__ = __webpack_require__("./node_modules/angular2-multiselect-dropdown/clickOutside.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__list_filter__ = __webpack_require__("./node_modules/angular2-multiselect-dropdown/list-filter.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__menu_item__ = __webpack_require__("./node_modules/angular2-multiselect-dropdown/menu-item.js");
+
+
+
+
+
+
+
+var DROPDOWN_CONTROL_VALUE_ACCESSOR = {
+    provide: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["NG_VALUE_ACCESSOR"],
+    useExisting: Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["forwardRef"])(function () { return AngularMultiSelect; }),
+    multi: true
+};
+var DROPDOWN_CONTROL_VALIDATION = {
+    provide: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["NG_VALIDATORS"],
+    useExisting: Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["forwardRef"])(function () { return AngularMultiSelect; }),
+    multi: true,
+};
+var noop = function () {
+};
+var AngularMultiSelect = /** @class */ (function () {
+    function AngularMultiSelect(_elementRef, cdr) {
+        this._elementRef = _elementRef;
+        this.cdr = cdr;
+        this.onSelect = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.onDeSelect = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.onSelectAll = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.onDeSelectAll = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.onOpen = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.onClose = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.isActive = false;
+        this.isSelectAll = false;
+        this.chunkIndex = [];
+        this.cachedItems = [];
+        this.itemHeight = 41.6;
+        this.defaultSettings = {
+            singleSelection: false,
+            text: 'Select',
+            enableCheckAll: true,
+            selectAllText: 'Select All',
+            unSelectAllText: 'UnSelect All',
+            enableSearchFilter: false,
+            searchBy: [],
+            maxHeight: 300,
+            badgeShowLimit: 999999999999,
+            classes: '',
+            disabled: false,
+            searchPlaceholderText: 'Search',
+            showCheckbox: true,
+            noDataLabel: 'No Data Available',
+            searchAutofocus: true,
+            lazyLoading: false,
+            labelKey: 'itemName',
+            primaryKey: 'id',
+            position: 'bottom'
+        };
+        this.onTouchedCallback = noop;
+        this.onChangeCallback = noop;
+    }
+    AngularMultiSelect.prototype.ngOnInit = function () {
+        var _this = this;
+        this.settings = Object.assign(this.defaultSettings, this.settings);
+        if (this.settings.groupBy) {
+            this.groupedData = this.transformData(this.data, this.settings.groupBy);
+        }
+        this.totalRows = (this.data && this.data.length);
+        this.cachedItems = this.data;
+        this.screenItemsLen = Math.ceil(this.settings.maxHeight / this.itemHeight);
+        this.cachedItemsLen = this.screenItemsLen * 3;
+        this.totalHeight = this.itemHeight * this.totalRows;
+        this.maxBuffer = this.screenItemsLen * this.itemHeight;
+        this.lastScrolled = 0;
+        this.renderChunk(0, this.cachedItemsLen / 2);
+        if (this.settings.position == 'top') {
+            setTimeout(function () {
+                _this.selectedListHeight = { val: 0 };
+                _this.selectedListHeight.val = _this.selectedListElem.nativeElement.clientHeight;
+            });
+        }
+    };
+    AngularMultiSelect.prototype.ngOnChanges = function (changes) {
+        if (changes.data && !changes.data.firstChange) {
+            if (this.settings.groupBy) {
+                this.groupedData = this.transformData(this.data, this.settings.groupBy);
+                if (this.data.length == 0) {
+                    this.selectedItems = [];
+                }
+            }
+        }
+        if (changes.settings && !changes.settings.firstChange) {
+            this.settings = Object.assign(this.defaultSettings, this.settings);
+        }
+    };
+    AngularMultiSelect.prototype.ngDoCheck = function () {
+        if (this.selectedItems) {
+            if (this.selectedItems.length == 0 || this.data.length == 0 || this.selectedItems.length < this.data.length) {
+                this.isSelectAll = false;
+            }
+        }
+    };
+    AngularMultiSelect.prototype.ngAfterViewInit = function () {
+        if (this.settings.lazyLoading) {
+            this._elementRef.nativeElement.getElementsByClassName("lazyContainer")[0].addEventListener('scroll', this.onScroll.bind(this));
+        }
+    };
+    AngularMultiSelect.prototype.ngAfterViewChecked = function () {
+        if (this.selectedListElem.nativeElement.clientHeight && this.settings.position == 'top' && this.selectedListHeight) {
+            this.selectedListHeight.val = this.selectedListElem.nativeElement.clientHeight;
+            this.cdr.detectChanges();
+        }
+    };
+    AngularMultiSelect.prototype.onItemClick = function (item, index, evt) {
+        if (this.settings.disabled) {
+            return false;
+        }
+        var found = this.isSelected(item);
+        var limit = this.selectedItems.length < this.settings.limitSelection ? true : false;
+        if (!found) {
+            if (this.settings.limitSelection) {
+                if (limit) {
+                    this.addSelected(item);
+                    this.onSelect.emit(item);
+                }
+            }
+            else {
+                this.addSelected(item);
+                this.onSelect.emit(item);
+            }
+        }
+        else {
+            this.removeSelected(item);
+            this.onDeSelect.emit(item);
+        }
+        if (this.isSelectAll || this.data.length > this.selectedItems.length) {
+            this.isSelectAll = false;
+        }
+        if (this.data.length == this.selectedItems.length) {
+            this.isSelectAll = true;
+        }
+    };
+    AngularMultiSelect.prototype.validate = function (c) {
+        return null;
+    };
+    AngularMultiSelect.prototype.writeValue = function (value) {
+        if (value !== undefined && value !== null) {
+            if (this.settings.singleSelection) {
+                try {
+                    if (value.length > 1) {
+                        this.selectedItems = [value[0]];
+                        throw new __WEBPACK_IMPORTED_MODULE_3__multiselect_model__["a" /* MyException */](404, { "msg": "Single Selection Mode, Selected Items cannot have more than one item." });
+                    }
+                    else {
+                        this.selectedItems = value;
+                    }
+                }
+                catch (e) {
+                    console.error(e.body.msg);
+                }
+            }
+            else {
+                if (this.settings.limitSelection) {
+                    this.selectedItems = value.splice(0, this.settings.limitSelection);
+                }
+                else {
+                    this.selectedItems = value;
+                }
+                if (this.selectedItems.length === this.data.length && this.data.length > 0) {
+                    this.isSelectAll = true;
+                }
+            }
+        }
+        else {
+            this.selectedItems = [];
+        }
+    };
+    //From ControlValueAccessor interface
+    AngularMultiSelect.prototype.registerOnChange = function (fn) {
+        this.onChangeCallback = fn;
+    };
+    //From ControlValueAccessor interface
+    AngularMultiSelect.prototype.registerOnTouched = function (fn) {
+        this.onTouchedCallback = fn;
+    };
+    AngularMultiSelect.prototype.trackByFn = function (index, item) {
+        return item[this.settings.primaryKey];
+    };
+    AngularMultiSelect.prototype.isSelected = function (clickedItem) {
+        var _this = this;
+        var found = false;
+        this.selectedItems && this.selectedItems.forEach(function (item) {
+            if (clickedItem[_this.settings.primaryKey] === item[_this.settings.primaryKey]) {
+                found = true;
+            }
+        });
+        return found;
+    };
+    AngularMultiSelect.prototype.addSelected = function (item) {
+        if (this.settings.singleSelection) {
+            this.selectedItems = [];
+            this.selectedItems.push(item);
+            this.closeDropdown();
+        }
+        else
+            this.selectedItems.push(item);
+        this.onChangeCallback(this.selectedItems);
+        this.onTouchedCallback(this.selectedItems);
+    };
+    AngularMultiSelect.prototype.removeSelected = function (clickedItem) {
+        var _this = this;
+        this.selectedItems && this.selectedItems.forEach(function (item) {
+            if (clickedItem[_this.settings.primaryKey] === item[_this.settings.primaryKey]) {
+                _this.selectedItems.splice(_this.selectedItems.indexOf(item), 1);
+            }
+        });
+        this.onChangeCallback(this.selectedItems);
+        this.onTouchedCallback(this.selectedItems);
+    };
+    AngularMultiSelect.prototype.toggleDropdown = function (evt) {
+        var _this = this;
+        if (this.settings.disabled) {
+            return false;
+        }
+        this.isActive = !this.isActive;
+        if (this.isActive) {
+            if (this.settings.searchAutofocus && this.settings.enableSearchFilter && !this.searchTempl) {
+                setTimeout(function () {
+                    _this.searchInput.nativeElement.focus();
+                }, 0);
+            }
+            this.onOpen.emit(true);
+        }
+        else {
+            this.onClose.emit(false);
+        }
+        evt.preventDefault();
+    };
+    AngularMultiSelect.prototype.closeDropdown = function () {
+        if (this.searchInput && this.settings.lazyLoading) {
+            this.searchInput.nativeElement.value = "";
+            this.data = [];
+            this.data = this.cachedItems;
+            this.totalHeight = this.itemHeight * this.data.length;
+            this.totalRows = this.data.length;
+            this.updateView(this.scrollTop);
+        }
+        if (this.searchInput) {
+            this.searchInput.nativeElement.value = "";
+        }
+        this.filter = "";
+        this.isActive = false;
+        this.onClose.emit(false);
+    };
+    AngularMultiSelect.prototype.toggleSelectAll = function () {
+        if (!this.isSelectAll) {
+            this.selectedItems = [];
+            this.selectedItems = this.data.slice();
+            this.isSelectAll = true;
+            this.onChangeCallback(this.selectedItems);
+            this.onTouchedCallback(this.selectedItems);
+            this.onSelectAll.emit(this.selectedItems);
+        }
+        else {
+            this.selectedItems = [];
+            this.isSelectAll = false;
+            this.onChangeCallback(this.selectedItems);
+            this.onTouchedCallback(this.selectedItems);
+            this.onDeSelectAll.emit(this.selectedItems);
+        }
+    };
+    AngularMultiSelect.prototype.transformData = function (arr, field) {
+        var groupedObj = arr.reduce(function (prev, cur) {
+            if (!prev[cur[field]]) {
+                prev[cur[field]] = [cur];
+            }
+            else {
+                prev[cur[field]].push(cur);
+            }
+            return prev;
+        }, {});
+        var tempArr = [];
+        Object.keys(groupedObj).map(function (x) {
+            tempArr.push({ key: x, value: groupedObj[x] });
+        });
+        return tempArr;
+    };
+    AngularMultiSelect.prototype.renderChunk = function (fromPos, howMany) {
+        this.chunkArray = [];
+        this.chunkIndex = [];
+        var finalItem = fromPos + howMany;
+        if (finalItem > this.totalRows)
+            finalItem = this.totalRows;
+        for (var i = fromPos; i < finalItem; i++) {
+            this.chunkIndex.push((i * this.itemHeight) + 'px');
+            this.chunkArray.push(this.data[i]);
+        }
+    };
+    AngularMultiSelect.prototype.onScroll = function (e) {
+        this.scrollTop = e.target.scrollTop;
+        this.updateView(this.scrollTop);
+    };
+    AngularMultiSelect.prototype.updateView = function (scrollTop) {
+        var scrollPos = scrollTop ? scrollTop : 0;
+        var first = (scrollPos / this.itemHeight) - this.screenItemsLen;
+        var firstTemp = "" + first;
+        first = parseInt(firstTemp) < 0 ? 0 : parseInt(firstTemp);
+        this.renderChunk(first, this.cachedItemsLen);
+        this.lastRepaintY = scrollPos;
+    };
+    AngularMultiSelect.prototype.filterInfiniteList = function (evt) {
+        var filteredElems = [];
+        this.data = this.cachedItems.slice();
+        if (evt.target.value.toString() != '') {
+            this.data.filter(function (el) {
+                for (var prop in el) {
+                    if (el[prop].toString().toLowerCase().indexOf(evt.target.value.toString().toLowerCase()) >= 0) {
+                        filteredElems.push(el);
+                        break;
+                    }
+                }
+            });
+            //this.cachedItems = this.data;
+            this.totalHeight = this.itemHeight * filteredElems.length;
+            this.totalRows = filteredElems.length;
+            this.data = [];
+            this.data = filteredElems;
+            this.updateView(this.scrollTop);
+        }
+        else if (evt.target.value.toString() == '' && this.cachedItems.length > 0) {
+            this.data = [];
+            this.data = this.cachedItems;
+            this.totalHeight = this.itemHeight * this.data.length;
+            this.totalRows = this.data.length;
+            this.updateView(this.scrollTop);
+        }
+    };
+    AngularMultiSelect.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"], args: [{
+                    selector: 'angular2-multiselect',
+                    template: "\n      <div class=\"cuppa-dropdown\" (clickOutside)=\"closeDropdown()\">\n          <div class=\"selected-list\" #selectedList>\n              <div class=\"c-btn\" (click)=\"toggleDropdown($event)\" [ngClass]=\"{'disabled': settings.disabled}\">\n                  <span *ngIf=\"selectedItems?.length == 0\">{{settings.text}}</span>\n                  <span *ngIf=\"settings.singleSelection\">\n                      <span *ngFor=\"let item of selectedItems;trackBy: trackByFn.bind(this);\">\n                          {{item[settings.labelKey]}}\n                      </span>\n                  </span>\n                  <div class=\"c-list\" *ngIf=\"selectedItems?.length > 0 && !settings.singleSelection\">\n                      <div class=\"c-token\" *ngFor=\"let item of selectedItems;trackBy: trackByFn.bind(this);let k = index\" [hidden]=\"k > settings.badgeShowLimit-1\">\n                          <span *ngIf=\"!badgeTempl\" class=\"c-label\">{{item[settings.labelKey]}}</span>\n                          <span *ngIf=\"badgeTempl\" class=\"c-label\">\n                              <c-templateRenderer [data]=\"badgeTempl\" [item]=\"item\"></c-templateRenderer>\n                          </span>\n                          <span class=\"c-remove\" (click)=\"onItemClick(item,k,$event)\">\n                              <svg width=\"100%\" height=\"100%\" version=\"1.1\" id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n      \t viewBox=\"0 0 47.971 47.971\" style=\"enable-background:new 0 0 47.971 47.971;\" xml:space=\"preserve\">\n      <g>\n      \t<path d=\"M28.228,23.986L47.092,5.122c1.172-1.171,1.172-3.071,0-4.242c-1.172-1.172-3.07-1.172-4.242,0L23.986,19.744L5.121,0.88\n      \t\tc-1.172-1.172-3.07-1.172-4.242,0c-1.172,1.171-1.172,3.071,0,4.242l18.865,18.864L0.879,42.85c-1.172,1.171-1.172,3.071,0,4.242\n      \t\tC1.465,47.677,2.233,47.97,3,47.97s1.535-0.293,2.121-0.879l18.865-18.864L42.85,47.091c0.586,0.586,1.354,0.879,2.121,0.879\n      \t\ts1.535-0.293,2.121-0.879c1.172-1.171,1.172-3.071,0-4.242L28.228,23.986z\"/>\n      </g>\n      </svg>\n\n                          </span>\n                      </div>\n                  </div>\n                  <span class=\"countplaceholder\" *ngIf=\"selectedItems?.length > settings.badgeShowLimit\">+{{selectedItems?.length - settings.badgeShowLimit }}</span>\n                  <!--            <span class=\"fa\" [ngClass]=\"{'c-angle-down': !isActive,'fa-angle-up':isActive}\"></span>\n      --><span *ngIf=\"!isActive\" class=\"c-angle-down\">\n                      <svg version=\"1.1\" id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n      \t width=\"100%\" height=\"100%\" viewBox=\"0 0 612 612\" style=\"enable-background:new 0 0 612 612;\" xml:space=\"preserve\">\n      <g>\n      \t<g id=\"_x31_0_34_\">\n      \t\t<g>\n      \t\t\t<path d=\"M604.501,134.782c-9.999-10.05-26.222-10.05-36.221,0L306.014,422.558L43.721,134.782\n      \t\t\t\tc-9.999-10.05-26.223-10.05-36.222,0s-9.999,26.35,0,36.399l279.103,306.241c5.331,5.357,12.422,7.652,19.386,7.296\n      \t\t\t\tc6.988,0.356,14.055-1.939,19.386-7.296l279.128-306.268C614.5,161.106,614.5,144.832,604.501,134.782z\"/>\n      \t\t</g>\n      \t</g>\n      </g>\n      </svg>\n\n                  </span>\n                  <span *ngIf=\"isActive\" class=\"c-angle-up\">\n                      <svg version=\"1.1\" id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n      \t width=\"100%\" height=\"100%\" viewBox=\"0 0 612 612\" style=\"enable-background:new 0 0 612 612;\" xml:space=\"preserve\">\n      <g>\n      \t<g id=\"_x39__30_\">\n      \t\t<g>\n      \t\t\t<path d=\"M604.501,440.509L325.398,134.956c-5.331-5.357-12.423-7.627-19.386-7.27c-6.989-0.357-14.056,1.913-19.387,7.27\n      \t\t\t\tL7.499,440.509c-9.999,10.024-9.999,26.298,0,36.323s26.223,10.024,36.222,0l262.293-287.164L568.28,476.832\n      \t\t\t\tc9.999,10.024,26.222,10.024,36.221,0C614.5,466.809,614.5,450.534,604.501,440.509z\"/>\n      \t\t</g>\n      \t</g>\n      </g>\n\n      </svg>\n\n                  </span>\n              </div>\n          </div>\n          <div [setPosition]=\"selectedListHeight?.val\" class=\"dropdown-list\" [ngClass]=\"{'dropdown-list-top': settings.position == 'top'}\"\n              [hidden]=\"!isActive\">\n              <div [ngClass]=\"{'arrow-up': settings.position == 'bottom', 'arrow-down': settings.position == 'top'}\" class=\"arrow-2\"></div>\n              <div [ngClass]=\"{'arrow-up': settings.position == 'bottom', 'arrow-down': settings.position == 'top'}\"></div>\n              <div class=\"list-area\">\n                  <div class=\"pure-checkbox select-all\" *ngIf=\"settings.enableCheckAll && !settings.singleSelection && !settings.limitSelection\"\n                      (click)=\"toggleSelectAll()\">\n                      <input *ngIf=\"settings.showCheckbox\" type=\"checkbox\" [checked]=\"isSelectAll\" [disabled]=\"settings.limitSelection == selectedItems?.length\"\n                      />\n                      <label>\n                      <span [hidden]=\"isSelectAll\">{{settings.selectAllText}}</span>\n                      <span [hidden]=\"!isSelectAll\">{{settings.unSelectAllText}}</span>\n                  </label>\n                  </div>\n                  <div class=\"list-filter\" *ngIf=\"settings.enableSearchFilter\">\n                      <span class=\"c-search\">\n                          <svg version=\"1.1\" id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n      \t width=\"100%\" height=\"100%\" viewBox=\"0 0 615.52 615.52\" style=\"enable-background:new 0 0 615.52 615.52;\"\n      \t xml:space=\"preserve\">\n      <g>\n      \t<g>\n      \t\t<g id=\"Search__x28_and_thou_shall_find_x29_\">\n      \t\t\t<g>\n      \t\t\t\t<path d=\"M602.531,549.736l-184.31-185.368c26.679-37.72,42.528-83.729,42.528-133.548C460.75,103.35,357.997,0,231.258,0\n      \t\t\t\t\tC104.518,0,1.765,103.35,1.765,230.82c0,127.47,102.753,230.82,229.493,230.82c49.53,0,95.271-15.944,132.78-42.777\n      \t\t\t\t\tl184.31,185.366c7.482,7.521,17.292,11.291,27.102,11.291c9.812,0,19.62-3.77,27.083-11.291\n      \t\t\t\t\tC617.496,589.188,617.496,564.777,602.531,549.736z M355.9,319.763l-15.042,21.273L319.7,356.174\n      \t\t\t\t\tc-26.083,18.658-56.667,28.526-88.442,28.526c-84.365,0-152.995-69.035-152.995-153.88c0-84.846,68.63-153.88,152.995-153.88\n      \t\t\t\t\ts152.996,69.034,152.996,153.88C384.271,262.769,374.462,293.526,355.9,319.763z\"/>\n      \t\t\t</g>\n      \t\t</g>\n      \t</g>\n      </g>\n\n      </svg>\n\n                      </span>\n                      <input class=\"c-input\" *ngIf=\"!settings.lazyLoading && !searchTempl\" #searchInput type=\"text\" [placeholder]=\"settings.searchPlaceholderText\"\n                          [(ngModel)]=\"filter\">\n                      <input class=\"c-input\" *ngIf=\"settings.lazyLoading && !searchTempl\" #searchInput type=\"text\" [placeholder]=\"settings.searchPlaceholderText\"\n                          (keyup)=\"filterInfiniteList($event)\">\n                      <c-templateRenderer *ngIf=\"searchTempl\" [data]=\"searchTempl\" [item]=\"item\"></c-templateRenderer>\n                  </div>\n                  <ul *ngIf=\"!settings.groupBy\" [style.maxHeight]=\"settings.maxHeight+'px'\" class=\"lazyContainer\">\n                      <span *ngIf=\"itemTempl\">\n                  <li *ngFor=\"let item of data | listFilter: filter : settings.searchBy; let i = index;\" (click)=\"onItemClick(item,i,$event)\" class=\"pure-checkbox\">\n                  <input *ngIf=\"settings.showCheckbox\" type=\"checkbox\" [checked]=\"isSelected(item)\" [disabled]=\"settings.limitSelection == selectedItems?.length && !isSelected(item)\"/>\n                  <label></label>\n                  <c-templateRenderer [data]=\"itemTempl\" [item]=\"item\"></c-templateRenderer>\n              </li>\n              </span>\n                      <span *ngIf=\"!itemTempl && !settings.lazyLoading\">\n              <li *ngFor=\"let item of data | listFilter:filter : settings.searchBy; let i = index;\" (click)=\"onItemClick(item,i,$event)\" class=\"pure-checkbox\">\n                  <input *ngIf=\"settings.showCheckbox\" type=\"checkbox\" [checked]=\"isSelected(item)\" [disabled]=\"settings.limitSelection == selectedItems?.length && !isSelected(item)\"/>\n                  <label>{{item[settings.labelKey]}}</label>\n              </li>\n              </span>\n                      <span *ngIf=\"!itemTempl && settings.lazyLoading\">\n                  <div [ngStyle]=\"{'height':totalHeight+'px'}\" style=\"position: relative;\">\n\n            \n              <li *ngFor=\"let item of chunkArray | listFilter:filter : settings.searchBy; let i = index;\" (click)=\"onItemClick(item,i,$event)\" style=\"position: absolute;width: 100%;\" class=\"pure-checkbox\" [styleProp]=\"chunkIndex[i]\">\n                  <input *ngIf=\"settings.showCheckbox\" type=\"checkbox\" [checked]=\"isSelected(item)\" [disabled]=\"settings.limitSelection == selectedItems?.length && !isSelected(item)\"/>\n                  <label>{{item[settings.labelKey]}}</label>\n              </li>\n              </div>\n              </span>\n                  </ul>\n                  <div *ngIf=\"settings.groupBy\" [style.maxHeight]=\"settings.maxHeight+'px'\" style=\"overflow: auto;\">\n                      <ul *ngFor=\"let obj of groupedData ; let i = index;\" class=\"list-grp\">\n                          <h4 *ngIf=\"(obj.value | listFilter:filter : settings.searchBy ).length > 0\">{{obj.key}}</h4>\n                          <span *ngIf=\"itemTempl\">\n              <li *ngFor=\"let item of obj.value | listFilter:filter : settings.searchBy; let i = index;\" (click)=\"onItemClick(item,i,$event)\" class=\"pure-checkbox\">\n                  <input *ngIf=\"settings.showCheckbox\" type=\"checkbox\" [checked]=\"isSelected(item)\" [disabled]=\"settings.limitSelection == selectedItems?.length && !isSelected(item)\"/>\n                  <label></label>\n                  <c-templateRenderer [data]=\"itemTempl\" [item]=\"item\"></c-templateRenderer>\n              </li>\n              </span>\n                          <span *ngIf=\"!itemTempl\">\n              <li *ngFor=\"let item of obj.value | listFilter:filter : settings.searchBy; let i = index;\" (click)=\"onItemClick(item,i,$event)\" class=\"pure-checkbox\">\n                  <input *ngIf=\"settings.showCheckbox\" type=\"checkbox\" [checked]=\"isSelected(item)\" [disabled]=\"settings.limitSelection == selectedItems?.length && !isSelected(item)\"/>\n                  <label>{{item[settings.labelKey]}}</label>\n              </li>\n              </span>\n                      </ul>\n                  </div>\n                  <h5 class=\"list-message\" *ngIf=\"data?.length == 0\">{{settings.noDataLabel}}</h5>\n              </div>\n          </div>\n      </div>\n    ",
+                    host: { '[class]': 'defaultSettings.classes' },
+                    styles: ["\n      .cuppa-dropdown{position:relative}.c-btn{display:inline-block;background:#fff;border:1px solid #ccc;border-radius:3px;font-size:14px;color:#333}.c-btn.disabled{background:#ccc}.c-btn:focus{outline:none}.selected-list .c-list{float:left;padding:0px;margin:0px;width:calc(100% - 20px)}.selected-list .c-list .c-token{list-style:none;padding:2px 8px;background:#0079FE;color:#fff;border-radius:2px;margin-right:4px;margin-top:2px;float:left;position:relative;padding-right:25px}.selected-list .c-list .c-token .c-label{display:block;float:left}.selected-list .c-list .c-token .c-remove{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:10px}.selected-list .c-list .c-token .c-remove svg{fill:#fff}.selected-list .fa-angle-down,.selected-list .fa-angle-up{font-size:15pt;position:absolute;right:10px;top:50%;transform:translateY(-50%)}.selected-list .c-angle-down,.selected-list .c-angle-up{width:15px;height:15px;position:absolute;right:10px;top:50%;transform:translateY(-50%);pointer-events:none}.selected-list .c-angle-down svg,.selected-list .c-angle-up svg{fill:#333}.selected-list .countplaceholder{position:absolute;right:30px;top:50%;transform:translateY(-50%)}.selected-list .c-btn{width:100%;box-shadow:0px 1px 5px #959595;padding:10px;cursor:pointer;display:flex;position:relative}.selected-list .c-btn .c-icon{position:absolute;right:5px;top:50%;transform:translateY(-50%)}.dropdown-list{position:absolute;padding-top:14px;width:100%;z-index:9999}.dropdown-list ul{padding:0px;list-style:none;overflow:auto;margin:0px}.dropdown-list ul li{padding:10px 10px;cursor:pointer;text-align:left}.dropdown-list ul li:first-child{padding-top:10px}.dropdown-list ul li:last-child{padding-bottom:10px}.dropdown-list ul li:hover{background:#f5f5f5}.dropdown-list ::-webkit-scrollbar{width:8px}.dropdown-list ::-webkit-scrollbar-thumb{background:#cccccc;border-radius:5px}.dropdown-list ::-webkit-scrollbar-track{background:#f2f2f2}.arrow-up,.arrow-down{width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-bottom:15px solid #fff;margin-left:15px;position:absolute;top:0}.arrow-down{bottom:-14px;top:unset;transform:rotate(180deg)}.arrow-2{border-bottom:15px solid #ccc;top:-1px}.arrow-down.arrow-2{top:unset;bottom:-16px}.list-area{border:1px solid #ccc;border-radius:3px;background:#fff;margin:0px;box-shadow:0px 1px 5px #959595}.select-all{padding:10px;border-bottom:1px solid #ccc;text-align:left}.list-filter{border-bottom:1px solid #ccc;position:relative;padding-left:35px;height:35px}.list-filter input{border:0px;width:100%;height:100%;padding:0px}.list-filter input:focus{outline:none}.list-filter .c-search{position:absolute;top:9px;left:10px;width:15px;height:15px}.list-filter .c-search svg{fill:#888}.pure-checkbox input[type=\"checkbox\"]{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.pure-checkbox input[type=\"checkbox\"]:focus+label:before,.pure-checkbox input[type=\"checkbox\"]:hover+label:before{border-color:#0079FE;background-color:#f2f2f2}.pure-checkbox input[type=\"checkbox\"]:active+label:before{transition-duration:0s}.pure-checkbox input[type=\"checkbox\"]+label{position:relative;padding-left:2em;vertical-align:middle;user-select:none;cursor:pointer;margin:0px;color:#000;font-weight:300}.pure-checkbox input[type=\"checkbox\"]+label:before{box-sizing:content-box;content:'';color:#0079FE;position:absolute;top:50%;left:0;width:14px;height:14px;margin-top:-9px;border:2px solid #0079FE;text-align:center;transition:all 0.4s ease}.pure-checkbox input[type=\"checkbox\"]+label:after{box-sizing:content-box;content:'';background-color:#0079FE;position:absolute;top:50%;left:4px;width:10px;height:10px;margin-top:-5px;transform:scale(0);transform-origin:50%;transition:transform 200ms ease-out}.pure-checkbox input[type=\"checkbox\"]:disabled+label:before{border-color:#cccccc}.pure-checkbox input[type=\"checkbox\"]:disabled:focus+label:before .pure-checkbox input[type=\"checkbox\"]:disabled:hover+label:before{background-color:inherit}.pure-checkbox input[type=\"checkbox\"]:disabled:checked+label:before{background-color:#cccccc}.pure-checkbox input[type=\"checkbox\"]+label:after{background-color:transparent;top:50%;left:4px;width:8px;height:3px;margin-top:-4px;border-style:solid;border-color:#ffffff;border-width:0 0 3px 3px;border-image:none;transform:rotate(-45deg) scale(0)}.pure-checkbox input[type=\"checkbox\"]:checked+label:after{content:'';transform:rotate(-45deg) scale(1);transition:transform 200ms ease-out}.pure-checkbox input[type=\"radio\"]:checked+label:before{background-color:white}.pure-checkbox input[type=\"radio\"]:checked+label:after{transform:scale(1)}.pure-checkbox input[type=\"radio\"]+label:before{border-radius:50%}.pure-checkbox input[type=\"checkbox\"]:checked+label:before{background:#0079FE}.pure-checkbox input[type=\"checkbox\"]:checked+label:after{transform:rotate(-45deg) scale(1)}.list-message{text-align:center;margin:0px;padding:15px 0px;font-size:initial}.list-grp{padding:0 15px !important}.list-grp h4{text-transform:capitalize;margin:15px 0px 0px 0px;font-size:14px;font-weight:700}.list-grp>li{padding-left:15px !important}\n    "],
+                    providers: [DROPDOWN_CONTROL_VALUE_ACCESSOR, DROPDOWN_CONTROL_VALIDATION]
+                },] },
+    ];
+    /** @nocollapse */
+    AngularMultiSelect.ctorParameters = function () { return [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"], },
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectorRef"], },
+    ]; };
+    AngularMultiSelect.propDecorators = {
+        'data': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'settings': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'onSelect': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"], args: ['onSelect',] },],
+        'onDeSelect': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"], args: ['onDeSelect',] },],
+        'onSelectAll': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"], args: ['onSelectAll',] },],
+        'onDeSelectAll': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"], args: ['onDeSelectAll',] },],
+        'onOpen': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"], args: ['onOpen',] },],
+        'onClose': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"], args: ['onClose',] },],
+        'itemTempl': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ContentChild"], args: [__WEBPACK_IMPORTED_MODULE_6__menu_item__["b" /* Item */],] },],
+        'badgeTempl': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ContentChild"], args: [__WEBPACK_IMPORTED_MODULE_6__menu_item__["a" /* Badge */],] },],
+        'searchTempl': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ContentChild"], args: [__WEBPACK_IMPORTED_MODULE_6__menu_item__["c" /* Search */],] },],
+        'searchInput': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"], args: ['searchInput',] },],
+        'selectedListElem': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"], args: ['selectedList',] },],
+    };
+    return AngularMultiSelect;
+}());
+
+var AngularMultiSelectModule = /** @class */ (function () {
+    function AngularMultiSelectModule() {
+    }
+    AngularMultiSelectModule.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"], args: [{
+                    imports: [__WEBPACK_IMPORTED_MODULE_2__angular_common__["CommonModule"], __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormsModule"]],
+                    declarations: [AngularMultiSelect, __WEBPACK_IMPORTED_MODULE_4__clickOutside__["a" /* ClickOutsideDirective */], __WEBPACK_IMPORTED_MODULE_4__clickOutside__["b" /* ScrollDirective */], __WEBPACK_IMPORTED_MODULE_4__clickOutside__["d" /* styleDirective */], __WEBPACK_IMPORTED_MODULE_5__list_filter__["a" /* ListFilterPipe */], __WEBPACK_IMPORTED_MODULE_6__menu_item__["b" /* Item */], __WEBPACK_IMPORTED_MODULE_6__menu_item__["d" /* TemplateRenderer */], __WEBPACK_IMPORTED_MODULE_6__menu_item__["a" /* Badge */], __WEBPACK_IMPORTED_MODULE_6__menu_item__["c" /* Search */], __WEBPACK_IMPORTED_MODULE_4__clickOutside__["c" /* setPosition */]],
+                    exports: [AngularMultiSelect, __WEBPACK_IMPORTED_MODULE_4__clickOutside__["a" /* ClickOutsideDirective */], __WEBPACK_IMPORTED_MODULE_4__clickOutside__["b" /* ScrollDirective */], __WEBPACK_IMPORTED_MODULE_4__clickOutside__["d" /* styleDirective */], __WEBPACK_IMPORTED_MODULE_5__list_filter__["a" /* ListFilterPipe */], __WEBPACK_IMPORTED_MODULE_6__menu_item__["b" /* Item */], __WEBPACK_IMPORTED_MODULE_6__menu_item__["d" /* TemplateRenderer */], __WEBPACK_IMPORTED_MODULE_6__menu_item__["a" /* Badge */], __WEBPACK_IMPORTED_MODULE_6__menu_item__["c" /* Search */], __WEBPACK_IMPORTED_MODULE_4__clickOutside__["c" /* setPosition */]]
+                },] },
+    ];
+    /** @nocollapse */
+    AngularMultiSelectModule.ctorParameters = function () { return []; };
+    return AngularMultiSelectModule;
+}());
+
+//# sourceMappingURL=multiselect.component.js.map
+
+/***/ }),
+
+/***/ "./node_modules/angular2-multiselect-dropdown/multiselect.model.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyException; });
+var MyException = /** @class */ (function () {
+    function MyException(status, body) {
+        this.status = status;
+        this.body = body;
+    }
+    return MyException;
+}());
+
+//# sourceMappingURL=multiselect.model.js.map
+
+/***/ }),
+
 /***/ "./node_modules/fullcalendar-scheduler/dist/scheduler.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -96418,7 +97130,7 @@ module.exports = function(module) {
 /***/ "./src/app/calendar/calendar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<style>\r\n    .modal-dialog {\r\n    width: 400px;\r\n    margin: 30px auto;\r\n    right: 0;\r\n    left: 36%;\r\n}\r\n    .modal-content .modal-header {\r\n   \r\n    padding-top: 4px;\r\n    border-bottom: 1px solid #cccc; background-color:#3a87ad; color:#fff; padding-left:15px; padding-right:15px;\r\n}\r\n    .modal-header .close {\r\n    margin-top: 4px; color:#fff;\r\n}\r\n    .modal-content .modal-body {\r\n        padding-top: 8px;\r\n    }\r\n\r\n    .model-tab .nav-pills > li i {\r\n    font-size: 20px;\r\n    padding: 0;\r\n}\r\n    .model-tab .nav > li > a {\r\n    padding: 2px 4px;\r\n}\r\n   .model-tab  .nav-pills > li > a{min-width:0 !important;}\r\n\r\n</style>\r\n\r\n\r\n<title>Aspect Calendar</title>\n<div class=\"main-content\">\n    <div class=\"container-fluid\">\n        <div class=\"toolbar\">\r\n        </div>\n        <form [formGroup]=\"calendarForm\">\r\n            <div class=\"row\">\r\n                <div class=\"col-md-3\">\r\n                    <div class=\"card\">\r\n                        <div class=\"card-content\">\r\n                            <div class=\"form-group\" style=\"margin:0; padding:0;\">\r\n                                <label class=\"control-label\">\r\n                                    Select Division\r\n                                </label>\r\n                                <div class=\"checkbox form-horizontal-checkbox\" *ngFor=\"let division of divisionList\" style=\"top:-10px;left:10px;\">\r\n                                    <label>\r\n                                        <input type=\"checkbox\" formControlName=\"divChk\" name=\"division\" [id]=\"division.ID\" [value]=\"division.ID\">\r\n                                        {{division.Name}}\r\n                                    </label>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n            <!-- notice modal -->\r\n            <div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\r\n                    <div class=\"modal-dialog modal-notice\">\r\n                        <div class=\"modal-content\">\r\n                            <div class=\"modal-header\">\r\n                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\"><i class=\"material-icons\">clear</i></button>\r\n                                <h5 class=\"modal-title\" id=\"myModalLabel\">{{workOrdNo}}</h5>\r\n                            </div>\r\n                            <div class=\"modal-body\">\r\n                                <div class=\"instruction\">\r\n                                    <div class=\"row\">\r\n                                        <div class=\"col-md-12\">\r\n                                            <div class=\"model-tab\">\r\n                                                <ul class=\"nav nav-pills nav-pills-warning nav-pills-icons\" role=\"tablist\">\r\n                                                    <!--\r\n                color-classes: \"nav-pills-primary\", \"nav-pills-info\", \"nav-pills-success\", \"nav-pills-warning\",\"nav-pills-danger\"\r\n            -->\r\n                                                    <li>\r\n                                                        <a href=\"#description-1\" role=\"tab\" data-toggle=\"tab\">\r\n                                                            <i class=\"material-icons\">attach_file</i>\r\n                                                        </a>\r\n                                                    </li>\r\n                                                    <li class=\"active\">\r\n                                                        <a href=\"#schedule-1\" role=\"tab\" data-toggle=\"tab\">\r\n                                                            <i class=\"material-icons\">build</i>\r\n                                                        </a>\r\n                                                    </li>\r\n                                                    <li>\r\n                                                        <a href=\"#tasks-1\" role=\"tab\" data-toggle=\"tab\">\r\n                                                            <i class=\"material-icons\">description</i>\r\n                                                        </a>\r\n                                                    </li>\r\n                                                    <li>\r\n                                                        <a href=\"#tasks-2\" role=\"tab\" data-toggle=\"tab\">\r\n                                                            <i class=\"material-icons\">photo_camera</i>\r\n                                                        </a>\r\n                                                    </li>\r\n                                                    <div class=\"\">\r\n                                                        <span style=\"text-align:right; padding-right:10px;\">Last Send Time </span><i class=\"material-icons pull-right\">notifications</i>\r\n                                                    </div>\r\n                                                </ul>\r\n                                            </div>\r\n                                            <div class=\"tab-content\">\r\n                                                <div class=\"tab-pane\" id=\"description-1\">\r\n                                                    <div class=\"card\">\r\n                                                        <div class=\"card-header\">\r\n                                                            <h4 class=\"card-title\">Description about product</h4>\r\n                                                            <p class=\"category\">\r\n                                                                More information here\r\n                                                            </p>\r\n                                                        </div>\r\n                                                        <div class=\"card-content\">\r\n                                                            Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits.\r\n                                                            <br />\r\n                                                            <br /> Dramatically visualize customer directed convergence without revolutionary ROI.\r\n                                                        </div>\r\n                                                    </div>\r\n                                                </div>\r\n                                                <div class=\"tab-pane active\" id=\"schedule-1\">\r\n                                                    <div class=\"card\">\r\n                                                        <div class=\"card-header\">\r\n                                                            <h4 class=\"card-title\">Location of the product</h4>\r\n                                                            <p class=\"category\">\r\n                                                                More information here\r\n                                                            </p>\r\n                                                        </div>\r\n                                                        <div class=\"card-content\">\r\n                                                            Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.\r\n                                                            <br />\r\n                                                            <br /> Dramatically maintain clicks-and-mortar solutions without functional solutions.\r\n                                                        </div>\r\n                                                    </div>\r\n                                                </div>\r\n                                                <div class=\"tab-pane\" id=\"tasks-1\">\r\n                                                    <div class=\"card\">\r\n                                                        <div class=\"card-header\">\r\n                                                            <h4 class=\"card-title\">Legal info of the product</h4>\r\n                                                            <p class=\"category\">\r\n                                                                More information here\r\n                                                            </p>\r\n                                                        </div>\r\n                                                        <div class=\"card-content\">\r\n                                                            Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.\r\n                                                            <br />\r\n                                                            <br />Dynamically innovate resource-leveling customer service for state of the art customer service.\r\n                                                        </div>\r\n                                                    </div>\r\n                                                </div>\r\n                                                <div class=\"tab-pane\" id=\"tasks-2\">\r\n                                                    <div class=\"card\">\r\n                                                        <div class=\"card-header\">\r\n                                                            <h4 class=\"card-title\">Help center</h4>\r\n                                                            <p class=\"category\">\r\n                                                                More information here\r\n                                                            </p>\r\n                                                        </div>\r\n                                                        <div class=\"card-content\">\r\n                                                            From the seamless transition of glass and metal to the streamlined profile, every detail was carefully considered to enhance your experience. So while its display is larger, the phone feels just right.\r\n                                                            <br />\r\n                                                            <br /> Another Text. The first thing you notice when you hold the phone is how great it feels in your hand. The cover glass curves down around the sides to meet the anodized aluminum enclosure in a remarkable, simplified design.\r\n                                                        </div>\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div><!--end--col-12-->\r\n                                       \r\n                                            <div class=\"col-md-8 col-md-offset-2\">\r\n                                                <h3 class=\"title text-center\">Page Subcategories</h3>\r\n                                                <br />\r\n                                              \r\n                                            </div>\r\n                                        </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n            </div>\r\n            <!-- end notice modal -->\r\n\r\n            <!--<div class=\"wordcalendar\">\r\n                <div id=\"right_sb\" class=\"right-sidebar container\">\r\n\r\n                    <div id=\"right-sidebar-content\" class=\"collapse fade in\">\r\n                        <div id=\"right_sb_btn_container\" class=\"right-sidebar button-container target\">\r\n                            <button type=\"button\" class=\"btn btn-primary btn-sm panel-toogle\" data-toggle=\"toggle\" data-target=\"#menuitem3\">\r\n                                <i class=\"fa fa-calendar fa-lg\"></i>\r\n                            </button>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div id=\"menuitem3\" class=\"wells right-sidebar-panel\">\r\n\r\n                        <div class=\"side-header\">\r\n                            <div class=\"row\">\r\n                                <div class=\"col-md-10\">\r\n                                    Possible implementation of backoffice\r\n                                </div>\r\n                                <div class=\"col-md-2\">\r\n                                    <i class=\"fa fa-close pull-right panel-toogle\" data-toggle=\"toggle\" data-target=\"#menuitem1\"></i>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n\r\n                        <div class=\"container\">\r\n                            <div class=\"row\">\r\n                                <div class=\"col-md-12\">\r\n                                    <p>Possible implementation of backoffice</p>\r\n                                    <p>Possible implementation of backoffice</p>\r\n                                    <p>Possible implementation of backoffice</p>\r\n                                    <p>Possible implementation of backoffice</p>\r\n                                    <p>Possible implementation of backoffice</p>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n\r\n                    </div>\r\n                </div>\r\n            </div>-->\r\n            <div class=\"row\">\r\n                <div class=\"col-md-12\">\r\n                    <div class=\"card card-calendar\">\r\n                        <div class=\"card-content ps-child\">\r\n                            <div id='wrap'>\r\n                                <div id='external-events'>\r\n                                    <h4>Manager</h4>\r\n                                    <ng-container *ngFor=\"let usr of autoUsers\">\r\n                                        <ng-container *ngIf=\"usr.RoleName == 'Manager'\">\r\n                                            <div class='fc-event' id=\"event\" #event>{{usr.UserName}}</div>\r\n                                        </ng-container>\r\n                                    </ng-container>\r\n                                    <h4>Project Manager</h4>\r\n                                    <ng-container *ngFor=\"let usr of autoUsers\">\r\n                                        <ng-container *ngIf=\"usr.RoleName == 'Project Manager'\">\r\n                                            <div class='fc-event'>{{usr.UserName}}</div>\r\n                                        </ng-container>\r\n                                    </ng-container>\r\n                                    <h4>Office</h4>\r\n                                    <ng-container *ngFor=\"let usr of autoUsers\">\r\n                                        <ng-container *ngIf=\"usr.RoleName == 'Office'\">\r\n                                            <div class='fc-event'>{{usr.UserName}}</div>\r\n                                        </ng-container>\r\n                                    </ng-container>\r\n                                    <h4>Worker Site</h4>\r\n                                    <ng-container *ngFor=\"let usr of autoUsers\">\r\n                                        <ng-container *ngIf=\"usr.RoleName == 'Worker - Site'\">\r\n                                            <div class='fc-event'>{{usr.UserName}}</div>\r\n                                        </ng-container>\r\n                                    </ng-container>\r\n                                    <h4>Worker Factory</h4>\r\n                                    <ng-container *ngFor=\"let usr of autoUsers\">\r\n                                        <ng-container *ngIf=\"usr.RoleName == 'Worker - Factory'\">\r\n                                            <div class='fc-event'>{{usr.UserName}}</div>\r\n                                        </ng-container>\r\n                                    </ng-container>\r\n                                    <h4>System Admin</h4>\r\n                                    <ng-container *ngFor=\"let usr of autoUsers\">\r\n                                        <ng-container *ngIf=\"usr.RoleName == 'System Admin'\">\r\n                                            <div class='fc-event'>{{usr.UserName}}</div>\r\n                                        </ng-container>\r\n                                    </ng-container>\r\n                                </div>\r\n                                <div id='calendar' #calendar></div>\r\n                                <div style='clear:both'></div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </form>\r\n    </div>\n</div>\n<!--<div class=\"fixed-plugin\" style=\"display:block;\">\r\n    <div class=\"dropdown show-dropdown\">\r\n        <a href=\"#\" data-toggle=\"dropdown\">\r\n            <i class=\"fa fa-cog fa-2x\"> </i>\r\n        </a>\r\n        <ul class=\"dropdown-menu\">\r\n            <li class=\"header-title\"> Sidebar Filters</li>\r\n            <li class=\"adjustments-line\">\r\n                <a href=\"javascript:void(0)\" class=\"switch-trigger active-color\">\r\n                    <div class=\"badge-colors text-center\">\r\n                        <span class=\"badge filter badge-purple\" data-color=\"purple\"></span>\r\n                        <span class=\"badge filter badge-blue\" data-color=\"blue\"></span>\r\n                        <span class=\"badge filter badge-green\" data-color=\"green\"></span>\r\n                        <span class=\"badge filter badge-orange\" data-color=\"orange\"></span>\r\n                        <span class=\"badge filter badge-red\" data-color=\"red\"></span>\r\n                        <span class=\"badge filter badge-white active\" data-color=\"white\"></span>\r\n                        <span class=\"badge filter badge-rose\" data-color=\"rose\"></span>\r\n                    </div>\r\n                    <div class=\"clearfix\"></div>\r\n                </a>\r\n            </li>\r\n            <li class=\"header-title\">Sidebar Background</li>\r\n            <li class=\"adjustments-line\">\r\n                <a href=\"javascript:void(0)\" class=\"switch-trigger background-color\">\r\n                    <div class=\"text-center\">\r\n                        <span class=\"badge filter badge-white\" data-color=\"white\"></span>\r\n                        <span class=\"badge filter badge-black\" data-color=\"black\"></span>\r\n                        <span class=\"badge filter badge-red active\" data-color=\"red\"></span>\r\n                    </div>\r\n                    <div class=\"clearfix\"></div>\r\n                </a>\r\n            </li>\r\n            <li class=\"adjustments-line\">\r\n                <a href=\"javascript:void(0)\" class=\"switch-trigger\">\r\n                    <p>Sidebar Mini</p>\r\n                    <div class=\"togglebutton switch-sidebar-mini\">\r\n                        <label>\r\n                            <input type=\"checkbox\" unchecked=\"\">\r\n                        </label>\r\n                    </div>\r\n                    <div class=\"clearfix\"></div>\r\n                </a>\r\n            </li>\r\n            <li class=\"adjustments-line\">\r\n                <a href=\"javascript:void(0)\" class=\"switch-trigger\">\r\n                    <p>Sidebar Image</p>\r\n                    <div class=\"togglebutton switch-sidebar-image\">\r\n                        <label>\r\n                            <input type=\"checkbox\" checked=\"\">\r\n                        </label>\r\n                    </div>\r\n                    <div class=\"clearfix\"></div>\r\n                </a>\r\n            </li>\r\n            <li class=\"header-title\">Images</li>\r\n            <li class=\"active\">\r\n                <a class=\"img-holder switch-trigger\" href=\"javascript:void(0)\">\r\n                    <img src=\"../assets/img/sidebar-1.jpg\" alt=\"\" />\r\n                </a>\r\n            </li>\r\n            <li>\r\n                <a class=\"img-holder switch-trigger\" href=\"javascript:void(0)\">\r\n                    <img src=\"../assets/img/sidebar-2.jpg\" alt=\"\" />\r\n                </a>\r\n            </li>\r\n            <li>\r\n                <a class=\"img-holder switch-trigger\" href=\"javascript:void(0)\">\r\n                    <img src=\"../assets/img/sidebar-3.jpg\" alt=\"\" />\r\n                </a>\r\n            </li>\r\n            <li>\r\n                <a class=\"img-holder switch-trigger\" href=\"javascript:void(0)\">\r\n                    <img src=\"../assets/img/sidebar-4.jpg\" alt=\"\" />\r\n                </a>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n    </div>-->"
+module.exports = "\r\n<style>\r\n   #myModal .modal-dialog {\r\n        width: 400px;\r\n        margin: 30px auto;\r\n        right: 0;\r\n        left: 36%;\r\n    }\r\n\r\n   #myModal .modal-content .modal-header {\r\n        padding-top: 4px;\r\n        border-bottom: 1px solid #cccc;\r\n        background-color: #3a87ad;\r\n        color: #fff;\r\n        padding-left: 15px;\r\n        padding-right: 15px;\r\n    }\r\n\r\n   #myModal .modal-header .close {\r\n        margin-top: 4px;\r\n        color: #fff;\r\n    }\r\n\r\n   #myModal .modal-content .modal-body {\r\n        padding-top: 8px;\r\n    }\r\n\r\n   #myModal .model-tab .nav-pills > li i {\r\n        font-size: 20px;\r\n        padding: 0;\r\n    }\r\n\r\n   #myModal .model-tab .nav > li > a {\r\n        padding: 2px 4px;\r\n    }\r\n\r\n   #myModal .model-tab .nav-pills > li > a {\r\n        min-width: 0 !important;\r\n    }\r\n\r\n    .mt30 {\r\n        margin-top: 30px;\r\n    }\r\n     .dropdownview {\n        -webkit-appearance: menulist-button;\n    }\n\n      ::ng-deep .cdk-overlay-container {\n        z-index: 1045 !important;\n    }\n\r\n</style>\r\n\r\n\r\n<title>Aspect Calendar</title>\r\n<div class=\"main-content\">\r\n    <div class=\"container-fluid\">\r\n        <div class=\"toolbar\">\r\n        </div>\r\n        <form [formGroup]=\"calendarForm\">\r\n            <div class=\"row\">\r\n                <div class=\"col-md-3\">\r\n                    <div class=\"card\">\r\n                        <div class=\"card-content\">\r\n                            <div class=\"form-group\" style=\"margin:0; padding:0;\">\r\n                                <label class=\"control-label\">\r\n                                    Select Division\r\n                                </label>\r\n                                <angular2-multiselect [data]=\"divisionList\" formControlName=\"divChk\"></angular2-multiselect>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-md-3\">\r\n                    <div class=\"card\">\r\n                        <div class=\"card-content\">\r\n                            <div class=\"form-group\" style=\"margin:0; padding:0;\">\r\n                                <label class=\"control-label\">\r\n                                    Select Project Manager\r\n                                </label>\r\n                                <angular2-multiselect [data]=\"projectManager\" formControlName=\"pManager\"></angular2-multiselect>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-md-3\">\r\n                    <div class=\"card\">\r\n                        <div class=\"card-content\">\r\n                            <div class=\"form-group\" style=\"margin:0; padding:0;\">\r\n                                <label class=\"control-label\">\r\n                                    Select Client\r\n                                </label>\r\n                                <angular2-multiselect [data]=\"clientList\" formControlName=\"client\"></angular2-multiselect>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-md-3\">\r\n                    <div class=\"card\">\r\n                        <div class=\"card-content\">\r\n                            <div class=\"form-group\" style=\"margin:0; padding:0;\">\r\n                                <label class=\"control-label\">\r\n                                    Job Status\r\n                                </label>\r\n                                <angular2-multiselect [data]=\"woStatus\" formControlName=\"jobStatus\"></angular2-multiselect>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-md-12\">\r\n                    <div class=\"card card-calendar\">\r\n                        <div class=\"card-content ps-child\">\r\n                            <div id='wrap'>\r\n                                <div id='external-events'>\r\n                                    <h4>Manager</h4>\r\n                                    <ng-container *ngFor=\"let usr of autoUsers\">\r\n                                        <ng-container *ngIf=\"usr.RoleName == 'Manager'\">\r\n                                            <div class='fc-event' id=\"event\" #event>{{usr.UserName}}</div>\r\n                                        </ng-container>\r\n                                    </ng-container>\r\n                                    <h4>Project Manager</h4>\r\n                                    <ng-container *ngFor=\"let usr of autoUsers\">\r\n                                        <ng-container *ngIf=\"usr.RoleName == 'Project Manager'\">\r\n                                            <div class='fc-event'>{{usr.UserName}}</div>\r\n                                        </ng-container>\r\n                                    </ng-container>\r\n                                    <h4>Office</h4>\r\n                                    <ng-container *ngFor=\"let usr of autoUsers\">\r\n                                        <ng-container *ngIf=\"usr.RoleName == 'Office'\">\r\n                                            <div class='fc-event'>{{usr.UserName}}</div>\r\n                                        </ng-container>\r\n                                    </ng-container>\r\n                                    <h4>Worker Site</h4>\r\n                                    <ng-container *ngFor=\"let usr of autoUsers\">\r\n                                        <ng-container *ngIf=\"usr.RoleName == 'Worker - Site'\">\r\n                                            <div class='fc-event'>{{usr.UserName}}</div>\r\n                                        </ng-container>\r\n                                    </ng-container>\r\n                                    <h4>Worker Factory</h4>\r\n                                    <ng-container *ngFor=\"let usr of autoUsers\">\r\n                                        <ng-container *ngIf=\"usr.RoleName == 'Worker - Factory'\">\r\n                                            <div class='fc-event'>{{usr.UserName}}</div>\r\n                                        </ng-container>\r\n                                    </ng-container>\r\n                                    <h4>System Admin</h4>\r\n                                    <ng-container *ngFor=\"let usr of autoUsers\">\r\n                                        <ng-container *ngIf=\"usr.RoleName == 'System Admin'\">\r\n                                            <div class='fc-event'>{{usr.UserName}}</div>\r\n                                        </ng-container>\r\n                                    </ng-container>\r\n                                </div>\r\n                                <div id='calendar' #calendar></div>\r\n                                <div style='clear:both'></div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>\r\n<!-- notice modal -->\r\n<div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog modal-notice\">\r\n        <div class=\"modal-content\">\r\n            <form [formGroup]=\"woAstForm\">\r\n                <div class=\"modal-header\">\r\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\"><i class=\"material-icons\">clear</i></button>\r\n                    <h5 class=\"modal-title\" id=\"myModalLabel\">{{workOrdNo}}</h5>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                    <div class=\"instruction\">\r\n                        <div class=\"row\">\r\n                            <div class=\"col-md-12\">\r\n                                <div class=\"model-tab\">\r\n                                    <ul class=\"nav nav-pills nav-pills-warning nav-pills-icons\" role=\"tablist\">\r\n                                        <li class=\"active\">\r\n                                            <a href=\"#home\" role=\"tab\" data-toggle=\"tab\">\r\n                                                <i class=\"material-icons\">home</i>\r\n                                            </a>\r\n                                        </li>\r\n                                        <li>\r\n                                            <div class=\"picture-container\">\r\n                                                <div class=\"picture\">\r\n                                                    <label for=\"woDocs\" style=\"margin-right:2px;\">\r\n                                                        <i class=\"material-icons\">attach_file</i>\r\n                                                    </label>\r\n                                                    <input type=\"file\" style=\"display:none\" id=\"woDocs\" (change)=\"handleUpload($event)\" ng2FileSelect [uploader]=\"uploader\" multiple />\r\n                                                </div>\r\n                                            </div>\r\n                                        </li>\r\n                                        <li>\r\n                                            <a href=\"#schedule-1\" role=\"tab\" data-toggle=\"tab\">\r\n                                                <i class=\"material-icons\">build</i>\r\n                                            </a>\r\n                                        </li>\r\n                                        <li>\r\n                                            <a href=\"#tasks-1\" role=\"tab\" data-toggle=\"tab\">\r\n                                                <i class=\"material-icons\">description</i>\r\n                                            </a>\r\n                                        </li>\r\n                                        <li>\r\n                                            <a href=\"#tasks-2\" role=\"tab\" data-toggle=\"tab\">\r\n                                                <i class=\"material-icons\">photo_camera</i>\r\n                                            </a>\r\n                                        </li>\r\n                                        <div class=\"\">\r\n                                            <span style=\"text-align:right; padding-right:10px;\">Last Send Time </span><i class=\"material-icons pull-right\">notifications</i>\r\n                                        </div>\r\n                                    </ul>\r\n                                </div>\r\n                                <div class=\"tab-content\">\r\n                                    <div class=\"tab-pane active\" id=\"home\">\r\n                                        <div class=\"mt30\">\r\n                                            <div class=\"card-content\">\r\n                                                <div class=\"row\">\r\n                                                    <div class=\"col-md-6\">\r\n                                                        Status:\r\n                                                    </div>\r\n                                                    <div class=\"col-md-6\">\r\n                                                        Job Task:\r\n                                                    </div>\r\n                                                </div>\r\n                                                <div class=\"row\">\r\n                                                    <div class=\"col-md-12\">\r\n                                                        <div class=\"form-group label-floating\">\r\n                                                            <label class=\"control-label\">\r\n                                                                Address:\r\n                                                            </label>\r\n                                                            <input name=\"address\" type=\"text\" class=\"form-control\" formControlName=\"address\">\r\n                                                        </div>\r\n                                                    </div>\r\n                                                </div>\r\n                                                <div class=\"row\">\r\n                                                    <div class=\"col-md-12\">\r\n                                                        <div class=\"form-group label-floating\" [ngClass]=\"displayFieldCss(woAstForm, 'description')\">\r\n                                                            <label class=\"control-label\">\r\n                                                                Work Order Description:\r\n                                                            </label>\r\n                                                            <input name=\"description\" type=\"text\" class=\"form-control\" formControlName=\"description\">\r\n                                                            <app-field-error-display [displayError]=\"isFieldValid(woAstForm, 'description')\" errorMsg=\"Description is required.\">\r\n                                                            </app-field-error-display>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                </div>\r\n                                                <div class=\"row\">\r\n                                                    <div class=\"col-md-12\">\r\n                                                        Estimated Hours:\r\n                                                    </div>\r\n                                                </div>\r\n                                                <div class=\"row\">\r\n                                                    <div class=\"col-md-12\">\r\n                                                        Worked Hours:\r\n                                                    </div>\r\n                                                </div>\r\n                                                <div class=\"row\">\r\n                                                    <div class=\"col-md-12\">\r\n                                                        <div class=\"form-group label-floating\">\r\n                                                            <label class=\"control-label\">\r\n                                                                Additional Notes:\r\n                                                            </label>\r\n                                                            <input name=\"addNote\" type=\"text\" class=\"form-control\" formControlName=\"addNote\">\r\n                                                        </div>\r\n                                                    </div>\r\n                                                </div>\r\n                                                <div class=\"row\">\r\n                                                    <div class=\"col-md-12\">\r\n                                                        <div class=\"table-responsive\">\r\n                                                            <table class=\"table table-bordered table-hover\">\r\n                                                                <tr>\r\n                                                                    <th>Name</th>\r\n                                                                    <th>Email</th>\r\n                                                                    <th>Phone</th>\r\n                                                                </tr>\r\n                                                                <tr>\r\n                                                                    <td>a</td>\r\n                                                                    <td>b</td>\r\n                                                                    <td>c</td>\r\n                                                                </tr>\r\n                                                            </table>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                </div>\r\n                                                <div class=\"row\">\r\n                                                    <div class=\"col-md-12\">\r\n                                                        Assigned Users\r\n                                                    </div>\r\n                                                    <div class=\"col-md-6\">\r\n                                                        <div class=\"form-group label-floating cntEmpty\">\r\n                                                            <label class=\"control-label\">User</label>\r\n                                                            <input ngui-auto-complete formControlName=\"userName\" name=\"userName\" [source]=\"autoUsers\" value-property-name=\"ID\"\r\n                                                                   display-property-name=\"UserName\" [list-formatter]=\"myListFormatter\" class=\"form-control\"\r\n                                                                   (valueChanged)=\"valueChanged($event)\" />\r\n                                                        </div>\r\n                                                    </div>\r\n                                                    <div class=\"col-md-3\">\r\n                                                        <div class=\"form-group label-floating\">\r\n                                                            <label class=\"control-label\">RateType</label>\r\n                                                            <select placeholder=\"Assign rate\" formControlName=\"ratetype\" name=\"ratetype\" class=\"form-control dropdownview\">\r\n                                                                <option value=\"1\" selected>Hourly</option>\r\n                                                                <option value=\"2\">Fixed</option>\r\n                                                                <option value=\"3\">Boxed</option>\r\n                                                            </select>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                    <div class=\"col-md-3\">\r\n                                                        <div class=\"form-group label-floating\">\r\n                                                            <label class=\"control-label\">Rate</label>\r\n                                                            <input type=\"text\" formControlName=\"rate\" name=\"rate\" class=\"form-control number-decimal-only\" />\r\n                                                        </div>\r\n                                                    </div>\r\n                                                </div>\r\n                                                <div class=\"row\">\r\n                                                    <div class=\"col-md-12\">\r\n                                                        <div class=\"table-responsive\">\r\n                                                            <table class=\"table table-bordered table-hover\" style=\"float:left !important\">\r\n                                                                <tr>\r\n                                                                    <th>#</th>\r\n                                                                    <th>Name</th>\r\n                                                                    <th></th>\r\n                                                                </tr>\r\n                                                                <tr *ngFor=\"let wODoc of workOrderDocsList;let idx=index\">\r\n                                                                    <td><strong>{{idx + 1}}.</strong></td>\r\n                                                                    <td><strong><a href=\"{{wODoc.FilePath}}\" target=\"_blank\">{{ wODoc.FileName }}</a></strong></td>\r\n                                                                    <td class=\"text-center\">\r\n                                                                        <ng-container *ngIf=\"userProfile.RoleId == 1 || userProfile.RoleId == 2 || userProfile.RoleId == 6 || wODoc.UploadBy == userProfile.ID\">\r\n                                                                            <i class=\"fa fa-close\" matTooltip=\"Remove\" [matTooltipPosition]=\"'above'\" style=\"cursor: pointer;\" (click)=\"deleteWorkOrderDocuments(wODoc.ID,wODoc.WorkOrderId, wODoc.WorkOrderNo, wODoc.FileName)\"></i>\r\n                                                                        </ng-container>\r\n                                                                    </td>\r\n                                                                </tr>\r\n                                                                <tr *ngFor=\"let item of uploader.queue\">\r\n                                                                    <td><strong></strong></td>\r\n                                                                    <td><strong>{{ item?.file?.name }}</strong></td>\r\n                                                                    <td class=\"text-center\">\r\n                                                                        <i class=\"fa fa-close\" style=\"cursor: pointer;\" (click)=\"item.remove()\" matTooltip=\"Remove\" [matTooltipPosition]=\"'above'\"></i>\r\n                                                                    </td>\r\n                                                                </tr>\r\n                                                            </table>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                </div>\r\n                                                <div class=\"row\">\r\n                                                    <div class=\"col-md-12\">\r\n                                                        <button class=\"btn btn-info\" (click)=\"addWorkOrderDocument();\"> Save </button>\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"tab-pane\" id=\"schedule-1\">\r\n                                        <div class=\"card\">\r\n                                            <div class=\"card-header\">\r\n                                                <h4 class=\"card-title\">Location of the product</h4>\r\n                                                <p class=\"category\">\r\n                                                    More information here\r\n                                                </p>\r\n                                            </div>\r\n                                            <div class=\"card-content\">\r\n                                                Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.\r\n                                                <br />\r\n                                                <br /> Dramatically maintain clicks-and-mortar solutions without functional solutions.\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"tab-pane\" id=\"tasks-1\">\r\n                                        <div class=\"card\">\r\n                                            <div class=\"card-header\">\r\n                                                <h4 class=\"card-title\">Legal info of the product</h4>\r\n                                                <p class=\"category\">\r\n                                                    More information here\r\n                                                </p>\r\n                                            </div>\r\n                                            <div class=\"card-content\">\r\n                                                Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.\r\n                                                <br />\r\n                                                <br />Dynamically innovate resource-leveling customer service for state of the art customer service.\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"tab-pane\" id=\"tasks-2\">\r\n                                        <div class=\"card\">\r\n                                            <div class=\"card-header\">\r\n                                                <h4 class=\"card-title\">Help center</h4>\r\n                                                <p class=\"category\">\r\n                                                    More information here\r\n                                                </p>\r\n                                            </div>\r\n                                            <div class=\"card-content\">\r\n                                                From the seamless transition of glass and metal to the streamlined profile, every detail was carefully considered to enhance your experience. So while its display is larger, the phone feels just right.\r\n                                                <br />\r\n                                                <br /> Another Text. The first thing you notice when you hold the phone is how great it feels in your hand. The cover glass curves down around the sides to meet the anodized aluminum enclosure in a remarkable, simplified design.\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div><!--end--col-12-->\r\n                            <!--<div class=\"col-md-8 col-md-offset-2\">\r\n                                <h3 class=\"title text-center\">Page Subcategories</h3>\r\n                                <br />\r\n\r\n                            </div>-->\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>\r\n<!-- end notice modal -->\r\n\r\n<!-- Classic Modal -->\r\n<div class=\"modal fade\" id=\"myWoModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog\">\r\n        <div class=\"wizard-container\">\r\n            <div class=\"wizard-card\" data-color=\"rose\" id=\"wizardProfile\">\r\n                <form [formGroup]=\"workOrdAssPage\">\r\n                    <div class=\"modal-content\">\r\n                        <div class=\"modal-header\">\r\n                            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\"> <i class=\"material-icons\">clear</i> </button>\r\n                            <h4 class=\"modal-title\">Assign User</h4>\r\n                        </div>\r\n                        <div class=\"modal-body\">\r\n                            <div class=\"row\">\r\n                                <div class=\"col-lg-12\">\r\n                                    <div class=\"form-group label-floating cntEmpty\" [ngClass]=\"displayFieldCss(workOrdAssPage, 'userName')\">\r\n                                        <label class=\"control-label\">Start typing to select user</label>\r\n                                        <input ngui-auto-complete formControlName=\"userName\" name=\"userName\" [source]=\"autoUsers\" value-property-name=\"ID\"\r\n                                               display-property-name=\"UserName\" [list-formatter]=\"myListFormatter\" class=\"form-control\"\r\n                                               (valueChanged)=\"valueChanged($event)\" />\r\n                                        <app-field-error-display [displayError]=\"isFieldValid(workOrdAssPage, 'userName')\" errorMsg=\"Select username.\"> </app-field-error-display>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"row\">\r\n                                <div class=\"col-lg-12\">\r\n                                    <div class=\"form-group label-floating\" [ngClass]=\"displayFieldCss(workOrdAssPage, 'description')\">\r\n                                        <label class=\"control-label\">Add notes or information here</label>\r\n                                        <!--<input type=\"text\" formControlName=\"description\" name=\"description\" class=\"form-control\" />-->\r\n                                        <textarea class=\"form-control\" rows=\"4\" cols=\"50\" id=\"description\" formControlName=\"description\"></textarea>\r\n                                        <app-field-error-display [displayError]=\"isFieldValid(workOrdAssPage, 'description')\" errorMsg=\"Notes is required.\"> </app-field-error-display>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"row\">\r\n                                <div class=\"col-lg-6\">\r\n                                    <div class=\"form-group label-floating\" [ngClass]=\"displayFieldCss(workOrdAssPage, 'ratetype')\">\r\n                                        <label class=\"control-label\">RateType</label>\r\n                                        <select placeholder=\"Assign rate\" formControlName=\"ratetype\" name=\"ratetype\" class=\"form-control dropdownview\">\r\n                                            <option value=\"1\" selected>Hourly</option>\r\n                                            <option value=\"2\">Fixed</option>\r\n                                            <option value=\"3\">Boxed</option>\r\n                                        </select>\r\n                                        <app-field-error-display [displayError]=\"isFieldValid(workOrdAssPage, 'ratetype')\" errorMsg=\"RateType is required.\"> </app-field-error-display>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"col-lg-6\">\r\n                                    <div class=\"form-group label-floating\" [ngClass]=\"displayFieldCss(workOrdAssPage, 'rate')\">\r\n                                        <label class=\"control-label\">Rate</label>\r\n                                        <input type=\"text\" formControlName=\"rate\" name=\"rate\" class=\"form-control number-decimal-only\" />\r\n                                        <app-field-error-display [displayError]=\"isFieldValid(workOrdAssPage, 'rate')\" errorMsg=\"Rate is required.\"> </app-field-error-display>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"row\">\r\n                                <div class=\"col-lg-6\">\r\n                                    <div class=\"form-group label-floating\" [ngClass]=\"displayFieldCss(workOrdAssPage, 'fromdate')\">\r\n                                        <br />\r\n                                        <!--<mat-datepicker-toggle matSuffix [for]=\"datepickerYear1\">\r\n                                                            </mat-datepicker-toggle>\r\n                                                            <mat-input-container>\r\n                                                                <input matInput\r\n                                                                       [matDatepicker]=\"datepickerYear1\" name=\"fromdate\"\r\n                                                                       placeholder=\"From Date\" formControlName=\"fromdate\">\r\n                                                            </mat-input-container>\r\n                                                            <mat-datepicker #datepickerYear1\r\n                                                                            [startView]=\"'month'\">\r\n                                                            </mat-datepicker>-->\r\n                                        <md2-datepicker placeholder=\"From Date\" formControlName=\"fromdate\" name=\"fromdate\" format=\"dd/MM/y HH:mm A\" type=\"datetime\" startView=\"month\"></md2-datepicker>\r\n                                        <app-field-error-display [displayError]=\"isFieldValid(workOrdAssPage, 'fromdate')\" errorMsg=\"From Date is required.\"> </app-field-error-display>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"col-lg-6\">\r\n                                    <div class=\"form-group label-floating\" [ngClass]=\"displayFieldCss(workOrdAssPage, 'todate')\">\r\n                                        <br />\r\n                                        <!--<mat-datepicker-toggle matSuffix [for]=\"datepickerYear\">\r\n                                                            </mat-datepicker-toggle>\r\n                                                            <mat-input-container>\r\n                                                                <input matInput\r\n                                                                       [matDatepicker]=\"datepickerYear\" name=\"todate\"\r\n                                                                       placeholder=\"To Date\" formControlName=\"todate\">\r\n                                                            </mat-input-container>\r\n                                                            <mat-datepicker #datepickerYear\r\n                                                                            [startView]=\"'month'\">\r\n                                                            </mat-datepicker>-->\r\n                                        <md2-datepicker placeholder=\"To Date\" formControlName=\"todate\" name=\"todate\" format=\"dd/MM/y HH:mm A\" type=\"datetime\" startView=\"month\"></md2-datepicker>\r\n                                        <app-field-error-display [displayError]=\"isFieldValid(workOrdAssPage, 'todate')\" errorMsg=\"To date should be greater than From date\"> </app-field-error-display>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"row\">\r\n                                <br />\r\n                                <div class=\"pull-right\">\r\n                                    <button type=\"submit\" [disabled]=\"(isWoStatus == 'Created' || isWoStatus == null)? '':true\" id=\"btnSubmit\" class=\"btn btn-success\" (click)=\"createWorkOrderAssignment()\">Submit</button>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<!--  End Modal -->"
 
 /***/ }),
 
@@ -96443,14 +97155,19 @@ module.exports = "body {\n  margin-top: 40px !important;\n  text-align: center !
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_userService__ = __webpack_require__("./src/app/services/userService.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_divisionService__ = __webpack_require__("./src/app/services/divisionService.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_jobsService__ = __webpack_require__("./src/app/services/jobsService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_jquery__ = __webpack_require__("./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_fullcalendar__ = __webpack_require__("./node_modules/fullcalendar/dist/fullcalendar.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_fullcalendar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_fullcalendar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_fullcalendar_scheduler__ = __webpack_require__("./node_modules/fullcalendar-scheduler/dist/scheduler.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_fullcalendar_scheduler___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_fullcalendar_scheduler__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_jqueryui__ = __webpack_require__("./node_modules/jqueryui/jquery-ui.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_jqueryui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_jqueryui__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_workOrderService__ = __webpack_require__("./src/app/services/workOrderService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_jquery__ = __webpack_require__("./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_fullcalendar__ = __webpack_require__("./node_modules/fullcalendar/dist/fullcalendar.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_fullcalendar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_fullcalendar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_fullcalendar_scheduler__ = __webpack_require__("./node_modules/fullcalendar-scheduler/dist/scheduler.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_fullcalendar_scheduler___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_fullcalendar_scheduler__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_jqueryui__ = __webpack_require__("./node_modules/jqueryui/jquery-ui.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_jqueryui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_jqueryui__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_ng2_file_upload__ = __webpack_require__("./node_modules/ng2-file-upload/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_ng2_file_upload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_ng2_file_upload__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__forms_validationforms_password_validator_component__ = __webpack_require__("./src/app/forms/validationforms/password-validator.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
 // IMPORTANT: this is a plugin which requires jQuery for initialisation and data manipulation
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -96474,8 +97191,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
+
 var CalendarComponent = /** @class */ (function () {
-    function CalendarComponent(http, router, formBuilder, commonService, divisionService, activatedRoute, userService, jobService) {
+    function CalendarComponent(http, router, formBuilder, commonService, divisionService, activatedRoute, userService, jobService, workOrderService, datepipe) {
         this.http = http;
         this.router = router;
         this.formBuilder = formBuilder;
@@ -96484,90 +97205,185 @@ var CalendarComponent = /** @class */ (function () {
         this.activatedRoute = activatedRoute;
         this.userService = userService;
         this.jobService = jobService;
+        this.workOrderService = workOrderService;
+        this.datepipe = datepipe;
         this.calendarForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormGroup"]({
-            divChk: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]()
+            divChk: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            pManager: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            client: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            jobStatus: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]()
         });
+        this.woAstForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormGroup"]({
+            address: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            description: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            addNote: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            ratetype: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            rate: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            userName: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]()
+        });
+        this.workOrdAssPage = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormGroup"]({
+            userName: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            description: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            ratetype: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            rate: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            fromdate: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            todate: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+        });
+        this.divisionList = [];
         this.jobData = [];
+        this.workOrdData = [];
+        this.workOrderDetail = {};
+        this.uploader = new __WEBPACK_IMPORTED_MODULE_14_ng2_file_upload__["FileUploader"]({ url: this.commonService.baseApiUrl + "AddWorkOrderDocuments/", itemAlias: 'file' });
+        this.hasBaseDropZoneOver = false;
+        this.hasAnotherDropZoneOver = false;
+        this.projectManager = [];
+        this.clientList = [];
+        this.woStatus = [];
     }
+    CalendarComponent.prototype.fileOverBase = function (e) {
+        this.hasBaseDropZoneOver = e;
+    };
+    CalendarComponent.prototype.fileOverAnother = function (e) {
+        this.hasAnotherDropZoneOver = e;
+    };
+    CalendarComponent.prototype.isFieldValid = function (form, field) {
+        return !form.get(field).valid && form.get(field).touched;
+    };
+    CalendarComponent.prototype.displayFieldCss = function (form, field) {
+        return {
+            'has-error': this.isFieldValid(form, field),
+            'has-feedback': this.isFieldValid(form, field)
+        };
+    };
+    CalendarComponent.prototype.showSwal = function (text) {
+        swal({
+            type: 'success',
+            text: text,
+            buttonsStyling: false,
+            confirmButtonClass: 'btn btn-success'
+        }).catch(swal.noop);
+    };
     CalendarComponent.prototype.ngOnInit = function () {
+        var _this = this;
         if (JSON.parse(sessionStorage.getItem('LogEmployee')) != null) {
             this.userProfile = JSON.parse(sessionStorage.getItem('LogEmployee'));
+            this.getRoleBasedUser();
             this.getAutocompleteUser();
-            this.GetAllDivisions();
+            this.getClientForCalendar();
+            this.getDivisionForCalendar();
+            this.getProjectManagerForCalendar();
             this.getJobDetailForCalendar();
+            this.woStatus = [
+                { "id": 1, "itemName": "Created" },
+                { "id": 2, "itemName": "Accepted" },
+                { "id": 3, "itemName": "Rejected" },
+                { "id": 4, "itemName": "Declined" },
+                { "id": 5, "itemName": "Completed" },
+                { "id": 6, "itemName": "Deleted" }
+            ];
             var self = this;
-            __WEBPACK_IMPORTED_MODULE_9_jquery__(document).ready(function () {
-                __WEBPACK_IMPORTED_MODULE_9_jquery__(".panel-toogle[data-toggle='toggle']").on('click', function () {
-                    var selector = __WEBPACK_IMPORTED_MODULE_9_jquery__(this).data("target");
-                    __WEBPACK_IMPORTED_MODULE_9_jquery__(".right-sidebar-panel:not('" + selector + "')").each(function () {
-                        __WEBPACK_IMPORTED_MODULE_9_jquery__(this).removeClass("in");
+            this.uploader.onAfterAddingFile = function (file) { file.withCredentials = false; };
+            this.uploader.onBuildItemForm = function (fileItem, form) {
+                form.append('WorkOrderId', localStorage.getItem("WorkOrderId"));
+                form.append('OldWorkOrderId', localStorage.getItem("OldWorkOrderId"));
+                form.append('WorkOrderNo', localStorage.getItem("WorkOrderNo"));
+                form.append('UploadBy', _this.userProfile.ID);
+            };
+            this.uploader.onSuccessItem = function (item, response, status, headers) {
+                _this.showSwal("File has been uploaded successfully!");
+                _this.getWorkOrderDocuments(localStorage.getItem("WorkOrderId"));
+            };
+            this.uploader.onCompleteAll = function () {
+                _this.uploader.clearQueue();
+            };
+            __WEBPACK_IMPORTED_MODULE_10_jquery__(document).ready(function () {
+                __WEBPACK_IMPORTED_MODULE_10_jquery__(".panel-toogle[data-toggle='toggle']").on('click', function () {
+                    var selector = __WEBPACK_IMPORTED_MODULE_10_jquery__(this).data("target");
+                    __WEBPACK_IMPORTED_MODULE_10_jquery__(".right-sidebar-panel:not('" + selector + "')").each(function () {
+                        __WEBPACK_IMPORTED_MODULE_10_jquery__(this).removeClass("in");
                     });
-                    __WEBPACK_IMPORTED_MODULE_9_jquery__(selector).toggleClass('in');
+                    __WEBPACK_IMPORTED_MODULE_10_jquery__(selector).toggleClass('in');
                 });
-                __WEBPACK_IMPORTED_MODULE_9_jquery__(document).on('click', '.fc-cell-text', function () {
-                    self.getWorkOrderDetails(__WEBPACK_IMPORTED_MODULE_9_jquery__(this).text());
-                    jQuery('#myModal').modal('toggle');
+                __WEBPACK_IMPORTED_MODULE_10_jquery__('.number-decimal-only').keypress(function (e) {
+                    var keyCode = e.which ? e.which : e.keyCode;
+                    if ((keyCode != 46 || __WEBPACK_IMPORTED_MODULE_10_jquery__(this).val().indexOf('.') != -1) &&
+                        (keyCode < 48 || keyCode > 57))
+                        return false;
+                    return true;
+                });
+                //fc-cell-content
+                __WEBPACK_IMPORTED_MODULE_10_jquery__(document).on('click', '.fc-cell-text', function () {
+                    self.getWorkOrderDetails(__WEBPACK_IMPORTED_MODULE_10_jquery__(this).text());
+                    jQuery('#myModal').modal('show');
+                });
+                __WEBPACK_IMPORTED_MODULE_10_jquery__(document).on('click', '.fc-title', function () {
+                    jQuery('#myWoModal').modal('show');
                 });
             });
-            //var jobTable = JSON.parse(localStorage.getItem("JobData"));
-            __WEBPACK_IMPORTED_MODULE_9_jquery__(function () {
-                __WEBPACK_IMPORTED_MODULE_9_jquery__('#external-events .fc-event').each(function () {
-                    __WEBPACK_IMPORTED_MODULE_9_jquery__(this).data('event', {
-                        title: __WEBPACK_IMPORTED_MODULE_9_jquery__["trim"](__WEBPACK_IMPORTED_MODULE_9_jquery__(this).text()),
-                        stick: true
-                    });
-                    __WEBPACK_IMPORTED_MODULE_9_jquery__(this).draggable({
-                        zIndex: 999,
-                        revert: true,
-                        revertDuration: 0
-                    });
-                });
-            });
-            //    $('.loader').show();
-            //    (<any>$('#calendar')).fullCalendar({
-            //        schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
-            //        editable: true,
-            //        droppable: true,
-            //        aspectRatio: 1.2,
-            //        scrollTime: '06:00',
-            //        header: {
-            //            left: 'today prev,next',
-            //            center: 'title',
-            //            right: 'timelineDay,agendaWeek,month'
-            //        },
-            //        defaultView: 'timelineDay',
-            //        resourceLabelText: 'Jobs',
-            //        resourceGroupField: 'jobnum',
-            //        resources: jobTable,
-            //        events: [
-            //            //{ id: '1', resourceId: 'b', start: '2018-07-12T02:00:00', end: '2018-02-07T07:00:00', title: 'event 1' },
-            //            //{ id: '2', resourceId: 'c', start: '2018-02-07T05:00:00', end: '2018-02-07T22:00:00', title: 'event 2' },
-            //            //{ id: '3', resourceId: 'd', start: '2018-02-06', end: '2018-02-08', title: 'event 3' },
-            //            //{ id: '4', resourceId: 'e', start: '2018-02-07T03:00:00', end: '2018-02-07T08:00:00', title: 'event 4' },
-            //            //{ id: '5', resourceId: 'f', start: '2018-02-07T00:30:00', end: '2018-02-07T02:30:00', title: 'event 5' }
-            //        ],
-            //        drop: function (date) {
-            //            if ($('#drop-remove').is(':checked')) {
-            //                $(this).remove();
-            //            }
-            //        },
-            //        eventReceive: function (event) {
-            //            console.log('eventReceive', event);
-            //        },
-            //        eventDrop: function (event) {
-            //            console.log('eventDrop', event);
-            //        }
-            //    });
-            //    $('.loader').hide();
+            //$(function () {
+            //    $('#external-events .fc-event').each(function () {
+            //        $(this).data('event', {
+            //            title: $.trim($(this).text()),
+            //            stick: true
+            //        });
+            //        $(this).draggable({
+            //            zIndex: 999,
+            //            revert: true,
+            //            revertDuration: 0
+            //        });
+            //    })
             //});
+            //this.getJobDetailForCalendar();
+            //this.getWorkOrderAssignmentForCalendar();
+            //var jobTable = JSON.parse(localStorage.getItem("JobData"));
+            //var woTable = JSON.parse(localStorage.getItem("WOData"));
+            //console.log(woTable);
+            //if (jobTable != null || woTable != null) {
+            //}
+            this.woAstForm = this.formBuilder.group({
+                address: null,
+                description: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+                addNote: null,
+                rate: null,
+                ratetype: null,
+                userName: null
+            });
+            this.workOrdAssPage = this.formBuilder.group({
+                userName: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+                description: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+                ratetype: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+                rate: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+                fromdate: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+                todate: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required]
+            }, {
+                validator: __WEBPACK_IMPORTED_MODULE_15__forms_validationforms_password_validator_component__["a" /* PasswordValidation */].DateValidation // your validation method
+            });
         }
         else {
             this.router.navigate(['pages/login']);
         }
     };
-    CalendarComponent.prototype.getAutocompleteUser = function () {
+    CalendarComponent.prototype.getProjectManagerForCalendar = function () {
         var _this = this;
-        __WEBPACK_IMPORTED_MODULE_9_jquery__('.loader').show();
+        __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').show();
+        this.userService.GetProjectManagerForCalendar(this.commonService.baseApiUrl, this.userProfile.ID).subscribe(function (data) {
+            var dataUsers = JSON.stringify(data);
+            var userParse = JSON.parse(dataUsers);
+            var userInfo = JSON.parse(userParse["_body"]);
+            if (userInfo != null) {
+                //var dataFilter = userInfo.filter(role => role.RoleId == 3);
+                for (var _i = 0, userInfo_1 = userInfo; _i < userInfo_1.length; _i++) {
+                    var usr = userInfo_1[_i];
+                    var jobJson = { id: usr.ID, itemName: usr.ProjectManager };
+                    _this.projectManager.push(jobJson);
+                }
+                __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').hide();
+            }
+        });
+    };
+    CalendarComponent.prototype.getRoleBasedUser = function () {
+        var _this = this;
+        __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').show();
         this.userService.GetRoleBasedUser(this.commonService.baseApiUrl, this.userProfile.ID).subscribe(function (data) {
             _this.autoUsers = null;
             var dataUsers = JSON.stringify(data);
@@ -96575,97 +97391,416 @@ var CalendarComponent = /** @class */ (function () {
             var userInfo = JSON.parse(userParse["_body"]);
             if (userInfo != null) {
                 _this.autoUsers = userInfo;
-                __WEBPACK_IMPORTED_MODULE_9_jquery__('.loader').hide();
+                __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').hide();
             }
         });
     };
+    //getWorkOrderAssignmentForCalendar() {
+    //    $('.loader').show();
+    //    this.workOrderService.GetWorkOrderAssignmentForCalendar(this.commonService.baseApiUrl, this.userProfile.ID).subscribe(
+    //        data1 => {
+    //            this.workOrdData = [];
+    //            localStorage.removeItem("WOData");
+    //            var dataDiv = JSON.stringify(data1);
+    //            var divParse = JSON.parse(dataDiv);
+    //            var divList = JSON.parse(divParse["_body"]);
+    //            if (divList != null) {
+    //                let idx = 0;
+    //                for (let woa of divList) {
+    //                    idx++;
+    //                    var jobWOJson = { id: idx, resourceId: woa.WorkOrderId, start: woa.FromDate, end: woa.ToDate, title: woa.Username }
+    //                    this.workOrdData.push(jobWOJson);
+    //                }
+    //                localStorage.setItem("WOData", JSON.stringify(this.workOrdData));
+    //                $('.loader').hide();
+    //            }
+    //        });
+    //}
     CalendarComponent.prototype.getJobDetailForCalendar = function () {
         var _this = this;
-        __WEBPACK_IMPORTED_MODULE_9_jquery__('.loader').show();
+        __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').show();
         this.jobService.GetJobDetailForCalendar(this.commonService.baseApiUrl, this.userProfile.ID).subscribe(function (data) {
             _this.jobData = [];
-            //localStorage.removeItem("JobData");
+            localStorage.removeItem("JobData");
             var dataUsers = JSON.stringify(data);
             var userParse = JSON.parse(dataUsers);
             var userInfo = JSON.parse(userParse["_body"]);
             if (userInfo != null) {
-                for (var _i = 0, userInfo_1 = userInfo; _i < userInfo_1.length; _i++) {
-                    var job = userInfo_1[_i];
-                    var jobJson = { id: job.WorkOrdID, jobnum: job.JobName, title: job.WorkOrderNo, eventColor: job.ColorCode };
-                    _this.jobData.push(jobJson);
-                }
-                var jsonObj = JSON.stringify(_this.jobData);
-                var jsonData = JSON.parse(jsonObj);
-                __WEBPACK_IMPORTED_MODULE_9_jquery__(function () {
-                    __WEBPACK_IMPORTED_MODULE_9_jquery__('#external-events .fc-event').each(function () {
-                        __WEBPACK_IMPORTED_MODULE_9_jquery__(this).data('event', {
-                            title: __WEBPACK_IMPORTED_MODULE_9_jquery__["trim"](__WEBPACK_IMPORTED_MODULE_9_jquery__(this).text()),
-                            stick: true
-                        });
-                        __WEBPACK_IMPORTED_MODULE_9_jquery__(this).draggable({
-                            zIndex: 999,
-                            revert: true,
-                            revertDuration: 0
-                        });
-                    });
-                    //console.log(jsonData);
-                    __WEBPACK_IMPORTED_MODULE_9_jquery__('.loader').show();
-                    __WEBPACK_IMPORTED_MODULE_9_jquery__('#calendar').fullCalendar({
-                        schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
-                        editable: true,
-                        droppable: true,
-                        aspectRatio: 1.2,
-                        scrollTime: '06:00',
-                        header: {
-                            left: 'today prev,next',
-                            center: 'title',
-                            right: 'timelineDay,agendaWeek,month'
-                        },
-                        defaultView: 'timelineDay',
-                        resourceLabelText: 'Jobs',
-                        resourceGroupField: 'jobnum',
-                        resources: jsonData,
-                        events: [],
-                        drop: function (date) {
-                            if (__WEBPACK_IMPORTED_MODULE_9_jquery__('#drop-remove').is(':checked')) {
-                                __WEBPACK_IMPORTED_MODULE_9_jquery__(this).remove();
-                            }
-                        },
-                        eventReceive: function (event) {
-                            console.log('eventReceive', event);
-                        },
-                        eventDrop: function (event) {
-                            console.log('eventDrop', event);
+                _this.workOrderService.GetWorkOrderAssignmentForCalendar(_this.commonService.baseApiUrl, _this.userProfile.ID).subscribe(function (data1) {
+                    _this.workOrdData = [];
+                    localStorage.removeItem("WOData");
+                    var dataDiv = JSON.stringify(data1);
+                    var divParse = JSON.parse(dataDiv);
+                    var divList = JSON.parse(divParse["_body"]);
+                    if (divList != null) {
+                        var idx = 0;
+                        for (var _i = 0, divList_1 = divList; _i < divList_1.length; _i++) {
+                            var woa = divList_1[_i];
+                            idx++;
+                            var jobWOJson = { id: idx, resourceId: woa.WorkOrderId, start: woa.FromDate, end: woa.ToDate, title: woa.Username };
+                            _this.workOrdData.push(jobWOJson);
                         }
+                    }
+                    for (var _a = 0, userInfo_2 = userInfo; _a < userInfo_2.length; _a++) {
+                        var job = userInfo_2[_a];
+                        var jobJson = { id: job.WorkOrdID, jobnum: job.JobName, title: job.WorkOrderNo, eventColor: job.ColorCode };
+                        _this.jobData.push(jobJson);
+                    }
+                    var jsonjob = JSON.stringify(_this.jobData);
+                    var jsonJobTable = JSON.parse(jsonjob);
+                    var jsonWO = JSON.stringify(_this.workOrdData);
+                    var jsonWOTable = JSON.parse(jsonWO);
+                    var self = _this;
+                    __WEBPACK_IMPORTED_MODULE_10_jquery__(function () {
+                        __WEBPACK_IMPORTED_MODULE_10_jquery__('#external-events .fc-event').each(function () {
+                            __WEBPACK_IMPORTED_MODULE_10_jquery__(this).data('event', {
+                                title: __WEBPACK_IMPORTED_MODULE_10_jquery__["trim"](__WEBPACK_IMPORTED_MODULE_10_jquery__(this).text()),
+                                stick: true
+                            });
+                            __WEBPACK_IMPORTED_MODULE_10_jquery__(this).draggable({
+                                zIndex: 999,
+                                revert: true,
+                                revertDuration: 0
+                            });
+                        });
+                        //console.log(jobTable);
+                        __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').hide();
+                        __WEBPACK_IMPORTED_MODULE_10_jquery__('#calendar').fullCalendar({
+                            schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
+                            editable: true,
+                            droppable: true,
+                            aspectRatio: 1.2,
+                            scrollTime: '01:00',
+                            header: {
+                                left: 'today prev,next',
+                                center: 'title',
+                                right: 'timelineDay,agendaWeek,month'
+                            },
+                            defaultView: 'timelineDay',
+                            resourceLabelText: 'Jobs',
+                            resourceGroupField: 'jobnum',
+                            resources: jsonJobTable,
+                            events: jsonWOTable,
+                            drop: function (date) {
+                                if (__WEBPACK_IMPORTED_MODULE_10_jquery__('#drop-remove').is(':checked')) {
+                                    __WEBPACK_IMPORTED_MODULE_10_jquery__(this).remove();
+                                }
+                            },
+                            eventReceive: function (event) {
+                                var endTime = event.end != null ? event.end : event.start.clone().add(8, 'hour');
+                                self.workOrdAssignmentSet(event.title, event.start.format(), endTime.format(), event.resourceId, false);
+                                console.log('eventReceive', event);
+                            },
+                            eventDrop: function (event) {
+                                console.log('eventDrop', event);
+                            },
+                            eventClick: function (event, element) {
+                                self.workOrdAssignmentSet(event.title, event.start.format(), event.end.format(), event.resourceId, false);
+                            },
+                            eventResize: function (event, delta, revertFunc) {
+                                var user = self.autoUsers.filter(function (usr) { return usr.UserName == event.title; });
+                                if (user != null) {
+                                    self.isWorkOrderAssignment(event.title, event.start.format(), event.end.format(), event.resourceId, user[0].ID);
+                                }
+                            }
+                        });
                     });
-                    __WEBPACK_IMPORTED_MODULE_9_jquery__('.loader').hide();
                 });
-                //localStorage.setItem("JobData", JSON.stringify(this.jobData));
-                //$('.loader').hide();
             }
         });
     };
-    CalendarComponent.prototype.GetAllDivisions = function () {
+    CalendarComponent.prototype.getDivisionForCalendar = function () {
         var _this = this;
-        __WEBPACK_IMPORTED_MODULE_9_jquery__('.loader').show();
-        this.divisionService.GetAllDivisions(this.commonService.baseApiUrl).subscribe(function (data) {
+        __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').show();
+        this.divisionService.GetDivisionForCalendar(this.commonService.baseApiUrl, this.userProfile.ID).subscribe(function (data) {
             var dataDiv = JSON.stringify(data);
             var divParse = JSON.parse(dataDiv);
             var divList = JSON.parse(divParse["_body"]);
             if (divList != null) {
-                _this.divisionList = divList;
+                for (var _i = 0, divList_2 = divList; _i < divList_2.length; _i++) {
+                    var div = divList_2[_i];
+                    var jobJson = { id: div.ID, itemName: div.Name };
+                    _this.divisionList.push(jobJson);
+                }
+            }
+        });
+    };
+    CalendarComponent.prototype.getClientForCalendar = function () {
+        var _this = this;
+        __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').show();
+        this.jobService.GetClientForCalendar(this.commonService.baseApiUrl, this.userProfile.ID).subscribe(function (data) {
+            var dataDiv = JSON.stringify(data);
+            var divParse = JSON.parse(dataDiv);
+            var divList = JSON.parse(divParse["_body"]);
+            if (divList != null) {
+                for (var _i = 0, divList_3 = divList; _i < divList_3.length; _i++) {
+                    var clt = divList_3[_i];
+                    var jobJson = { id: clt.ID, itemName: clt.ClientName };
+                    _this.clientList.push(jobJson);
+                }
             }
         });
     };
     CalendarComponent.prototype.getWorkOrderDetails = function (woNumber) {
+        this.getWorkOrdersByWorkOrdID(woNumber);
+        this.woAstForm.reset();
         this.workOrdNo = woNumber;
+    };
+    CalendarComponent.prototype.getAutocompleteUser = function () {
+        var _this = this;
+        __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').show();
+        this.userService.GetAutocompleteUser(this.commonService.baseApiUrl).subscribe(function (data) {
+            var dataUsers = JSON.stringify(data);
+            var userParse = JSON.parse(dataUsers);
+            var userInfo = JSON.parse(userParse["_body"]);
+            if (userInfo != null) {
+                _this.autoUsers = userInfo;
+                __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').hide();
+            }
+        });
+    };
+    CalendarComponent.prototype.getWorkOrdersByWorkOrdID = function (workOrdID) {
+        var _this = this;
+        __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').show();
+        this.workOrderService.GetWorkOrdersByWorkOrdID(this.commonService.baseApiUrl, workOrdID).subscribe(function (data) {
+            var dataWorkOrders = JSON.stringify(data);
+            var workParse = JSON.parse(dataWorkOrders);
+            var workOrderInfo = JSON.parse(workParse["_body"]);
+            localStorage.removeItem("WorkOrderId");
+            localStorage.removeItem("OldWorkOrderId");
+            localStorage.removeItem("WorkOrderNo");
+            if (workOrderInfo != null) {
+                _this.workOrderDetail = workOrderInfo;
+                var wAddress = '';
+                if (workOrderInfo.AddressLine1 != null && workOrderInfo.AddressLine1 != '') {
+                    wAddress += workOrderInfo.AddressLine1.replace(/,\s*$/, "") + ",";
+                }
+                if (workOrderInfo.AddressLine2 != null && workOrderInfo.AddressLine2 != '') {
+                    wAddress += workOrderInfo.AddressLine2.replace(/,\s*$/, "") + ",";
+                }
+                if (workOrderInfo.AddressLine3 != null && workOrderInfo.AddressLine3 != '') {
+                    wAddress += workOrderInfo.AddressLine3.replace(/,\s*$/, "") + ",";
+                }
+                if (workOrderInfo.Town != null && workOrderInfo.Town != '') {
+                    wAddress += workOrderInfo.Town.replace(/,\s*$/, "") + ",";
+                }
+                if (workOrderInfo.State != null && workOrderInfo.State != '') {
+                    wAddress += workOrderInfo.State.replace(/,\s*$/, "") + ",";
+                }
+                if (workOrderInfo.PostalCode != null && workOrderInfo.PostalCode != '') {
+                    wAddress += workOrderInfo.PostalCode.replace(/,\s*$/, "") + ",";
+                }
+                if (wAddress != null && wAddress != '') {
+                    _this.wrokOrdAddress = wAddress.slice(0, -1);
+                }
+                else {
+                    _this.wrokOrdAddress = "7 Peace St, Harlaxton QLD 4350";
+                }
+                localStorage.setItem("WorkOrderId", workOrderInfo.ID);
+                localStorage.setItem("OldWorkOrderId", workOrderInfo.OldWorkOrderId);
+                localStorage.setItem("WorkOrderNo", workOrderInfo.WorkOrderNo);
+                _this.getWorkOrderAssignment(localStorage.getItem("WorkOrderId"));
+                _this.getWorkOrderDocuments(localStorage.getItem("WorkOrderId"));
+                __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').hide();
+            }
+        });
+    };
+    CalendarComponent.prototype.getWorkOrderAssignment = function (workOrdId) {
+        var _this = this;
+        __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').show();
+        this.workOrderService.GetWorkOrderAssignment(this.commonService.baseApiUrl, workOrdId).subscribe(function (data) {
+            var datawAsg = JSON.stringify(data);
+            var wAsgParse = JSON.parse(datawAsg);
+            var wAsgList = JSON.parse(wAsgParse["_body"]);
+            _this.workOrderAssignmentList = null;
+            if (wAsgList != null && wAsgList.length > 0) {
+                _this.workOrderAssignmentList = wAsgList;
+                if (wAsgList[0].SendDateTime != null) {
+                    _this.sendDateTime = wAsgList[0].SendDateTime;
+                }
+                else {
+                    _this.sendDateTime = null;
+                }
+                __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').hide();
+                _this.isSend = false;
+            }
+            else {
+                _this.sendDateTime = null;
+                _this.isSend = true;
+            }
+        });
+    };
+    CalendarComponent.prototype.createWorkOrderAssignment = function () {
+        var _this = this;
+        __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').show();
+        if (this.workOrdAssPage.valid) {
+            var fDate = this.datepipe.transform(this.workOrdAssPage.controls["fromdate"].value, 'yyyy/MM/dd HH:mm:ss');
+            var tDate = this.datepipe.transform(this.workOrdAssPage.controls["todate"].value, 'yyyy/MM/dd HH:mm:ss');
+            var contact = {
+                UserId: this.assUserID,
+                WorkOrderId: localStorage.getItem("WorkOrderId"),
+                OldWorkOrderId: localStorage.getItem("OldWorkOrderId"),
+                WorkOrderNo: localStorage.getItem("WorkOrderNo"),
+                Description: this.workOrdAssPage.controls["description"].value,
+                RateType: this.workOrdAssPage.controls["ratetype"].value,
+                Rate: this.workOrdAssPage.controls["rate"].value,
+                FromDate: fDate,
+                ToDate: tDate,
+                WorkOrderAssignmentStatus: "Created",
+                AssignBy: this.userProfile.ID
+            };
+            console.log(contact);
+            this.workOrderService.CreateWorkOrderAssignment(this.commonService.baseApiUrl, contact).subscribe(function (data) {
+                var dataUsers = JSON.stringify(data);
+                var userParse = JSON.parse(dataUsers);
+                var userInfo = JSON.parse(userParse["_body"]);
+                jQuery('#myWoModal').modal('hide');
+                if (userInfo == "Ok") {
+                    _this.getWorkOrderAssignment(localStorage.getItem("WorkOrderId"));
+                    _this.getJobDetailForCalendar();
+                    _this.showSwal("Work order has been assigned.");
+                }
+                else if (userInfo == "already") {
+                    _this.showSwal("Work order already assigned.");
+                }
+                _this.workOrdAssPage.reset();
+                __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').hide();
+            });
+        }
+        else {
+            __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').hide();
+            this.validateAllFormFields(this.workOrdAssPage);
+        }
+    };
+    CalendarComponent.prototype.addWorkOrderDocument = function () {
+        this.uploader.uploadAll();
+    };
+    CalendarComponent.prototype.deleteWorkOrderDocuments = function (workDocsID, workOrdId, workOrderNo, fileName) {
+        var _this = this;
+        swal({
+            title: 'Are you sure?',
+            text: 'You will not be able to revert this!',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonClass: 'btn btn-success',
+            cancelButtonClass: 'btn btn-danger',
+            confirmButtonText: 'Yes, delete it!',
+            buttonsStyling: false
+        }).then(function () {
+            __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').show();
+            _this.workOrderService.DeleteWorkOrderDocuments(_this.commonService.baseApiUrl, workDocsID, workOrderNo, fileName).subscribe(function (data) {
+                var datawAsg = JSON.stringify(data);
+                var wAsgParse = JSON.parse(datawAsg);
+                var wAsgList = JSON.parse(wAsgParse["_body"]);
+                if (wAsgList == true) {
+                    __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').hide();
+                    _this.getWorkOrderDocuments(workOrdId);
+                    swal({
+                        title: 'Deleted!',
+                        text: 'Your file has been deleted.',
+                        type: 'success',
+                        confirmButtonClass: 'btn btn-success',
+                        buttonsStyling: false
+                    }).catch(swal.noop);
+                }
+            });
+        }).catch(swal.noop);
+    };
+    CalendarComponent.prototype.getWorkOrderDocuments = function (workOrdId) {
+        var _this = this;
+        __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').show();
+        this.workOrderService.GetWorkOrderDocuments(this.commonService.baseApiUrl, workOrdId).subscribe(function (data) {
+            var datawAsg = JSON.stringify(data);
+            var wAsgParse = JSON.parse(datawAsg);
+            var wAsgList = JSON.parse(wAsgParse["_body"]);
+            _this.workOrderDocsList = null;
+            if (wAsgList != null) {
+                _this.workOrderDocsList = wAsgList;
+                __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').hide();
+            }
+        });
+    };
+    CalendarComponent.prototype.isWorkOrderAssignment = function (userName, fromDate, toDate, workOrdId, userID) {
+        var _this = this;
+        __WEBPACK_IMPORTED_MODULE_10_jquery__('.loader').show();
+        this.workOrderService.IsWorkOrderAssignment(this.commonService.baseApiUrl, userID, workOrdId).subscribe(function (data) {
+            var datawAsg = JSON.stringify(data);
+            var wAsgParse = JSON.parse(datawAsg);
+            var wAsgList = JSON.parse(wAsgParse["_body"]);
+            if (wAsgList != null) {
+                _this.workOrdAssignmentSet(userName, fromDate, toDate, workOrdId, wAsgList);
+            }
+        });
+    };
+    CalendarComponent.prototype.valueChanged = function (newVal) {
+        this.assUserID = newVal.ID;
+    };
+    CalendarComponent.prototype.myListFormatter = function (data) {
+        return data['UserName'];
+    };
+    CalendarComponent.prototype.workOrdAssignmentSet = function (userName, fromDate, toDate, workOrdID, isPopup) {
+        var _this = this;
+        this.workOrdAssPage.reset();
+        var elems = document.querySelectorAll(".label-floating");
+        if (elems != null) {
+            [].forEach.call(elems, function (el) {
+                el.classList.remove("is-empty");
+            });
+        }
+        localStorage.removeItem("WorkOrderId");
+        localStorage.removeItem("OldWorkOrderId");
+        localStorage.removeItem("WorkOrderNo");
+        this.workOrdAssPage.controls["fromdate"].setValue(fromDate);
+        this.workOrdAssPage.controls["todate"].setValue(toDate);
+        this.workOrdAssPage.controls["userName"].setValue(userName);
+        this.workOrderService.GetWorkOrderForCalender(this.commonService.baseApiUrl, workOrdID).subscribe(function (data) {
+            var dataWorkOrders = JSON.stringify(data);
+            var workParse = JSON.parse(dataWorkOrders);
+            var workOrderInfo = JSON.parse(workParse["_body"]);
+            if (workOrderInfo != null) {
+                console.log(workOrderInfo.ID);
+                localStorage.setItem("WorkOrderId", workOrderInfo.ID);
+                localStorage.setItem("OldWorkOrderId", workOrderInfo.OldWorkOrderId);
+                localStorage.setItem("WorkOrderNo", workOrderInfo.WorkOrderNo);
+                var user = _this.autoUsers.filter(function (usr) { return usr.UserName == userName; });
+                _this.assUserID = user[0].ID;
+                _this.workOrderService.GetWorkOrderAssignmentByWOID(_this.commonService.baseApiUrl, user[0].ID, workOrdID).subscribe(function (data1) {
+                    var dataWoAst = JSON.stringify(data1);
+                    var woAstParse = JSON.parse(dataWoAst);
+                    var woAstInfo = JSON.parse(woAstParse["_body"]);
+                    if (woAstInfo != null) {
+                        _this.workOrdAssPage.controls["description"].setValue(woAstInfo.Description);
+                        _this.workOrdAssPage.controls["ratetype"].setValue(woAstInfo.RateType);
+                        _this.workOrdAssPage.controls["rate"].setValue(woAstInfo.Rate);
+                    }
+                    if (isPopup) {
+                        _this.createWorkOrderAssignment();
+                    }
+                    else {
+                        jQuery('#myWoModal').modal('show');
+                    }
+                });
+            }
+        });
+    };
+    CalendarComponent.prototype.validateAllFormFields = function (formGroup) {
+        var _this = this;
+        Object.keys(formGroup.controls).forEach(function (field) {
+            var control = formGroup.get(field);
+            if (control instanceof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]) {
+                control.markAsTouched({ onlySelf: true });
+            }
+            else if (control instanceof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormGroup"]) {
+                _this.validateAllFormFields(control);
+            }
+        });
     };
     CalendarComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-calendar-cmp',
             template: __webpack_require__("./src/app/calendar/calendar.component.html"),
             styles: [__webpack_require__("./src/app/calendar/calendar.component.scss")],
-            providers: [__WEBPACK_IMPORTED_MODULE_5__services_commonService__["a" /* CommonService */], __WEBPACK_IMPORTED_MODULE_7__services_divisionService__["a" /* DivisionService */], __WEBPACK_IMPORTED_MODULE_6__services_userService__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_8__services_jobsService__["a" /* JobsService */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_5__services_commonService__["a" /* CommonService */], __WEBPACK_IMPORTED_MODULE_7__services_divisionService__["a" /* DivisionService */], __WEBPACK_IMPORTED_MODULE_6__services_userService__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_8__services_jobsService__["a" /* JobsService */], __WEBPACK_IMPORTED_MODULE_9__services_workOrderService__["a" /* WorkOrderService */], __WEBPACK_IMPORTED_MODULE_16__angular_common__["DatePipe"]]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["Http"],
             __WEBPACK_IMPORTED_MODULE_3__angular_router__["d" /* Router */],
@@ -96674,7 +97809,9 @@ var CalendarComponent = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_7__services_divisionService__["a" /* DivisionService */],
             __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */],
             __WEBPACK_IMPORTED_MODULE_6__services_userService__["a" /* UserService */],
-            __WEBPACK_IMPORTED_MODULE_8__services_jobsService__["a" /* JobsService */]])
+            __WEBPACK_IMPORTED_MODULE_8__services_jobsService__["a" /* JobsService */],
+            __WEBPACK_IMPORTED_MODULE_9__services_workOrderService__["a" /* WorkOrderService */],
+            __WEBPACK_IMPORTED_MODULE_16__angular_common__["DatePipe"]])
     ], CalendarComponent);
     return CalendarComponent;
 }());
@@ -96696,6 +97833,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__calendar_component__ = __webpack_require__("./src/app/calendar/calendar.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__calendar_routing__ = __webpack_require__("./src/app/calendar/calendar.routing.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_module__ = __webpack_require__("./src/app/app.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ng2_file_upload__ = __webpack_require__("./node_modules/ng2-file-upload/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ng2_file_upload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_ng2_file_upload__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__field_error_display_field_error_display_module__ = __webpack_require__("./src/app/field-error-display/field-error-display.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ngui_auto_complete__ = __webpack_require__("./node_modules/@ngui/auto-complete/dist/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ngui_auto_complete___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__ngui_auto_complete__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angular2_multiselect_dropdown_angular2_multiselect_dropdown__ = __webpack_require__("./node_modules/angular2-multiselect-dropdown/angular2-multiselect-dropdown.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_md2__ = __webpack_require__("./node_modules/md2/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -96706,7 +97850,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-// import { LbdTableComponent } from '../lbd/lbd-table/lbd-table.component';
+
+
+
+
+
 
 
 
@@ -96720,7 +97868,13 @@ var CalendarModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_1__angular_router__["e" /* RouterModule */].forChild(__WEBPACK_IMPORTED_MODULE_5__calendar_routing__["a" /* CalendarRoutes */]),
                 __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormsModule"],
                 __WEBPACK_IMPORTED_MODULE_3__angular_forms__["ReactiveFormsModule"],
-                __WEBPACK_IMPORTED_MODULE_6__app_module__["b" /* MaterialModule */]
+                __WEBPACK_IMPORTED_MODULE_6__app_module__["b" /* MaterialModule */],
+                __WEBPACK_IMPORTED_MODULE_7_ng2_file_upload__["FileUploadModule"],
+                __WEBPACK_IMPORTED_MODULE_8__field_error_display_field_error_display_module__["a" /* FieldErrorDisplayModule */],
+                __WEBPACK_IMPORTED_MODULE_9__ngui_auto_complete__["NguiAutoCompleteModule"],
+                __WEBPACK_IMPORTED_MODULE_10_angular2_multiselect_dropdown_angular2_multiselect_dropdown__["a" /* AngularMultiSelectModule */],
+                __WEBPACK_IMPORTED_MODULE_11_md2__["a" /* Md2DatepickerModule */],
+                __WEBPACK_IMPORTED_MODULE_11_md2__["b" /* MdNativeDateModule */]
             ],
             declarations: [__WEBPACK_IMPORTED_MODULE_4__calendar_component__["a" /* CalendarComponent */]]
         })
