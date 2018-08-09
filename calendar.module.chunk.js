@@ -97297,6 +97297,7 @@ var CalendarComponent = /** @class */ (function () {
                 _this.uploader.clearQueue();
             };
             __WEBPACK_IMPORTED_MODULE_10_jquery__(document).ready(function () {
+                jQuery(".md2-datepicker-arrow").hide();
                 __WEBPACK_IMPORTED_MODULE_10_jquery__(".panel-toogle[data-toggle='toggle']").on('click', function () {
                     var selector = __WEBPACK_IMPORTED_MODULE_10_jquery__(this).data("target");
                     __WEBPACK_IMPORTED_MODULE_10_jquery__(".right-sidebar-panel:not('" + selector + "')").each(function () {

@@ -192,6 +192,7 @@ var WoAssignmentComponent = /** @class */ (function () {
                 }
             });
             $(document).ready(function () {
+                jQuery(".md2-datepicker-arrow").hide();
                 $(".cntEmpty").removeClass("is-empty");
                 $(".collapse").on('show.bs.collapse', function () {
                     $(this).parent().find(".glyphicon").removeClass("glyphicon-plus").addClass("glyphicon-minus");

@@ -179,6 +179,9 @@ var UsersComponent = /** @class */ (function () {
                     postCode: {
                         required: true
                     },
+                    role: {
+                        required: true
+                    }
                 },
                 errorPlacement: function (error, element) {
                     $(element).parent('div').addClass('has-error');
@@ -193,7 +196,6 @@ var UsersComponent = /** @class */ (function () {
                 onNext: function (tab, navigation, index) {
                     if (index == 1) {
                         var aa = self.userEmailExist($('#txtEmail').val());
-                        alert(aa);
                         var $valid = $('.wizard-card form').valid();
                         if (!$valid) {
                             $validator_1.focusInvalid();
@@ -445,6 +447,23 @@ var UsersComponent = /** @class */ (function () {
     };
     UsersComponent.prototype.createUser = function () {
         var _this = this;
+        var $validator = $('.wizard-card form').validate({
+            rules: {
+                role: {
+                    required: true
+                }
+            },
+            messages: {
+                role: {
+                    required: "role field is required"
+                }
+            }
+        });
+        var $valid = $('.wizard-card form').valid();
+        if (!$valid) {
+            $validator.focusInvalid();
+            return false;
+        }
         this.isUserCreted = true;
         $('.loader').show();
         var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["Headers"]({ 'Content-Type': 'application/json' });
@@ -606,7 +625,6 @@ var UsersComponent = /** @class */ (function () {
     };
     UsersComponent.prototype.userEmailExist = function (email) {
         var _this = this;
-        alert('call');
         //var email = event.target.value;
         var empID = localStorage.getItem("EmployeeId");
         return this.userService.CheckUserEmailExist(this.commonService.baseApiUrl, email.trim(), empID).map(function (data) {

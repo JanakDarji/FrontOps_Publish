@@ -43123,8 +43123,8 @@ var MaintenanceService = /** @class */ (function () {
         return this.http.post(baseurl + "DeleteMaintenancePartType/" + contact, null);
     };
     ;
-    MaintenanceService.prototype.GetMaintenanceDetails = function (baseurl) {
-        return this.http.get(baseurl + "GetMaintenanceDetails/");
+    MaintenanceService.prototype.GetMaintenanceDetails = function (baseurl, contact) {
+        return this.http.post(baseurl + "GetMaintenanceDetails/", contact);
     };
     ;
     MaintenanceService.prototype.GetMaintenanceByID = function (baseurl, contact) {
@@ -43189,6 +43189,14 @@ var MaintenanceService = /** @class */ (function () {
     ;
     MaintenanceService.prototype.SendEmailMaintenanceAssignment = function (baseurl, contact) {
         return this.http.post(baseurl + "SendEmailMaintenanceAssignment/", contact);
+    };
+    ;
+    MaintenanceService.prototype.GetClientForMaintenance = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetClientForMaintenance/" + contact);
+    };
+    ;
+    MaintenanceService.prototype.GetRaisedByForMaintenance = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetRaisedByForMaintenance/" + contact);
     };
     ;
     MaintenanceService = __decorate([

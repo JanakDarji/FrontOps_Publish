@@ -116,6 +116,7 @@ var ViewTimesheetComponent = /** @class */ (function () {
                 validator: __WEBPACK_IMPORTED_MODULE_7__forms_validationforms_password_validator_component__["a" /* PasswordValidation */].StartEndDateDiffValidation // your validation method
             });
             $(document).ready(function () {
+                jQuery(".md2-datepicker-arrow").hide();
                 //$('#txthour').val('00');
                 //$('#txtminute').val('00');
                 $('.number-decimal-only').keypress(function (e) {

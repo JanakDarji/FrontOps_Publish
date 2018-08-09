@@ -88,6 +88,9 @@ var DashboardComponent = /** @class */ (function () {
             this.initLineChart();
             this.initPieChart();
             this.getDivision();
+            $(document).ready(function () {
+                jQuery(".md2-datepicker-arrow").hide();
+            });
         }
         else {
             this.router.navigate(['pages/login']);
