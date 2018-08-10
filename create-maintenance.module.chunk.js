@@ -480,12 +480,13 @@ var CreateMaintenanceComponent = /** @class */ (function () {
     CreateMaintenanceComponent.prototype.getAutocompleteUser = function () {
         var _this = this;
         $('.loader').show();
-        this.autoUsers = null;
         this.maintenanceService.GetAssignWOUserForMaintenance(this.commonService.baseApiUrl, this.userProfile.ID).subscribe(function (data) {
             var dataUsers = JSON.stringify(data);
             var userParse = JSON.parse(dataUsers);
             var userInfo = JSON.parse(userParse["_body"]);
             _this.resetWorkOrderAssignment();
+            _this.autoUsers = null;
+            console.log(_this.autoUsers);
             if (userInfo != null) {
                 _this.autoUsers = userInfo;
                 $('.loader').hide();
