@@ -486,9 +486,10 @@ var CreateMaintenanceComponent = /** @class */ (function () {
             var userInfo = JSON.parse(userParse["_body"]);
             _this.resetWorkOrderAssignment();
             _this.autoUsers = null;
-            console.log(_this.autoUsers);
+            console.log(userInfo);
             if (userInfo != null) {
                 _this.autoUsers = userInfo;
+                alert();
                 $('.loader').hide();
             }
         });
