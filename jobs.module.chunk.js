@@ -95,7 +95,7 @@ var JobsComponent = /** @class */ (function () {
     JobsComponent.prototype.GetSchedulerDoneStatus = function () {
         var _this = this;
         $('.loader').show();
-        $('#yncStart').show();
+        $('#syncStart').show();
         this.schedulerService.GetSchedulerDoneStatus(this.commonService.baseApiUrl, "2").subscribe(function (data) {
             var dataScheduler = JSON.stringify(data);
             var schedulerParse = JSON.parse(dataScheduler);
