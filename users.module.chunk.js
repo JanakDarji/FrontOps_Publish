@@ -401,7 +401,6 @@ var UsersComponent = /** @class */ (function () {
     UsersComponent.prototype.GetSchedulerDoneStatus = function () {
         var _this = this;
         $('.loader').show();
-        $('#yncStart').show();
         this.schedulerService.GetSchedulerDoneStatus(this.commonService.baseApiUrl, "2").subscribe(function (data) {
             var dataScheduler = JSON.stringify(data);
             var schedulerParse = JSON.parse(dataScheduler);
@@ -420,6 +419,7 @@ var UsersComponent = /** @class */ (function () {
     UsersComponent.prototype.addNewSchedulerInQueue = function () {
         var _this = this;
         $('.loader').show();
+        $('#yncStart').show();
         this.schedulerService.AddNewSchedulerInQueue(this.commonService.baseApiUrl, "1").subscribe(function (data) {
             var dataScheduler = JSON.stringify(data);
             var schedulerParse = JSON.parse(dataScheduler);
