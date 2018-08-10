@@ -3,7 +3,7 @@ webpackJsonp(["timesheet.module"],{
 /***/ "./src/app/timesheet/timesheet.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--<title>Aspect Timesheet</title>-->\n<style>\n    .dropdownview {\n        -webkit-appearance: menulist-button;\n    }\r\n .pd-btm{margin-top:7px;}\n\n</style>\n<title>Timesheet</title>\n<div class=\"main-content\">\n    <div class=\"container-fluid\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <div class=\"card\">\n                    <div class=\"card-content\">\n                        <h3 class=\"card-title\">Timesheet</h3>\n                        <div class=\"row\">\n                            <div class=\"col-md-3\" [hidden]=\"hidebuttons\">\n                                <!--<button class=\"btn btn-success\" (click)=\"approvedTimeSheet(true)\">Approve</button>\n                                <button class=\"btn btn-danger\" (click)=\"approvedTimeSheet(false)\">Reject</button>-->\n                                <button class=\"btn btn-success\" (click)=\"approveRejectTimesheet(1)\">Approve</button>\n                                <button class=\"btn btn-danger\" (click)=\"approveRejectTimesheet(2)\">Reject</button>\n                            </div>\n                            <div class=\"col-md-2\">\n                                <select id=\"Id\" #Id=\"ngModel\" class=\"form-control  dropdownview\" [(ngModel)]=\"selectedDivision\" (change)=\"getFilterRecord();\">\n                                    <option [ngValue]=\"undefined\" selected=\"\">--- Select Division ---</option>\n                                    <option *ngFor=\"let k of divisionList\" value={{k.ID}}>\n                                        {{k.Name}}\n                                    </option>\n                                </select>\n                            </div>\n                            <div class=\"col-md-3\">\n                                <md2-datepicker class=\"pd-btm\" placeholder=\"Weekend Date\" name=\"weekenddate\" [(ngModel)]=\"selectedDate\" (change)=\"getFilterRecord();\" format=\"dd-MM-y\" type=\"date\" startView=\"month\"></md2-datepicker>\n                            </div>\n                            <div class=\"col-md-2\">\n                                <select id=\"Id\" #Id=\"ngModel\" class=\"form-control  dropdownview\" [(ngModel)]=\"selectedStatusId\" (change)=\"getFilterRecord();\">\n                                    <option [ngValue]=\"0\" selected=\"\">All</option>\n                                    <option [ngValue]=\"k.Id\" *ngFor=\"let k of statusList\">\n                                        {{k.Name}}\n                                    </option>\n                                </select>\n                            </div>\n                            <div class=\"col-md-2\">\r\n                                <select id=\"Id\" #Id=\"ngModel\" class=\"form-control  dropdownview\" [(ngModel)]=\"selectedSts\" (change)=\"getFilterRecord();\">\r\n                                    <option [ngValue]=\"0\" selected=\"\">All</option>\r\n                                    <option [ngValue]=\"1\">Completed</option>\r\n                                    <option [ngValue]=\"2\">Not Completed</option>\r\n                                </select>\r\n                            </div>\n                        </div>\n                        <div class=\"toolbar\">\n                        </div>\n                        <form [formGroup]=\"tSheetTrackrForm\">\n                            <div class=\"material-datatables table-responsive\">\n                                <table id=\"tSheetDatatables\" class=\"table table-striped table-no-bordered table-hover\" cellspacing=\"0\" width=\"100%\" style=\"width:100%\">\n                                    <thead>\n                                        <tr>\n                                            <th>{{ tSheetDataTable.tSheetHeaderRow[0] }}</th>\n                                            <th class=\"disabled-sorting\">\n                                                <div class=\"checkbox form-horizontal-checkbox\" style=\"top:-10px;left:10px;\">\n                                                    <label>\n                                                        <input type=\"checkbox\" formControlName=\"checkAll\" name=\"chkAll\" id=\"chkAll\">\n                                                    </label>\n                                                </div>\n                                            </th>\n                                            <th>{{ tSheetDataTable.tSheetHeaderRow[1] }}</th>\n                                            <th>{{ tSheetDataTable.tSheetHeaderRow[2] }}</th>\n                                            <th>{{ tSheetDataTable.tSheetHeaderRow[3] }}</th>\n                                            <th>{{ tSheetDataTable.tSheetHeaderRow[4] }}</th>\n                                            <th class=\"disabled-sorting text-right\">{{ tSheetDataTable.tSheetHeaderRow[5] }}</th>\n                                        </tr>\n                                    </thead>\n                                    <tbody>\n                                        <tr *ngFor=\"let tSheetTrack of tSheetDataTable.tSheetDataRows\">\n                                            <td>\n                                                {{ tSheetTrack.TimeTrackId }}\n                                            </td>\n                                            <td>\n                                                <div class=\"checkbox form-horizontal-checkbox\" style=\"top:-10px;left:10px;\">\n                                                    <label>\n                                                        <input type=\"checkbox\" formControlName=\"trackChk\" name=\"trackChk\" [id]=\"tSheetTrack.TimeTrackId\" [value]=\"tSheetTrack.TimeTrackId\">\n                                                        <!--[attr.disabled]=\"tSheetTrack.ApprovalStatus == null ? disabled :''\"-->\n                                                    </label>\n                                                </div>\n                                            </td>\n                                            <td>{{ tSheetTrack.UserName }}</td>\n                                            <td>{{ tSheetTrack.WorkOrderNo }}</td>\n                                            <td>{{tSheetTrack.TotalWorkTime}}</td>\n                                            <td>\r\n                                                <ng-container *ngIf=\"tSheetTrack.IsCompleted == true\">Completed</ng-container>\r\n                                                <ng-container *ngIf=\"!tSheetTrack.IsCompleted\">Not Completed</ng-container>\r\n                                            </td>\n                                            <td class=\"text-right\">\n                                                <ng-container *ngIf=\"tSheetTrack.ApprovalStatus == 1\">\n                                                    <button class=\"btn btn-success btn-icon edit btn-xs\">\n                                                        Approved\n                                                    </button>\n                                                </ng-container>\n                                                <ng-container *ngIf=\"tSheetTrack.ApprovalStatus == 2\">\n                                                    <button class=\"btn btn-danger btn-icon edit btn-xs\">\n                                                        Rejected\n                                                    </button>\n                                                </ng-container>\n                                                <ng-container *ngIf=\"tSheetTrack.ApprovalStatus == 3\">\n                                                    <button class=\"btn btn-warning btn-icon edit btn-xs\">\n                                                        Pending\n                                                    </button>\n                                                </ng-container>\n\n                                                <button class=\"btn btn-simple btn-warning btn-icon edit\" (click)=\"goToViewTimesheet(tSheetTrack.WorkOrderAssignmentId,tSheetTrack.TimeTrackId)\">\n                                                    <i class=\"material-icons\">dvr</i>\n                                                </button>\n                                            </td>\n                                        </tr>\n                                    </tbody>\n                                </table>\n                            </div>\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<!--<title>Aspect Timesheet</title>-->\n<style>\n    .dropdownview {\n        -webkit-appearance: menulist-button;\n    }\r\n .pd-btm{margin-top:7px;}\n\n</style>\n<title>Timesheet</title>\n<div class=\"main-content\">\n    <div class=\"container-fluid\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <div class=\"card\">\n                    <div class=\"card-content\">\n                        <h3 class=\"card-title\">Timesheet</h3>\n                        <form [formGroup]=\"tSheetForm\">\r\n                            <div class=\"row\">\r\n                                <div class=\"col-md-3\" [hidden]=\"hidebuttons\">\r\n                                    <!--<button class=\"btn btn-success\" (click)=\"approvedTimeSheet(true)\">Approve</button>\r\n                                        <button class=\"btn btn-danger\" (click)=\"approvedTimeSheet(false)\">Reject</button>-->\r\n                                    <button class=\"btn btn-success\" (click)=\"approveRejectTimesheet(1)\">Approve</button>\r\n                                    <button class=\"btn btn-danger\" (click)=\"approveRejectTimesheet(2)\">Reject</button>\r\n                                </div>\r\n                                <div class=\"col-md-2\">\r\n                                    <select class=\"form-control  dropdownview\" formControlName=\"division\" (change)=\"getFilterRecord();\">\r\n                                        <option selected=\"\" value=\"-1\">--- Select Division ---</option>\r\n                                        <option *ngFor=\"let k of divisionList\" value={{k.ID}}>\r\n                                            {{k.Name}}\r\n                                        </option>\r\n                                    </select>\r\n                                </div>\r\n                                <div class=\"col-md-3\">\r\n                                    <md2-datepicker class=\"pd-btm\" placeholder=\"Weekend Date\" name=\"weekenddate\" formControlName=\"selectedDate\" (change)=\"getFilterRecord();\" format=\"dd-MM-y\" type=\"date\" startView=\"month\"></md2-datepicker>\r\n                                </div>\r\n                                <div class=\"col-md-2\">\r\n                                    <select class=\"form-control  dropdownview\" formControlName=\"selectedStatusId\" (change)=\"getFilterRecord();\">\r\n                                        <option selected=\"\" value=\"-1\">All</option>\r\n                                        <option *ngFor=\"let k of statusList\" value=\"{{k.Id}}\">\r\n                                            {{k.Name}}\r\n                                        </option>\r\n                                    </select>\r\n                                </div>\r\n                                <div class=\"col-md-2\">\r\n                                    <select class=\"form-control  dropdownview\" formControlName=\"selectedSts\" (change)=\"getFilterRecord();\">\r\n                                        <option selected=\"\" value=\"0\">All</option>\r\n                                        <option value=\"1\">Completed</option>\r\n                                        <option value=\"2\">Not Completed</option>\r\n                                    </select>\r\n                                </div>\r\n                            </div>\r\n                        </form>\r\n                            <div class=\"toolbar\">\r\n                            </div>\r\n                            <form [formGroup]=\"tSheetTrackrForm\">\r\n                                <div class=\"material-datatables table-responsive\">\r\n                                    <table id=\"tSheetDatatables\" class=\"table table-striped table-no-bordered table-hover\" cellspacing=\"0\" width=\"100%\" style=\"width:100%\">\r\n                                        <thead>\r\n                                            <tr>\r\n                                                <th>{{ tSheetDataTable.tSheetHeaderRow[0] }}</th>\r\n                                                <th class=\"disabled-sorting\">\r\n                                                    <div class=\"checkbox form-horizontal-checkbox\" style=\"top:-10px;left:10px;\">\r\n                                                        <label>\r\n                                                            <input type=\"checkbox\" formControlName=\"checkAll\" name=\"chkAll\" id=\"chkAll\">\r\n                                                        </label>\r\n                                                    </div>\r\n                                                </th>\r\n                                                <th>{{ tSheetDataTable.tSheetHeaderRow[1] }}</th>\r\n                                                <th>{{ tSheetDataTable.tSheetHeaderRow[2] }}</th>\r\n                                                <th>{{ tSheetDataTable.tSheetHeaderRow[3] }}</th>\r\n                                                <th>{{ tSheetDataTable.tSheetHeaderRow[4] }}</th>\r\n                                                <th>{{ tSheetDataTable.tSheetHeaderRow[5] }}</th>\r\n                                                <th>{{ tSheetDataTable.tSheetHeaderRow[6] }}</th>\r\n                                                <th class=\"disabled-sorting text-right\">{{ tSheetDataTable.tSheetHeaderRow[7] }}</th>\r\n                                            </tr>\r\n                                        </thead>\r\n                                        <tbody>\r\n                                            <tr *ngFor=\"let tSheetTrack of tSheetDataTable.tSheetDataRows\">\r\n                                                <td>\r\n                                                    {{ tSheetTrack.TimeTrackId }}\r\n                                                </td>\r\n                                                <td>\r\n                                                    <div class=\"checkbox form-horizontal-checkbox\" style=\"top:-10px;left:10px;\">\r\n                                                        <label>\r\n                                                            <input type=\"checkbox\" formControlName=\"trackChk\" name=\"trackChk\" [id]=\"tSheetTrack.TimeTrackId\" [value]=\"tSheetTrack.TimeTrackId\">\r\n                                                            <!--[attr.disabled]=\"tSheetTrack.ApprovalStatus == null ? disabled :''\"-->\r\n                                                        </label>\r\n                                                    </div>\r\n                                                </td>\r\n                                                <td>{{ tSheetTrack.UserName }}</td>\r\n                                                <td>{{ tSheetTrack.WorkOrderNo }}</td>\r\n                                                <td>{{ tSheetTrack.StartTime | date: 'dd/MM/yyyy'}}</td>\r\n                                                <td>{{ tSheetTrack.EndTime | date: 'dd/MM/yyyy'}}</td>\r\n                                                <td>{{tSheetTrack.TotalWorkTime}}</td>\r\n                                                <td>\r\n                                                    <ng-container *ngIf=\"tSheetTrack.IsCompleted == true\">Completed</ng-container>\r\n                                                    <ng-container *ngIf=\"!tSheetTrack.IsCompleted\">Not Completed</ng-container>\r\n                                                </td>\r\n                                                <td class=\"text-right\">\r\n                                                    <ng-container *ngIf=\"tSheetTrack.ApprovalStatus == 1\">\r\n                                                        <button class=\"btn btn-success btn-icon edit btn-xs\">\r\n                                                            Approved\r\n                                                        </button>\r\n                                                    </ng-container>\r\n                                                    <ng-container *ngIf=\"tSheetTrack.ApprovalStatus == 2\">\r\n                                                        <button class=\"btn btn-danger btn-icon edit btn-xs\">\r\n                                                            Rejected\r\n                                                        </button>\r\n                                                    </ng-container>\r\n                                                    <ng-container *ngIf=\"tSheetTrack.ApprovalStatus == 3\">\r\n                                                        <button class=\"btn btn-warning btn-icon edit btn-xs\">\r\n                                                            Pending\r\n                                                        </button>\r\n                                                    </ng-container>\r\n                                                    <button class=\"btn btn-simple btn-warning btn-icon edit\" (click)=\"goToViewTimesheet(tSheetTrack.WorkOrderAssignmentId,tSheetTrack.TimeTrackId)\">\r\n                                                        <i class=\"material-icons\">dvr</i>\r\n                                                    </button>\r\n                                                </td>\r\n                                            </tr>\r\n                                        </tbody>\r\n                                    </table>\r\n                                </div>\r\n                            </form>\r\n                        </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -27,6 +27,9 @@ module.exports = ""
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_commonService__ = __webpack_require__("./src/app/services/commonService.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_timesheetService__ = __webpack_require__("./src/app/services/timesheetService.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_divisionService__ = __webpack_require__("./src/app/services/divisionService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_moment__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -44,31 +47,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var TimesheetComponent = /** @class */ (function () {
-    function TimesheetComponent(http, router, commonService, timesheetService, divisionService, activatedRoute) {
+    function TimesheetComponent(http, router, commonService, timesheetService, divisionService, activatedRoute, datepipe) {
         this.http = http;
         this.router = router;
         this.commonService = commonService;
         this.timesheetService = timesheetService;
         this.divisionService = divisionService;
         this.activatedRoute = activatedRoute;
-        this.selectedStatusId = 3;
-        this.selectedSts = 0;
+        this.datepipe = datepipe;
         this.hidebuttons = true;
         this.tSheetTrackrForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormGroup"]({
             trackChk: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
             checkAll: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]()
         });
+        this.tSheetForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormGroup"]({
+            division: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            selectedDate: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            selectedStatusId: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+            selectedSts: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]()
+        });
+        __WEBPACK_IMPORTED_MODULE_9_moment__["lang"]('en-gb');
     }
     TimesheetComponent.prototype.ngOnInit = function () {
         if (JSON.parse(sessionStorage.getItem('LogEmployee')) != null) {
             this.getStatusList();
             this.getDivisions();
             // this.getWorkOrderDetails();
+            this.tSheetForm.controls["selectedStatusId"].setValue("3");
+            this.tSheetForm.controls["selectedSts"].setValue("0");
+            this.tSheetForm.controls["division"].setValue("1");
+            this.tSheetForm.controls["selectedDate"].setValue(__WEBPACK_IMPORTED_MODULE_9_moment__().endOf('week').format());
             this.getFilterRecord();
+            //console.log(moment().endOf('week').format());
             this.tSheetDataTable = {
-                tSheetHeaderRow: ['#', 'Name', 'Work Order', 'Hours', 'WO Status', 'Actions'],
-                tSheetFooterRow: ['#', 'Name', 'Work Order', 'Hours', 'WO Status', 'Actions'],
+                tSheetHeaderRow: ['#', 'Name', 'Work Order', 'Start Date', 'End Date', 'Hours', 'WO Status', 'Actions'],
+                tSheetFooterRow: ['#', 'Name', 'Work Order', 'Start Date', 'End Date', 'Hours', 'WO Status', 'Actions'],
                 tSheetDataRows: this.timesheetTrackList
             };
             $(document).ready(function () {
@@ -140,8 +156,8 @@ var TimesheetComponent = /** @class */ (function () {
                 _this.timesheetTrackList = workOrderList;
                 console.log(_this.timesheetTrackList);
                 _this.tSheetDataTable = {
-                    tSheetHeaderRow: ['#', 'Name', 'Work Order', 'Hours', 'WO Status', 'Actions'],
-                    tSheetFooterRow: ['#', 'Name', 'Work Order', 'Hours', 'WO Status', 'Actions'],
+                    tSheetHeaderRow: ['#', 'Name', 'Work Order', 'Start Date', 'End Date', 'Hours', 'WO Status', 'Actions'],
+                    tSheetFooterRow: ['#', 'Name', 'Work Order', 'Start Date', 'End Date', 'Hours', 'WO Status', 'Actions'],
                     tSheetDataRows: _this.timesheetTrackList
                 };
                 setTimeout(function () {
@@ -184,7 +200,7 @@ var TimesheetComponent = /** @class */ (function () {
         });
     };
     TimesheetComponent.prototype.getStatusList = function () {
-        this.data = [
+        this.statusList = [
             {
                 "Id": 1,
                 "Name": "Approved"
@@ -198,17 +214,16 @@ var TimesheetComponent = /** @class */ (function () {
                 "Name": "Pending"
             }
         ];
-        this.statusList = this.data;
     };
     TimesheetComponent.prototype.getFilterRecord = function () {
         var _this = this;
-        var lastdate;
         this.userProfile = JSON.parse(sessionStorage.getItem('LogEmployee'));
-        if (this.selectedDate != null) {
-            lastdate = this.selectedDate.toDateString();
-        }
+        var status = this.tSheetForm.controls["selectedStatusId"].value;
+        var selectedSts = this.tSheetForm.controls["selectedSts"].value;
+        var division = this.tSheetForm.controls["division"].value;
+        var endDate = this.datepipe.transform(this.tSheetForm.controls["selectedDate"].value, 'yyyy-MM-dd');
         $('.loader').show();
-        this.timesheetService.GetTimesheetTrackFilteredList(this.commonService.baseApiUrl, this.selectedStatusId + "-" + this.userProfile.ID + "-" + this.selectedSts, lastdate, this.selectedDivision).subscribe(function (data) {
+        this.timesheetService.GetTimesheetTrackFilteredList(this.commonService.baseApiUrl, status + "-" + this.userProfile.ID + "-" + selectedSts, endDate, division).subscribe(function (data) {
             var dataWorkOrders = JSON.stringify(data);
             var workParse = JSON.parse(dataWorkOrders);
             var workOrderList = JSON.parse(workParse["_body"]);
@@ -220,8 +235,8 @@ var TimesheetComponent = /** @class */ (function () {
                 _this.timesheetTrackList = workOrderList;
                 console.log(_this.timesheetTrackList);
                 _this.tSheetDataTable = {
-                    tSheetHeaderRow: ['#', 'Name', 'Work Order', 'Hours', 'WO Status', 'Actions'],
-                    tSheetFooterRow: ['#', 'Name', 'Work Order', 'Hours', 'WO Status', 'Actions'],
+                    tSheetHeaderRow: ['#', 'Name', 'Work Order', 'Start Date', 'End Date', 'Hours', 'WO Status', 'Actions'],
+                    tSheetFooterRow: ['#', 'Name', 'Work Order', 'Start Date', 'End Date', 'Hours', 'WO Status', 'Actions'],
                     tSheetDataRows: _this.timesheetTrackList
                 };
                 setTimeout(function () {
@@ -287,14 +302,15 @@ var TimesheetComponent = /** @class */ (function () {
             selector: 'app-timesheet',
             template: __webpack_require__("./src/app/timesheet/timesheet.component.html"),
             styles: [__webpack_require__("./src/app/timesheet/timesheet.component.scss")],
-            providers: [__WEBPACK_IMPORTED_MODULE_5__services_commonService__["a" /* CommonService */], __WEBPACK_IMPORTED_MODULE_6__services_timesheetService__["a" /* TimesheetService */], __WEBPACK_IMPORTED_MODULE_7__services_divisionService__["a" /* DivisionService */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_5__services_commonService__["a" /* CommonService */], __WEBPACK_IMPORTED_MODULE_6__services_timesheetService__["a" /* TimesheetService */], __WEBPACK_IMPORTED_MODULE_7__services_divisionService__["a" /* DivisionService */], __WEBPACK_IMPORTED_MODULE_8__angular_common__["DatePipe"]]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["Http"],
             __WEBPACK_IMPORTED_MODULE_3__angular_router__["d" /* Router */],
             __WEBPACK_IMPORTED_MODULE_5__services_commonService__["a" /* CommonService */],
             __WEBPACK_IMPORTED_MODULE_6__services_timesheetService__["a" /* TimesheetService */],
             __WEBPACK_IMPORTED_MODULE_7__services_divisionService__["a" /* DivisionService */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]])
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */],
+            __WEBPACK_IMPORTED_MODULE_8__angular_common__["DatePipe"]])
     ], TimesheetComponent);
     return TimesheetComponent;
 }());
