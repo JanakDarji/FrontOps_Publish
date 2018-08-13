@@ -59147,6 +59147,10 @@ var MaintenanceService = /** @class */ (function () {
         return this.http.get(baseurl + "GetRaisedByForMaintenance/" + contact);
     };
     ;
+    MaintenanceService.prototype.GetMaintenanceTaskDocumentForWeb = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetMaintenanceTaskDocumentForWeb/" + contact);
+    };
+    ;
     MaintenanceService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]])
