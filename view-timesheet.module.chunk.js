@@ -200,9 +200,15 @@ var ViewTimesheetComponent = /** @class */ (function () {
                 _this.timesheetTrack = tSheetList;
                 _this.viewTimesheetPage.controls["starttime"].setValue(tSheetList.StartTime);
                 _this.viewTimesheetPage.controls["endtime"].setValue(tSheetList.EndTime);
-                var spiltTime = tSheetList.TotalBreakTime.split(":");
-                _this.viewTimesheetPage.controls["breakhour"].setValue(spiltTime != null ? spiltTime[0] : '00');
-                _this.viewTimesheetPage.controls["breakminute"].setValue(spiltTime != null ? spiltTime[1] : '00');
+                if (tSheetList.TotalBreakTime != null) {
+                    var spiltTime = tSheetList.TotalBreakTime.split(":");
+                    _this.viewTimesheetPage.controls["breakhour"].setValue(spiltTime != null ? spiltTime[0] : '00');
+                    _this.viewTimesheetPage.controls["breakminute"].setValue(spiltTime != null ? spiltTime[1] : '00');
+                }
+                else {
+                    _this.viewTimesheetPage.controls["breakhour"].setValue('00');
+                    _this.viewTimesheetPage.controls["breakminute"].setValue('00');
+                }
                 $('.loader').hide();
             }
             else {

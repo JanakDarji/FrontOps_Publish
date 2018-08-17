@@ -223,7 +223,7 @@ var CreateChecklistformComponent = /** @class */ (function () {
             this.chklistForm = this.formBuilder.group({
                 workOrdNo: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].nullValidator],
                 formname: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
-                formDescription: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+                formDescription: null,
                 chkActive: null
             });
             this.formTask = this.formBuilder.group({
@@ -452,6 +452,8 @@ var CreateChecklistformComponent = /** @class */ (function () {
             });
         }
         else {
+            $('.loader').hide();
+            this.validateAllFormFields(this.formTask);
         }
     };
     CreateChecklistformComponent.prototype.deleteTask = function (taskId) {

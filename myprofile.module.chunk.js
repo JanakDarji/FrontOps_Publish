@@ -231,7 +231,7 @@ var MyProfileComponent = /** @class */ (function () {
                 else {
                     _this.myProfilePage.reset();
                     $('#myModal').modal('toggle');
-                    _this.showSwal("There is some error while user creation/update!!");
+                    _this.showSwal("An error occured when updating the User Profile. Please refresh the page and try again");
                 }
             }, function (error) {
                 console.log(error.json());

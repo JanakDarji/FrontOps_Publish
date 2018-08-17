@@ -605,7 +605,7 @@ var WoAssignmentComponent = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_8__services_maintenanceService__["a" /* MaintenanceService */],
             __WEBPACK_IMPORTED_MODULE_9__services_checklistformService__["a" /* ChecklistFormService */],
             __WEBPACK_IMPORTED_MODULE_5__services_userService__["a" /* UserService */],
-            __WEBPACK_IMPORTED_MODULE_12__angular_platform_browser__["c" /* DomSanitizer */],
+            __WEBPACK_IMPORTED_MODULE_12__angular_platform_browser__["DomSanitizer"],
             __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"],
             __WEBPACK_IMPORTED_MODULE_10__angular_material__["a" /* DateAdapter */],
             __WEBPACK_IMPORTED_MODULE_16__angular_common__["DatePipe"]])
