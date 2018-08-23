@@ -421,13 +421,14 @@ var CreateMaintenanceComponent = /** @class */ (function () {
             var fDate = this.datepipe.transform(this.mtAssPage.controls["fromdate"].value, 'yyyy/MM/dd HH:mm:ss');
             var tDate = this.datepipe.transform(this.mtAssPage.controls["todate"].value, 'yyyy/MM/dd HH:mm:ss');
             var workOrdId = this.selectedWOrd == undefined ? this.maintenanceData.WorkOrderId : this.selectedWOrd.ID;
+            var rateValue = parseFloat(this.mtAssPage.controls["rate"].value);
             var contact = {
                 ID: localStorage.getItem("mtAstID"),
                 UserId: this.assUserID,
                 WorkOrderId: workOrdId,
                 Description: this.mtAssPage.controls["description"].value,
                 RateType: this.mtAssPage.controls["ratetype"].value,
-                Rate: this.mtAssPage.controls["rate"].value,
+                Rate: rateValue.toFixed(2),
                 FromDate: fDate,
                 ToDate: tDate,
                 MaintenanceStatus: "Created",

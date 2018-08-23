@@ -378,6 +378,7 @@ var WoAssignmentComponent = /** @class */ (function () {
         if (this.workOrdAssPage.valid) {
             var fDate = this.datepipe.transform(this.workOrdAssPage.controls["fromdate"].value, 'yyyy/MM/dd HH:mm:ss');
             var tDate = this.datepipe.transform(this.workOrdAssPage.controls["todate"].value, 'yyyy/MM/dd HH:mm:ss');
+            var rateValue = parseFloat(this.workOrdAssPage.controls["rate"].value);
             var contact = {
                 UserId: this.assUserID,
                 WorkOrderId: localStorage.getItem("WorkOrderId"),
@@ -385,7 +386,7 @@ var WoAssignmentComponent = /** @class */ (function () {
                 WorkOrderNo: localStorage.getItem("WorkOrderNo"),
                 Description: this.workOrdAssPage.controls["description"].value,
                 RateType: this.workOrdAssPage.controls["ratetype"].value,
-                Rate: this.workOrdAssPage.controls["rate"].value,
+                Rate: rateValue.toFixed(2),
                 FromDate: fDate,
                 ToDate: tDate,
                 WorkOrderAssignmentStatus: "Created",
