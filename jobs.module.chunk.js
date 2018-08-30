@@ -146,7 +146,8 @@ var JobsComponent = /** @class */ (function () {
                 $("#jobDatatables").dataTable().fnDestroy();
                 //localStorage.setItem("JobList", JSON.stringify(jobLists));
                 _this.jobList = jobLists;
-                _this.noOfJob = jobLists.length;
+                var newJobs = jobLists.filter(function (usr) { return usr.IsNew == true; });
+                _this.noOfJob = newJobs.length;
                 _this.jobDataTable = {
                     jobHeaderRow: ['Job#', 'Date', 'Description', 'Client', 'WOs', 'Status', 'Actions'],
                     jobFooterRow: ['Job#', 'Date', 'Description', 'Client', 'WOs', 'Status', 'Actions'],

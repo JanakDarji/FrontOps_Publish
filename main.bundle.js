@@ -954,9 +954,10 @@ var CommonService = /** @class */ (function () {
     function CommonService() {
         //localhostURL--- http://localhost:53562/api/FrontOps/
         //HcsHubURL--- http://frontopapi.hcshub.com/api/FrontOps/
-        //ProductionUrl--- https://aspectdemo.frontline-ops.com/
-        //Production Api https://api.frontline-ops.com/api/FrontOps/
-        //Live https://aspectapi.frontline-ops.com/api/FrontOps/
+        //Aspect Demo Url--- https://aspectdemo.frontline-ops.com/
+        //Aspect Demo Api https://api.frontline-ops.com/api/FrontOps/
+        //Production URL https://aspect.frontline-ops.com/
+        //Production API https://aspectapi.frontline-ops.com/api/FrontOps/
         //sydney api https://demomanagerapi.frontline-ops.com/api/FrontOps/
         //sydney site https://demomanager.frontline-ops.com/
         this.baseApiUrl = "https://api.frontline-ops.com/api/FrontOps/";
@@ -1277,7 +1278,7 @@ var FixedpluginModule = /** @class */ (function () {
 /***/ "./src/app/shared/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<footer class=\"footer\">\r\n    <div class=\"container-fluid\">\r\n        <!--<nav class=\"pull-left\">\r\n            <ul>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Home\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Company\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Portfolio\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Blog\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </nav>-->\r\n        <!--<p class=\"copyright pull-right\">\r\n            &copy;\r\n            {{test | date: 'yyyy'}}\r\n            <a href=\"https://www.creative-tim.com\">Creative Tim</a>, made with love for a better web\r\n        </p>-->\r\n        <p class=\"copyright pull-right\">\r\n            Powered by Frontline Operations &copy; 2018\r\n        </p>\r\n        <p class=\"copyright pull-left\">\r\n            Version 0.1.39\r\n        </p>\r\n    </div>\r\n</footer>\r\n"
+module.exports = "<footer class=\"footer\">\r\n    <div class=\"container-fluid\">\r\n        <!--<nav class=\"pull-left\">\r\n            <ul>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Home\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Company\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Portfolio\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Blog\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </nav>-->\r\n        <!--<p class=\"copyright pull-right\">\r\n            &copy;\r\n            {{test | date: 'yyyy'}}\r\n            <a href=\"https://www.creative-tim.com\">Creative Tim</a>, made with love for a better web\r\n        </p>-->\r\n        <p class=\"copyright pull-right\">\r\n            Powered by Frontline Operations &copy; 2018\r\n        </p>\r\n        <p class=\"copyright pull-left\">\r\n            Version 0.1.40\r\n        </p>\r\n    </div>\r\n</footer>\r\n"
 
 /***/ }),
 
