@@ -960,7 +960,7 @@ var CommonService = /** @class */ (function () {
         //Production API https://aspectapi.frontline-ops.com/api/FrontOps/
         //sydney api https://demomanagerapi.frontline-ops.com/api/FrontOps/
         //sydney site https://demomanager.frontline-ops.com/
-        this.baseApiUrl = "https://aspectapi.frontline-ops.com/api/FrontOps/";
+        this.baseApiUrl = "https://api.frontline-ops.com/api/FrontOps/";
     }
     CommonService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])()
@@ -1278,7 +1278,7 @@ var FixedpluginModule = /** @class */ (function () {
 /***/ "./src/app/shared/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<footer class=\"footer\">\r\n    <div class=\"container-fluid\">\r\n        <!--<nav class=\"pull-left\">\r\n            <ul>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Home\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Company\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Portfolio\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Blog\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </nav>-->\r\n        <!--<p class=\"copyright pull-right\">\r\n            &copy;\r\n            {{test | date: 'yyyy'}}\r\n            <a href=\"https://www.creative-tim.com\">Creative Tim</a>, made with love for a better web\r\n        </p>-->\r\n        <p class=\"copyright pull-right\">\r\n            Powered by Frontline Operations &copy; 2018\r\n        </p>\r\n        <p class=\"copyright pull-left\">\r\n            Version 0.1.40\r\n        </p>\r\n    </div>\r\n</footer>\r\n"
+module.exports = "<footer class=\"footer\">\r\n    <div class=\"container-fluid\">\r\n        <!--<nav class=\"pull-left\">\r\n            <ul>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Home\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Company\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Portfolio\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"#\">\r\n                        Blog\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </nav>-->\r\n        <!--<p class=\"copyright pull-right\">\r\n            &copy;\r\n            {{test | date: 'yyyy'}}\r\n            <a href=\"https://www.creative-tim.com\">Creative Tim</a>, made with love for a better web\r\n        </p>-->\r\n        <p class=\"copyright pull-right\">\r\n            Powered by Frontline Operations &copy; 2018\r\n        </p>\r\n        <p class=\"copyright pull-left\">\r\n            Version 0.1.41\r\n        </p>\r\n    </div>\r\n</footer>\r\n"
 
 /***/ }),
 

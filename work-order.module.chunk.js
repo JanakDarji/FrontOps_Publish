@@ -3,7 +3,7 @@ webpackJsonp(["work-order.module"],{
 /***/ "./src/app/work-order/work-order.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--<title>Aspect Work-Order</title>-->\n<title>Work-Order</title>\n<div class=\"main-content\">\n    <div class=\"container-fluid\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <div class=\"card\">\n                    <div class=\"card-content\">\n                        <h3 class=\"card-title\">Work Orders For Job {{ wOJobNumber }}<!--{{workOrdJobID}}--></h3>\n                        <div class=\"toolbar\">\n                        </div>\n                        <div class=\"material-datatables table-responsive\">\n                            <table id=\"workDatatables\" class=\"table table-striped table-no-bordered table-hover\" cellspacing=\"0\" width=\"100%\" style=\"width:100%\">\n                                <thead>\n                                    <tr>\n                                        <th>{{ workOrdDataTable.workOrdHeaderRow[0] }}</th>\n                                        <th>{{ workOrdDataTable.workOrdHeaderRow[1] }}</th>\n                                        <th>{{ workOrdDataTable.workOrdHeaderRow[2] }}</th>\n                                        <th>{{ workOrdDataTable.workOrdHeaderRow[3] }}</th>\n                                        <th>{{ workOrdDataTable.workOrdHeaderRow[4] }}</th>\n                                        <th class=\"disabled-sorting text-right\">{{ workOrdDataTable.workOrdHeaderRow[5] }}</th>\n                                    </tr>\n                                </thead>\n                                <tbody>\n                                    <tr *ngFor=\"let workOrd of workOrdDataTable.workOrdDataRows\">\n                                        <td>{{ workOrd.WorkOrderNo }}</td>\n                                        <td>\n                                            <div *ngIf=\"workOrd.DateDue\">{{ workOrd.DateDue | date: 'dd/MM/yyyy'}} </div>\n                                            <div *ngIf=\"!workOrd.DateDue\">{{ workOrd.DateDue }} </div>\n                                        </td>\n                                        <td>{{ workOrd.Description }}</td>\n                                        <td>{{ workOrd.Status }}</td>\n                                        <td>\n                                            <div *ngIf=\"workOrd.IsAssigned == true;else isNO\">Y</div>\n                                            <ng-template #isNO>N</ng-template>\n                                        </td>\n                                        <td class=\"text-right\">\n                                            <span *ngIf=\"workOrd.IsRework == true\">\n                                                <button class=\"btn btn-behance btn-icon edit btn-xs\">\n                                                    M\n                                                </button>\n                                            </span>\n                                            <button class=\"btn btn-simple btn-warning btn-icon edit\" (click)=\"goToWorkAssignment(workOrd.WorkOrderNo)\">\n                                                <i class=\"material-icons\">dvr</i>\n                                            </button>\n                                        </td>\n                                    </tr>\n                                </tbody>\n                            </table>\n                            <div class=\"col-lg-12 mtb30\">\n                                <div *ngIf=\"lastSyncDate == 'No Sync'\">\n                                    <label class=\"pull-right\">last Sync: {{ wOlastSyncDate }}</label>\n                                </div>\n                                <div *ngIf=\"lastSyncDate != 'No Sync'\">\n                                    <label class=\"pull-right\">last Sync: {{ wOlastSyncDate | date: 'dd/MM/yyyy HH:mm:ss' }}</label>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>"
+module.exports = "<style>\r\n    .dropdownview {\r\n        -webkit-appearance: menulist-button;\r\n    }\r\n</style>\n<!--<title>Aspect Work-Order</title>-->\n<title>Work-Order</title>\n<div class=\"main-content\">\n    <div class=\"container-fluid\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <div class=\"card\">\n                    <div class=\"card-content\">\r\n                        <div class=\"row\">\r\n                            <h3 class=\"card-title\">Work Orders For Job {{ wOJobNumber }}<!--{{workOrdJobID}}--></h3>\r\n                            <form [formGroup]=\"woSrcForm\">\r\n                                <div class=\"col-md-2\">\r\n                                    <select class=\"form-control  dropdownview\" formControlName=\"pManager\" (change)=\"getWorkOrderDetails(workOrdJobID);\">\r\n                                        <option selected=\"\" value=\"0\">--- Select ProjectManager ---</option>\r\n                                        <option *ngFor=\"let pm of projectManagerList\" value={{pm.ProjectManagerID}}>\r\n                                            {{pm.ProjectManager}}\r\n                                        </option>\r\n                                    </select>\r\n                                </div>\r\n                            </form>\r\n                        </div>\r\n                            <div class=\"toolbar\">\r\n                            </div>\r\n                            <div class=\"material-datatables table-responsive\">\r\n                                <table id=\"workDatatables\" class=\"table table-striped table-no-bordered table-hover\" cellspacing=\"0\" width=\"100%\" style=\"width:100%\">\r\n                                    <thead>\r\n                                        <tr>\r\n                                            <th>{{ workOrdDataTable.workOrdHeaderRow[0] }}</th>\r\n                                            <th>{{ workOrdDataTable.workOrdHeaderRow[1] }}</th>\r\n                                            <th>{{ workOrdDataTable.workOrdHeaderRow[2] }}</th>\r\n                                            <th>{{ workOrdDataTable.workOrdHeaderRow[3] }}</th>\r\n                                            <th>{{ workOrdDataTable.workOrdHeaderRow[4] }}</th>\r\n                                            <th>{{ workOrdDataTable.workOrdHeaderRow[5] }}</th>\r\n                                            <th class=\"disabled-sorting text-right\">{{ workOrdDataTable.workOrdHeaderRow[6] }}</th>\r\n                                        </tr>\r\n                                    </thead>\r\n                                    <tbody>\r\n                                        <tr *ngFor=\"let workOrd of workOrdDataTable.workOrdDataRows\">\r\n                                            <td>{{ workOrd.WorkOrderNo }}</td>\r\n                                            <td>\r\n                                                <div *ngIf=\"workOrd.DateDue\">{{ workOrd.DateDue | date: 'dd/MM/yyyy'}} </div>\r\n                                                <div *ngIf=\"!workOrd.DateDue\">{{ workOrd.DateDue }} </div>\r\n                                            </td>\r\n                                            <td>{{ workOrd.Description }}</td>\r\n                                            <td>{{ workOrd.Status }}</td>\r\n                                            <td>\r\n                                                <div *ngIf=\"workOrd.IsAssigned == true;else isNO\">Y</div>\r\n                                                <ng-template #isNO>N</ng-template>\r\n                                            </td>\r\n                                            <td>{{ workOrd.ProjectManager }}</td>\r\n                                            <td class=\"text-right\">\r\n                                                <span *ngIf=\"workOrd.IsRework == true\">\r\n                                                    <button class=\"btn btn-behance btn-icon edit btn-xs\">\r\n                                                        M\r\n                                                    </button>\r\n                                                </span>\r\n                                                <button class=\"btn btn-simple btn-warning btn-icon edit\" (click)=\"goToWorkAssignment(workOrd.WorkOrderNo)\">\r\n                                                    <i class=\"material-icons\">dvr</i>\r\n                                                </button>\r\n                                            </td>\r\n                                        </tr>\r\n                                    </tbody>\r\n                                </table>\r\n                                <div class=\"col-lg-12 mtb30\">\r\n                                    <div *ngIf=\"lastSyncDate == 'No Sync'\">\r\n                                        <label class=\"pull-right\">last Sync: {{ wOlastSyncDate }}</label>\r\n                                    </div>\r\n                                    <div *ngIf=\"lastSyncDate != 'No Sync'\">\r\n                                        <label class=\"pull-right\">last Sync: {{ wOlastSyncDate | date: 'dd/MM/yyyy HH:mm:ss' }}</label>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -20,11 +20,12 @@ module.exports = ""
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WorkOrderComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_commonService__ = __webpack_require__("./src/app/services/commonService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_workOrderService__ = __webpack_require__("./src/app/services/workOrderService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_commonService__ = __webpack_require__("./src/app/services/commonService.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_workOrderService__ = __webpack_require__("./src/app/services/workOrderService.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -40,6 +41,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var WorkOrderComponent = /** @class */ (function () {
     function WorkOrderComponent(http, router, commonService, workOrderService, activatedRoute) {
         this.http = http;
@@ -47,6 +49,9 @@ var WorkOrderComponent = /** @class */ (function () {
         this.commonService = commonService;
         this.workOrderService = workOrderService;
         this.activatedRoute = activatedRoute;
+        this.woSrcForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormGroup"]({
+            pManager: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"](),
+        });
     }
     WorkOrderComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -59,11 +64,13 @@ var WorkOrderComponent = /** @class */ (function () {
                     _this.workOrdJobID = params['jobID'];
                     _this.userProfile = JSON.parse(sessionStorage.getItem('LogEmployee'));
                     _this.getWorkOrderDetails(_this.workOrdJobID);
+                    _this.getWoProjectManager(_this.workOrdJobID);
                     _this.workOrdDataTable = {
-                        workOrdHeaderRow: ['WOs', 'Date Due', 'Description', 'Status', 'Assigned', 'Actions'],
-                        workOrdFooterRow: ['WOs', 'Date Due', 'Description', 'Status', 'Assigned', 'Actions'],
+                        workOrdHeaderRow: ['WOs', 'Date Due', 'Description', 'Status', 'Assigned', 'Project Manager', 'Actions'],
+                        workOrdFooterRow: ['WOs', 'Date Due', 'Description', 'Status', 'Assigned', 'Project Manager', 'Actions'],
                         workOrdDataRows: _this.workOrderList
                     };
+                    _this.woSrcForm.controls["pManager"].setValue("0");
                 }
             });
         }
@@ -74,7 +81,10 @@ var WorkOrderComponent = /** @class */ (function () {
     WorkOrderComponent.prototype.getWorkOrderDetails = function (jobID) {
         var _this = this;
         $('.loader').show();
-        this.workOrderService.GetWorkOrdersByJobId(this.commonService.baseApiUrl, jobID, this.userProfile.ID).subscribe(function (data) {
+        var objectdata = {
+            ProjectManagerID: this.woSrcForm.controls["pManager"].value
+        };
+        this.workOrderService.GetWorkOrdersByJobId(this.commonService.baseApiUrl, jobID, this.userProfile.ID, objectdata).subscribe(function (data) {
             var dataWorkOrders = JSON.stringify(data);
             var workParse = JSON.parse(dataWorkOrders);
             var workOrderList = JSON.parse(workParse["_body"]);
@@ -89,8 +99,8 @@ var WorkOrderComponent = /** @class */ (function () {
                 localStorage.setItem("WorkOrdersList", JSON.stringify(workOrderList));
                 _this.workOrderList = workOrderList;
                 _this.workOrdDataTable = {
-                    workOrdHeaderRow: ['WOs', 'Date Due', 'Description', 'Status', 'Assigned', 'Actions'],
-                    workOrdFooterRow: ['WOs', 'Date Due', 'Description', 'Status', 'Assigned', 'Actions'],
+                    workOrdHeaderRow: ['WOs', 'Date Due', 'Description', 'Status', 'Assigned', 'Project Manager', 'Actions'],
+                    workOrdFooterRow: ['WOs', 'Date Due', 'Description', 'Status', 'Assigned', 'Project Manager', 'Actions'],
                     workOrdDataRows: _this.workOrderList
                 };
                 setTimeout(function () {
@@ -123,6 +133,19 @@ var WorkOrderComponent = /** @class */ (function () {
             }
         });
     };
+    WorkOrderComponent.prototype.getWoProjectManager = function (jobID) {
+        var _this = this;
+        $('.loader').show();
+        this.projectManagerList = null;
+        this.workOrderService.GetWorkOrderProjectManager(this.commonService.baseApiUrl, jobID).subscribe(function (data) {
+            var dataEmp = JSON.stringify(data);
+            var empParse = JSON.parse(dataEmp);
+            if (empParse["_body"] != null) {
+                _this.projectManagerList = JSON.parse(empParse["_body"]);
+            }
+            $('.loader').hide();
+        });
+    };
     WorkOrderComponent.prototype.goToWorkAssignment = function (WorkId) {
         this.router.navigate(['wo-assignment'], { queryParams: { workID: WorkId } });
     };
@@ -131,13 +154,13 @@ var WorkOrderComponent = /** @class */ (function () {
             selector: 'app-work-order',
             template: __webpack_require__("./src/app/work-order/work-order.component.html"),
             styles: [__webpack_require__("./src/app/work-order/work-order.component.scss")],
-            providers: [__WEBPACK_IMPORTED_MODULE_4__services_commonService__["a" /* CommonService */], __WEBPACK_IMPORTED_MODULE_5__services_workOrderService__["a" /* WorkOrderService */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_5__services_commonService__["a" /* CommonService */], __WEBPACK_IMPORTED_MODULE_6__services_workOrderService__["a" /* WorkOrderService */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["d" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_4__services_commonService__["a" /* CommonService */],
-            __WEBPACK_IMPORTED_MODULE_5__services_workOrderService__["a" /* WorkOrderService */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["Http"],
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["d" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_5__services_commonService__["a" /* CommonService */],
+            __WEBPACK_IMPORTED_MODULE_6__services_workOrderService__["a" /* WorkOrderService */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]])
     ], WorkOrderComponent);
     return WorkOrderComponent;
 }());

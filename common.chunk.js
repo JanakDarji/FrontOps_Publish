@@ -59874,8 +59874,8 @@ var JobsService = /** @class */ (function () {
     function JobsService(http) {
         this.http = http;
     }
-    JobsService.prototype.GetJobDetails = function (baseurl, contact) {
-        return this.http.get(baseurl + "GetJobDetails/" + contact);
+    JobsService.prototype.GetJobDetails = function (baseurl, contact, value) {
+        return this.http.post(baseurl + "GetJobDetails/" + contact, value);
     };
     ;
     JobsService.prototype.GetJobDetailForCalendar = function (baseurl, contact) {
@@ -59884,6 +59884,18 @@ var JobsService = /** @class */ (function () {
     ;
     JobsService.prototype.GetClientForCalendar = function (baseurl, contact) {
         return this.http.get(baseurl + "GetClientForCalendar/" + contact);
+    };
+    ;
+    JobsService.prototype.GetRoleBasedJobClient = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetRoleBasedJobClient/" + contact);
+    };
+    ;
+    JobsService.prototype.GetRoleBasedJobStatus = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetRoleBasedJobStatus/" + contact);
+    };
+    ;
+    JobsService.prototype.GetJobsProjectManager = function (baseurl) {
+        return this.http.get(baseurl + "GetJobsProjectManager/");
     };
     ;
     JobsService = __decorate([
@@ -60288,8 +60300,8 @@ var WorkOrderService = /** @class */ (function () {
     function WorkOrderService(http) {
         this.http = http;
     }
-    WorkOrderService.prototype.GetWorkOrdersByJobId = function (baseurl, contact, value) {
-        return this.http.get(baseurl + "GetWorkOrdersByJobId/" + contact + "/" + value);
+    WorkOrderService.prototype.GetWorkOrdersByJobId = function (baseurl, contact, value, objectdata) {
+        return this.http.post(baseurl + "GetWorkOrdersByJobId/" + contact + "/" + value, objectdata);
     };
     ;
     WorkOrderService.prototype.GetWorkOrdersByWorkOrdID = function (baseurl, contact) {
@@ -60360,6 +60372,10 @@ var WorkOrderService = /** @class */ (function () {
     ;
     WorkOrderService.prototype.GetWorkOrderAssignmentByWOID = function (baseurl, contact, value) {
         return this.http.get(baseurl + "GetWorkOrderAssignmentByWOID/" + contact + "/" + value);
+    };
+    ;
+    WorkOrderService.prototype.GetWorkOrderProjectManager = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetWorkOrderProjectManager/" + contact);
     };
     ;
     WorkOrderService = __decorate([
