@@ -59886,8 +59886,8 @@ var JobsService = /** @class */ (function () {
         return this.http.get(baseurl + "GetClientForCalendar/" + contact);
     };
     ;
-    JobsService.prototype.GetRoleBasedJobClient = function (baseurl, contact) {
-        return this.http.get(baseurl + "GetRoleBasedJobClient/" + contact);
+    JobsService.prototype.GetRoleBasedJobClient = function (baseurl, contact, value) {
+        return this.http.get(baseurl + "GetRoleBasedJobClient/" + contact + '/' + value);
     };
     ;
     JobsService.prototype.GetRoleBasedJobStatus = function (baseurl, contact) {
@@ -60037,6 +60037,10 @@ var MaintenanceService = /** @class */ (function () {
     ;
     MaintenanceService.prototype.GetMaintenanceTaskDocumentForWeb = function (baseurl, contact) {
         return this.http.get(baseurl + "GetMaintenanceTaskDocumentForWeb/" + contact);
+    };
+    ;
+    MaintenanceService.prototype.GetMaintenanceTaskDocumentByMaintenance = function (baseurl, contact) {
+        return this.http.get(baseurl + "GetMaintenanceTaskDocumentByMaintenance/" + contact);
     };
     ;
     MaintenanceService = __decorate([
