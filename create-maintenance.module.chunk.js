@@ -376,13 +376,13 @@ var CreateMaintenanceComponent = /** @class */ (function () {
     CreateMaintenanceComponent.prototype.createMaintenance = function (status) {
         var _this = this;
         $('.loader').show();
+        var crntUsr = JSON.parse(sessionStorage.getItem('LogEmployee'));
         var mtID = this.maintenanceData == undefined ? this.mtprimID : this.maintenanceData.ID;
         var userID = null;
         if (mtID == null || mtID == undefined) {
             userID = crntUsr.ID;
         }
         if (this.mtForm.valid) {
-            var crntUsr = JSON.parse(sessionStorage.getItem('LogEmployee'));
             var contact = {
                 ID: mtID,
                 UserId: userID,
@@ -595,12 +595,12 @@ var CreateMaintenanceComponent = /** @class */ (function () {
     CreateMaintenanceComponent.prototype.completeMaintenance = function (status) {
         var _this = this;
         if (this.mtComPage.valid) {
+            var crntUsr = JSON.parse(sessionStorage.getItem('LogEmployee'));
             var mtID = this.maintenanceData == undefined ? this.mtprimID : this.maintenanceData.ID;
             var userID = null;
             if (mtID == null || mtID == undefined) {
                 userID = crntUsr.ID;
             }
-            var crntUsr = JSON.parse(sessionStorage.getItem('LogEmployee'));
             var contact = {
                 ID: mtID,
                 UserId: userID,
