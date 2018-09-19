@@ -74,6 +74,8 @@ module.exports = "<title>Aspect WO Assignment</title>\n<link rel=\"stylesheet\" 
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_angular2_lightbox__ = __webpack_require__("./node_modules/angular2-lightbox/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_angular2_lightbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_angular2_lightbox__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_moment__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -83,6 +85,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -137,6 +140,7 @@ var WoAssignmentComponent = /** @class */ (function () {
         this.uploader = new __WEBPACK_IMPORTED_MODULE_14_ng2_file_upload__["FileUploader"]({ url: this.commonService.baseApiUrl + "AddWorkOrderDocuments/", itemAlias: 'file' });
         this.hasBaseDropZoneOver = false;
         this.hasAnotherDropZoneOver = false;
+        __WEBPACK_IMPORTED_MODULE_18_moment__["lang"]('en-gb');
         dateAdapter.setLocale('en-GB');
     }
     WoAssignmentComponent.prototype.fileOverBase = function (e) {
@@ -258,6 +262,8 @@ var WoAssignmentComponent = /** @class */ (function () {
             var userParse = JSON.parse(dataUsers);
             var userInfo = JSON.parse(userParse["_body"]);
             _this.resetWorkOrderAssignment();
+            _this.workOrdAssPage.controls["fromdate"].setValue(__WEBPACK_IMPORTED_MODULE_18_moment__().format());
+            _this.workOrdAssPage.controls["todate"].setValue(__WEBPACK_IMPORTED_MODULE_18_moment__().add(8, 'hours').format());
             if (userInfo != null) {
                 _this.autoUsers = userInfo;
                 $('.loader').hide();
